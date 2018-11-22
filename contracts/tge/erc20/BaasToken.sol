@@ -32,7 +32,7 @@ contract BaasToken is ERC20, Ownable {
         require(!isInitialized);
 
         // delete existing balances to reset the supply
-        _burn(escrowContractAddress,initialEscrowSupply);
+        _burn(escrowContractAddress, initialEscrowSupply);
         _burn(privatePlacementContractAddress, initialPrivatePlacementSupply);
         _burn(founderContractAddress, initialFounderSupply);
         _burn(incentiveContractAddress, initialIncentiveSupply);
@@ -64,5 +64,14 @@ contract BaasToken is ERC20, Ownable {
         return true;
     }
 
-    // TODO stop transfer and transferFrom if the contract is not initialized yet
+    function transferFrom(address from, address to, uint256 value)
+    public returns (bool){
+        require(isInitialized);
+        return super.transferFrom(from, to, value);
+    }
+
+    function transfer(address to, uint256 value) public returns (bool) {
+        require(isInitialized);
+        return super.transfer(to, value);
+    }
 }
