@@ -1,9 +1,10 @@
 pragma solidity ^0.4.24;
 
 import "./ERC20.sol";
+import "../../ownership/Ownable.sol";
 
 // @title BaasToken
-contract BaasToken is ERC20 {
+contract BaasToken is ERC20, Ownable {
     using SafeMath for uint256;
 
     uint256 constant initialEscrowSupply = 60 * 10 ** 18;               // 60m Escrow Token
@@ -31,11 +32,10 @@ contract BaasToken is ERC20 {
         require(!isInitialized);
 
         // delete existing balances to reset the supply
-        _totalSupply = 0;
-        _balances[escrowContractAddress] = 0;
-        _balances[privatePlacementContractAddress] = 0;
-        _balances[founderContractAddress] = 0;
-        _balances[incentiveContractAddress] = 0;
+        _burn(escrowContractAddress,initialEscrowSupply);
+        _burn(privatePlacementContractAddress, initialPrivatePlacementSupply);
+        _burn(founderContractAddress, initialFounderSupply);
+        _burn(incentiveContractAddress, initialIncentiveSupply);
 
         // mints the tokens for the pots according to their defined amounts
         _mint(escrowContractAddress, initialEscrowSupply);
