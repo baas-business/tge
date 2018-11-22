@@ -1,0 +1,6 @@
+scripts/abi.json
+scripts/bin
+.idea
+build
+
+deployer/wallets
