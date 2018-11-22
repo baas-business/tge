@@ -6,8 +6,8 @@ import "./ERC20.sol";
 contract BaasToken is ERC20 {
     using SafeMath for uint256;
 
-    uint256 constant initialEscrowSupply = 60 * 10 ** 18;               // 60m Baas Token
-    uint256 constant initialPrivatePlacementSupply = 20 * 10 ** 18;     // 20m Baas Token
+    uint256 constant initialEscrowSupply = 60 * 10 ** 18;               // 60m Escrow Token
+    uint256 constant initialPrivatePlacementSupply = 20 * 10 ** 18;     // 20m Private Placement Token
     uint256 constant initialFounderSupply = 10 * 10 ** 18;              // 10m Founder Token
     uint256 constant initialIncentiveSupply = 10 * 10 ** 18;            // 10m Incentive Token
 
@@ -37,7 +37,7 @@ contract BaasToken is ERC20 {
         _balances[founderContractAddress] = 0;
         _balances[incentiveContractAddress] = 0;
 
-        // mints the
+        // mints the tokens for the pots according to their defined amounts
         _mint(escrowContractAddress, initialEscrowSupply);
         _mint(privatePlacementContractAddress, initialPrivatePlacementSupply);
         _mint(founderContractAddress, initialFounderSupply);
@@ -63,4 +63,6 @@ contract BaasToken is ERC20 {
         isInitialized = true;
         return true;
     }
+
+    // TODO stop transfer and transferFrom if the contract is not initialized yet
 }
