@@ -20,7 +20,6 @@ contract BaasToken is ERC20, Ownable {
     address founderContractAddress = address(0);
     address incentiveContractAddress = address(0);
 
-
     // setup(...) sets the address of deployed contracts that govern
     // the incentive, private placement, founder and escrow pots
     function setup(

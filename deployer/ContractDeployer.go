@@ -1,7 +1,9 @@
-package deployer
+package main
 
 import (
+	"github.com/baas/tge-sol/deployer/contracts"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"log"
 	"math/big"
 	"time"
 	"github.com/ethereum/go-ethereum/rpc"
@@ -16,7 +18,6 @@ import (
 	"github.com/x-cray/logrus-prefixed-formatter"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/net/context"
-	"github.com/wire/sol-user-registry/build/contract"
 )
 
 func main() {
@@ -120,27 +121,30 @@ func main() {
 			txOps.Value = big.NewInt(0)
 		}
 
-		// Deploy validator registration contract
-		addr, tx, _, err := contract.DeployUserRegistryContract(txOps, client)
-		if err != nil {
-			log.Fatal(err)
-		}
 
-		// Wait for contract to mine
-		for pending := true; pending; _, pending, err = client.TransactionByHash(context.Background(), tx.Hash()) {
-			if err != nil {
-				log.Fatal(err)
-			}
-			time.Sleep(1 * time.Second)
-		}
-
-		log.WithFields(logrus.Fields{
-			"address": addr.Hex(),
-		}).Info("New contract deployed")
+		deployBaasToken(txOps, client)
 	}
 
 	err := app.Run(os.Args)
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func deployBaasToken(txOps *bind.TransactOpts, client *ethclient.Client) {
+	// Deploy validator registration contract
+	addr, tx, _, err := contracts.DeployBaasToken(txOps, client)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Wait for contract to mine
+	for pending := true; pending; _, pending, err = client.TransactionByHash(context.Background(), tx.Hash()) {
+		if err != nil {
+			log.Fatal(err)
+		}
+		time.Sleep(1 * time.Second)
+	}
+
+	log.Println("New Contract Deployed, Address: ", addr.Hex())
 }
