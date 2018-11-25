@@ -1,8 +1,8 @@
 pragma solidity ^0.4.24;
 
 
-import "../../math/SafeMath.sol";
-import "../../ownership/Ownable.sol";
+import "../math/SafeMath.sol";
+import "../ownership/Ownable.sol";
 
 
 contract BaasEscrow is Ownable {

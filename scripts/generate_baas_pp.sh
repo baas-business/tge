@@ -4,12 +4,12 @@ set -e
 
 
 export binSource=BaasPP_bin
-export abiSource=BaasPP_abi.json
-export destinationEtherlytics=../../tge-etherlytics/dapp
+export abiSource=BaasPP.json
 
 abigen --abi $abiSource --bin $binSource --pkg contracts --type BaasPP --out ../deployer/contracts/baas_pp.go
 
-cp $abiSource $destinationEtherlytics
+cp $abiSource $destEtherlytics
+cp $abiSource $destWebapp
 
 rm $abiSource
 rm $binSource

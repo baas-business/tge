@@ -3,13 +3,13 @@
 set -e
 
 
-export binSource=BaasIncentive_bin
-export abiSource=BaasIncentive_abi.json
-export destinationEtherlytics=../../tge-etherlytics/dapp
+export binSource=BaasIncentives_bin
+export abiSource=BaasIncentives.json
 
 abigen --abi $abiSource --bin $binSource --pkg contracts --type BaasIncentive --out ../deployer/contracts/baas_incentive.go
 
-cp $abiSource $destinationEtherlytics
+cp $abiSource $destEtherlytics
+cp $abiSource $destWebapp
 
 rm $abiSource
 rm $binSource
