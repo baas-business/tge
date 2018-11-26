@@ -15,9 +15,6 @@ import "./IERC20.sol";
 interface IBaasPP {
     function deliverToken(address account, uint256 amount, uint8 conversionRate) external returns (bool);
 
-    function tokenAddress() public view returns (address);
-    function balance() public view returns (uint256);
-
     event TokenDelivered(address indexed to, uint256 amount, uint8 conversionRate);
 }
 
@@ -28,7 +25,7 @@ contract BaasPP is IBaasPP, Ownable {
 
     IERC20 private _token;
 
-    constructor(IERC20 token){
+    constructor(IERC20 token)  {
         _token = token;
     }
 
@@ -36,7 +33,7 @@ contract BaasPP is IBaasPP, Ownable {
         deliverToken sends amount number of tokens to account if
         enough tokens are in the balance of this contract.
     */
-    function deliverToken(address account, uint256 amount, uint8 conversionRate)
+    function provideToken(address account, uint256 amount, uint8 conversionRate)
     external onlyOwner returns (bool) {
         require(amount <= _token.balanceOf(address(this)));
         require(_token.transfer(account, amount));

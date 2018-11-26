@@ -16,18 +16,18 @@ import (
 )
 
 // BaasROIABI is the input ABI used to generate the binding from.
-const BaasROIABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"raiseCapital\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]"
+const BaasROIABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"raiseCapital\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]"
 
 // BaasROIBin is the compiled bytecode used for deploying new contracts.
-const BaasROIBin = `0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a361044c806100cf6000396000f30060806040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063715018a6146100725780638da5cb5b146100895780638f32d59b146100e0578063c621bf8a1461010f578063f2fde38b14610154575b600080fd5b34801561007e57600080fd5b50610087610197565b005b34801561009557600080fd5b5061009e610269565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100ec57600080fd5b506100f5610292565b604051808215151515815260200191505060405180910390f35b34801561011b57600080fd5b5061013a600480360381019080803590602001909291905050506102e9565b604051808215151515815260200191505060405180910390f35b34801561016057600080fd5b50610195600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610307565b005b61019f610292565b15156101aa57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b60006102f3610292565b15156102fe57600080fd5b60019050919050565b61030f610292565b151561031a57600080fd5b61032381610326565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561036257600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820b6fff372575bbc33ccf6e41d07f2fd1129414da1aef79f001d8362064f86d1a20029`
+const BaasROIBin = `0x608060405234801561001057600080fd5b5060405160208061074d83398101806040528101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505061060d806101406000396000f300608060405260043610610083576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063715018a6146100885780638da5cb5b1461009f5780638f32d59b146100f65780639d76ea5814610125578063b69ef8a81461017c578063c621bf8a146101a7578063f2fde38b146101ec575b600080fd5b34801561009457600080fd5b5061009d61022f565b005b3480156100ab57600080fd5b506100b4610301565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561010257600080fd5b5061010b61032a565b604051808215151515815260200191505060405180910390f35b34801561013157600080fd5b5061013a610381565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561018857600080fd5b506101916103ab565b6040518082815260200191505060405180910390f35b3480156101b357600080fd5b506101d2600480360381019080803590602001909291905050506104aa565b604051808215151515815260200191505060405180910390f35b3480156101f857600080fd5b5061022d600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506104c8565b005b61023761032a565b151561024257600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561046a57600080fd5b505af115801561047e573d6000803e3d6000fd5b505050506040513d602081101561049457600080fd5b8101908080519060200190929190505050905090565b60006104b461032a565b15156104bf57600080fd5b60019050919050565b6104d061032a565b15156104db57600080fd5b6104e4816104e7565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561052357600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820cbaa9bd91a5d4a9ec907166d40fe3a03c74e3e7143616b91561bcaaa519095010029`
 
 // DeployBaasROI deploys a new Ethereum contract, binding an instance of BaasROI to it.
-func DeployBaasROI(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *BaasROI, error) {
+func DeployBaasROI(auth *bind.TransactOpts, backend bind.ContractBackend, token common.Address) (common.Address, *types.Transaction, *BaasROI, error) {
 	parsed, err := abi.JSON(strings.NewReader(BaasROIABI))
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
-	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(BaasROIBin), backend)
+	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(BaasROIBin), backend, token)
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
@@ -176,6 +176,32 @@ func (_BaasROI *BaasROITransactorRaw) Transact(opts *bind.TransactOpts, method s
 	return _BaasROI.Contract.contract.Transact(opts, method, params...)
 }
 
+// Balance is a free data retrieval call binding the contract method 0xb69ef8a8.
+//
+// Solidity: function balance() constant returns(uint256)
+func (_BaasROI *BaasROICaller) Balance(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasROI.contract.Call(opts, out, "balance")
+	return *ret0, err
+}
+
+// Balance is a free data retrieval call binding the contract method 0xb69ef8a8.
+//
+// Solidity: function balance() constant returns(uint256)
+func (_BaasROI *BaasROISession) Balance() (*big.Int, error) {
+	return _BaasROI.Contract.Balance(&_BaasROI.CallOpts)
+}
+
+// Balance is a free data retrieval call binding the contract method 0xb69ef8a8.
+//
+// Solidity: function balance() constant returns(uint256)
+func (_BaasROI *BaasROICallerSession) Balance() (*big.Int, error) {
+	return _BaasROI.Contract.Balance(&_BaasROI.CallOpts)
+}
+
 // IsOwner is a free data retrieval call binding the contract method 0x8f32d59b.
 //
 // Solidity: function isOwner() constant returns(bool)
@@ -226,6 +252,32 @@ func (_BaasROI *BaasROISession) Owner() (common.Address, error) {
 // Solidity: function owner() constant returns(address)
 func (_BaasROI *BaasROICallerSession) Owner() (common.Address, error) {
 	return _BaasROI.Contract.Owner(&_BaasROI.CallOpts)
+}
+
+// TokenAddress is a free data retrieval call binding the contract method 0x9d76ea58.
+//
+// Solidity: function tokenAddress() constant returns(address)
+func (_BaasROI *BaasROICaller) TokenAddress(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _BaasROI.contract.Call(opts, out, "tokenAddress")
+	return *ret0, err
+}
+
+// TokenAddress is a free data retrieval call binding the contract method 0x9d76ea58.
+//
+// Solidity: function tokenAddress() constant returns(address)
+func (_BaasROI *BaasROISession) TokenAddress() (common.Address, error) {
+	return _BaasROI.Contract.TokenAddress(&_BaasROI.CallOpts)
+}
+
+// TokenAddress is a free data retrieval call binding the contract method 0x9d76ea58.
+//
+// Solidity: function tokenAddress() constant returns(address)
+func (_BaasROI *BaasROICallerSession) TokenAddress() (common.Address, error) {
+	return _BaasROI.Contract.TokenAddress(&_BaasROI.CallOpts)
 }
 
 // RaiseCapital is a paid mutator transaction binding the contract method 0xc621bf8a.

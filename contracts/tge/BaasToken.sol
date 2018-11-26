@@ -3,14 +3,18 @@ pragma solidity ^0.4.24;
 import "./ERC20.sol";
 import "../ownership/Ownable.sol";
 
-// @title BaasToken
-contract BaasToken is ERC20, Ownable {
+
+interface IBaasToken {
+    event SetupCompleted();
+}
+
+contract BaasToken is IBaasToken, ERC20, Ownable {
     using SafeMath for uint256;
 
     uint256 constant ESCROW_SUPPLY = 60 * 10 ** 18;                 // 60m Escrow Token
     uint256 constant PP_SUPPLY = 20 * 10 ** 18;                     // 20m Private Placement Token
     uint256 constant FOUNDER_SUPPLY = 10 * 10 ** 18;                // 10m Founder Token
-    uint256 constant INCENTIVES_SUPPLY = 10 * 10 ** 18;             // 10m Incentive Token
+    uint256 constant INCENTIVES_SUPPLY = 10 * 10 ** 18;             // 10m Incentives Token
 
     // prohibits usage of transfer and transferFrom
     bool private _isInitialized = false;
@@ -56,7 +60,7 @@ contract BaasToken is ERC20, Ownable {
 
     function transferFrom(address from, address to, uint256 value)
     public returns (bool){
-        if(!_isInitialized) {
+        if (!_isInitialized) {
             return false;
         }
 
@@ -64,7 +68,7 @@ contract BaasToken is ERC20, Ownable {
     }
 
     function transfer(address to, uint256 value) public returns (bool) {
-        if(!_isInitialized) {
+        if (!_isInitialized) {
             return false;
         }
 
@@ -82,9 +86,4 @@ contract BaasToken is ERC20, Ownable {
     function pots() public view returns (address, address, address, address) {
         return (_escrowAddress, _ppAddress, _founderAddress, _incentivesAddress);
     }
-
-    /*
-        Events
-    */
-    event SetupCompleted();
 }

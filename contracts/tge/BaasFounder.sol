@@ -3,9 +3,16 @@ pragma solidity ^0.4.24;
 
 import "../math/SafeMath.sol";
 import "../ownership/Ownable.sol";
+import "./IERC20.sol";
 
 
-contract BaasFounder is Ownable {
+interface IBaasFounder {
+    function setup(address founder1, address founder2, uint256 vestingStart, uint256 vestingPeriod) external returns (bool);
+
+    event FounderChanged(address oldAddress, address newAddress, int index);
+}
+
+contract BaasFounder is Ownable, IBaasFounder {
     using SafeMath for uint256;
 
     uint256 constant FOUNDER1_SUPPLY = 8 * 10 ** 18;                // 8m Founder1 Token
@@ -17,6 +24,11 @@ contract BaasFounder is Ownable {
     uint256 private _vestingStart;
     uint256 private _vestingPeriod;
 
+    IERC20 private _token;
+
+    constructor(IERC20 token) public {
+        _token = token;
+    }
 
     function setup(
         address founder1,
@@ -62,9 +74,12 @@ contract BaasFounder is Ownable {
         return _founder2;
     }
 
+    function balance() public view returns (uint256) {
+        return _token.balanceOf(address(this));
+    }
 
-    /*
-        Events
-    */
-    event FounderChanged(address oldAddress, address newAddress, int index);
+    function tokenAddress() public view returns (address) {
+        return _token;
+    }
+
 }

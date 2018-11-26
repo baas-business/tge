@@ -1,7 +1,7 @@
 var BaasToken = artifacts.require("./BaasToken.sol");
 var BaasPP = artifacts.require("./BaasPP.sol");
+var utils = require('./utils.js');
 var BigNumber = require('bignumber.js');
-var utils = require('utils.js');
 const contractDeployer = "0x260502fd8202ad46e1e0cb555e4efa778e568e7c";
 
 contract('BaasPP', function (accounts) {
@@ -23,13 +23,8 @@ contract('BaasPP', function (accounts) {
         const baasPP = await BaasPP.deployed();
 
         let token = await baasToken.setup(accounts[0], baasPP.address, accounts[1], accounts[2]).catch(e => console.log(e));
-        console.log(token)
-
         let balance = await baasPP.balance();
-        console.log(balance);
+        utils.compareBigNumber(new BigNumber('20e18'), balance, "PP Balance");
 
-        const expectedBT = new BigNumber('1e9');
-
-        assert.equal(expectedBT.isEqualTo(balance), true, "baasPP should have " + expectedBT.toString() + " token but has " + balance.toString() + "!");
     });
 });

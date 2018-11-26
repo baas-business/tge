@@ -16,18 +16,18 @@ import (
 )
 
 // BaasPPABI is the input ABI used to generate the binding from.
-const BaasPPABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"raiseCapital\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]"
+const BaasPPABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"conversionRate\",\"type\":\"uint8\"}],\"name\":\"deliverToken\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"conversionRate\",\"type\":\"uint8\"}],\"name\":\"TokenDelivered\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"conversionRate\",\"type\":\"uint8\"}],\"name\":\"provideToken\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]"
 
 // BaasPPBin is the compiled bytecode used for deploying new contracts.
-const BaasPPBin = `0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a361044c806100cf6000396000f30060806040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063715018a6146100725780638da5cb5b146100895780638f32d59b146100e0578063c621bf8a1461010f578063f2fde38b14610154575b600080fd5b34801561007e57600080fd5b50610087610197565b005b34801561009557600080fd5b5061009e610269565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100ec57600080fd5b506100f5610292565b604051808215151515815260200191505060405180910390f35b34801561011b57600080fd5b5061013a600480360381019080803590602001909291905050506102e9565b604051808215151515815260200191505060405180910390f35b34801561016057600080fd5b50610195600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610307565b005b61019f610292565b15156101aa57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b60006102f3610292565b15156102fe57600080fd5b60019050919050565b61030f610292565b151561031a57600080fd5b61032381610326565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561036257600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820ce9aec593cd431fe2c129ee8c938cee2d2dcd53589b433bd759bda3130c6296a0029`
+const BaasPPBin = `0x`
 
 // DeployBaasPP deploys a new Ethereum contract, binding an instance of BaasPP to it.
-func DeployBaasPP(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *BaasPP, error) {
+func DeployBaasPP(auth *bind.TransactOpts, backend bind.ContractBackend, token common.Address) (common.Address, *types.Transaction, *BaasPP, error) {
 	parsed, err := abi.JSON(strings.NewReader(BaasPPABI))
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
-	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(BaasPPBin), backend)
+	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(BaasPPBin), backend, token)
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
@@ -176,6 +176,32 @@ func (_BaasPP *BaasPPTransactorRaw) Transact(opts *bind.TransactOpts, method str
 	return _BaasPP.Contract.contract.Transact(opts, method, params...)
 }
 
+// Balance is a free data retrieval call binding the contract method 0xb69ef8a8.
+//
+// Solidity: function balance() constant returns(uint256)
+func (_BaasPP *BaasPPCaller) Balance(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasPP.contract.Call(opts, out, "balance")
+	return *ret0, err
+}
+
+// Balance is a free data retrieval call binding the contract method 0xb69ef8a8.
+//
+// Solidity: function balance() constant returns(uint256)
+func (_BaasPP *BaasPPSession) Balance() (*big.Int, error) {
+	return _BaasPP.Contract.Balance(&_BaasPP.CallOpts)
+}
+
+// Balance is a free data retrieval call binding the contract method 0xb69ef8a8.
+//
+// Solidity: function balance() constant returns(uint256)
+func (_BaasPP *BaasPPCallerSession) Balance() (*big.Int, error) {
+	return _BaasPP.Contract.Balance(&_BaasPP.CallOpts)
+}
+
 // IsOwner is a free data retrieval call binding the contract method 0x8f32d59b.
 //
 // Solidity: function isOwner() constant returns(bool)
@@ -228,25 +254,72 @@ func (_BaasPP *BaasPPCallerSession) Owner() (common.Address, error) {
 	return _BaasPP.Contract.Owner(&_BaasPP.CallOpts)
 }
 
-// RaiseCapital is a paid mutator transaction binding the contract method 0xc621bf8a.
+// TokenAddress is a free data retrieval call binding the contract method 0x9d76ea58.
 //
-// Solidity: function raiseCapital(amount uint256) returns(bool)
-func (_BaasPP *BaasPPTransactor) RaiseCapital(opts *bind.TransactOpts, amount *big.Int) (*types.Transaction, error) {
-	return _BaasPP.contract.Transact(opts, "raiseCapital", amount)
+// Solidity: function tokenAddress() constant returns(address)
+func (_BaasPP *BaasPPCaller) TokenAddress(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _BaasPP.contract.Call(opts, out, "tokenAddress")
+	return *ret0, err
 }
 
-// RaiseCapital is a paid mutator transaction binding the contract method 0xc621bf8a.
+// TokenAddress is a free data retrieval call binding the contract method 0x9d76ea58.
 //
-// Solidity: function raiseCapital(amount uint256) returns(bool)
-func (_BaasPP *BaasPPSession) RaiseCapital(amount *big.Int) (*types.Transaction, error) {
-	return _BaasPP.Contract.RaiseCapital(&_BaasPP.TransactOpts, amount)
+// Solidity: function tokenAddress() constant returns(address)
+func (_BaasPP *BaasPPSession) TokenAddress() (common.Address, error) {
+	return _BaasPP.Contract.TokenAddress(&_BaasPP.CallOpts)
 }
 
-// RaiseCapital is a paid mutator transaction binding the contract method 0xc621bf8a.
+// TokenAddress is a free data retrieval call binding the contract method 0x9d76ea58.
 //
-// Solidity: function raiseCapital(amount uint256) returns(bool)
-func (_BaasPP *BaasPPTransactorSession) RaiseCapital(amount *big.Int) (*types.Transaction, error) {
-	return _BaasPP.Contract.RaiseCapital(&_BaasPP.TransactOpts, amount)
+// Solidity: function tokenAddress() constant returns(address)
+func (_BaasPP *BaasPPCallerSession) TokenAddress() (common.Address, error) {
+	return _BaasPP.Contract.TokenAddress(&_BaasPP.CallOpts)
+}
+
+// DeliverToken is a paid mutator transaction binding the contract method 0x887d5643.
+//
+// Solidity: function deliverToken(account address, amount uint256, conversionRate uint8) returns(bool)
+func (_BaasPP *BaasPPTransactor) DeliverToken(opts *bind.TransactOpts, account common.Address, amount *big.Int, conversionRate uint8) (*types.Transaction, error) {
+	return _BaasPP.contract.Transact(opts, "deliverToken", account, amount, conversionRate)
+}
+
+// DeliverToken is a paid mutator transaction binding the contract method 0x887d5643.
+//
+// Solidity: function deliverToken(account address, amount uint256, conversionRate uint8) returns(bool)
+func (_BaasPP *BaasPPSession) DeliverToken(account common.Address, amount *big.Int, conversionRate uint8) (*types.Transaction, error) {
+	return _BaasPP.Contract.DeliverToken(&_BaasPP.TransactOpts, account, amount, conversionRate)
+}
+
+// DeliverToken is a paid mutator transaction binding the contract method 0x887d5643.
+//
+// Solidity: function deliverToken(account address, amount uint256, conversionRate uint8) returns(bool)
+func (_BaasPP *BaasPPTransactorSession) DeliverToken(account common.Address, amount *big.Int, conversionRate uint8) (*types.Transaction, error) {
+	return _BaasPP.Contract.DeliverToken(&_BaasPP.TransactOpts, account, amount, conversionRate)
+}
+
+// ProvideToken is a paid mutator transaction binding the contract method 0xfcbcac1d.
+//
+// Solidity: function provideToken(account address, amount uint256, conversionRate uint8) returns(bool)
+func (_BaasPP *BaasPPTransactor) ProvideToken(opts *bind.TransactOpts, account common.Address, amount *big.Int, conversionRate uint8) (*types.Transaction, error) {
+	return _BaasPP.contract.Transact(opts, "provideToken", account, amount, conversionRate)
+}
+
+// ProvideToken is a paid mutator transaction binding the contract method 0xfcbcac1d.
+//
+// Solidity: function provideToken(account address, amount uint256, conversionRate uint8) returns(bool)
+func (_BaasPP *BaasPPSession) ProvideToken(account common.Address, amount *big.Int, conversionRate uint8) (*types.Transaction, error) {
+	return _BaasPP.Contract.ProvideToken(&_BaasPP.TransactOpts, account, amount, conversionRate)
+}
+
+// ProvideToken is a paid mutator transaction binding the contract method 0xfcbcac1d.
+//
+// Solidity: function provideToken(account address, amount uint256, conversionRate uint8) returns(bool)
+func (_BaasPP *BaasPPTransactorSession) ProvideToken(account common.Address, amount *big.Int, conversionRate uint8) (*types.Transaction, error) {
+	return _BaasPP.Contract.ProvideToken(&_BaasPP.TransactOpts, account, amount, conversionRate)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
@@ -412,6 +485,140 @@ func (_BaasPP *BaasPPFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, s
 				// New log arrived, parse the event and forward to the user
 				event := new(BaasPPOwnershipTransferred)
 				if err := _BaasPP.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// BaasPPTokenDeliveredIterator is returned from FilterTokenDelivered and is used to iterate over the raw logs and unpacked data for TokenDelivered events raised by the BaasPP contract.
+type BaasPPTokenDeliveredIterator struct {
+	Event *BaasPPTokenDelivered // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *BaasPPTokenDeliveredIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(BaasPPTokenDelivered)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(BaasPPTokenDelivered)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *BaasPPTokenDeliveredIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *BaasPPTokenDeliveredIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// BaasPPTokenDelivered represents a TokenDelivered event raised by the BaasPP contract.
+type BaasPPTokenDelivered struct {
+	To             common.Address
+	Amount         *big.Int
+	ConversionRate uint8
+	Raw            types.Log // Blockchain specific contextual infos
+}
+
+// FilterTokenDelivered is a free log retrieval operation binding the contract event 0xa254c04eefa2b3459dff6e70a8a28dc5876401ccfb247ad27c56f0c32970cf06.
+//
+// Solidity: e TokenDelivered(to indexed address, amount uint256, conversionRate uint8)
+func (_BaasPP *BaasPPFilterer) FilterTokenDelivered(opts *bind.FilterOpts, to []common.Address) (*BaasPPTokenDeliveredIterator, error) {
+
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _BaasPP.contract.FilterLogs(opts, "TokenDelivered", toRule)
+	if err != nil {
+		return nil, err
+	}
+	return &BaasPPTokenDeliveredIterator{contract: _BaasPP.contract, event: "TokenDelivered", logs: logs, sub: sub}, nil
+}
+
+// WatchTokenDelivered is a free log subscription operation binding the contract event 0xa254c04eefa2b3459dff6e70a8a28dc5876401ccfb247ad27c56f0c32970cf06.
+//
+// Solidity: e TokenDelivered(to indexed address, amount uint256, conversionRate uint8)
+func (_BaasPP *BaasPPFilterer) WatchTokenDelivered(opts *bind.WatchOpts, sink chan<- *BaasPPTokenDelivered, to []common.Address) (event.Subscription, error) {
+
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _BaasPP.contract.WatchLogs(opts, "TokenDelivered", toRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(BaasPPTokenDelivered)
+				if err := _BaasPP.contract.UnpackLog(event, "TokenDelivered", log); err != nil {
 					return err
 				}
 				event.Raw = log
