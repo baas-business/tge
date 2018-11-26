@@ -11,6 +11,8 @@ interface IBaasToken {
 contract BaasToken is IBaasToken, ERC20, Ownable {
     using SafeMath for uint256;
 
+    string private constant NAME = "TOKEN";
+
     uint256 constant ESCROW_SUPPLY = 60 * 10 ** 18;                 // 60m Escrow Token
     uint256 constant PP_SUPPLY = 20 * 10 ** 18;                     // 20m Private Placement Token
     uint256 constant FOUNDER_SUPPLY = 10 * 10 ** 18;                // 10m Founder Token
@@ -85,5 +87,9 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
 
     function pots() public view returns (address, address, address, address) {
         return (_escrowAddress, _ppAddress, _founderAddress, _incentivesAddress);
+    }
+
+    function name() public pure returns (string) {
+        return NAME;
     }
 }

@@ -18,6 +18,7 @@ interface IBaasIncentives {
 contract BaasIncentives is IBaasIncentives, Ownable {
     using SafeMath for uint256;
 
+    string private constant NAME = "INCENTIVES  ";
     uint constant STAGES = 4;
 
     struct Incentive {
@@ -131,4 +132,7 @@ contract BaasIncentives is IBaasIncentives, Ownable {
         return (amount, atBlock, alreadyWithdrawn);
     }
 
+    function name() public pure returns (string) {
+        return NAME;
+    }
 }

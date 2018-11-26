@@ -6,22 +6,19 @@ import "../ownership/Ownable.sol";
 import "./IERC20.sol";
 
 interface IBaasROI {
-    function raiseCapital(uint256 amount) public returns (bool);
 }
 
 contract BaasROI is IBaasROI, Ownable {
     using SafeMath for uint256;
 
+    string private constant NAME = "RETURN OF INVESTMENT";
 
     IERC20 private _token;
 
-    constructor(IERC20 token)  {
+    constructor(IERC20 token) public {
         _token = token;
     }
 
-    function raiseCapital(uint256 amount) public onlyOwner returns (bool) {
-        return true;
-    }
 
 
     // Views
@@ -32,5 +29,9 @@ contract BaasROI is IBaasROI, Ownable {
 
     function tokenAddress() public view returns (address) {
         return _token;
+    }
+
+    function name() public pure returns (string) {
+        return NAME;
     }
 }

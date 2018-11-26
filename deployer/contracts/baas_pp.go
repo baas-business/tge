@@ -16,10 +16,10 @@ import (
 )
 
 // BaasPPABI is the input ABI used to generate the binding from.
-const BaasPPABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"conversionRate\",\"type\":\"uint8\"}],\"name\":\"deliverToken\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"conversionRate\",\"type\":\"uint8\"}],\"name\":\"TokenDelivered\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"conversionRate\",\"type\":\"uint8\"}],\"name\":\"provideToken\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]"
+const BaasPPABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"conversionRate\",\"type\":\"uint8\"}],\"name\":\"TokenDelivered\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"conversionRate\",\"type\":\"uint8\"}],\"name\":\"provideToken\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
 
 // BaasPPBin is the compiled bytecode used for deploying new contracts.
-const BaasPPBin = `0x`
+const BaasPPBin = `0x608060405234801561001057600080fd5b50604051602080610ac183398101806040528101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050610981806101406000396000f30060806040526004361061008e576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306fdde0314610093578063715018a6146101235780638da5cb5b1461013a5780638f32d59b146101915780639d76ea58146101c0578063b69ef8a814610217578063f2fde38b14610242578063fcbcac1d14610285575b600080fd5b34801561009f57600080fd5b506100a86102f7565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100e85780820151818401526020810190506100cd565b50505050905090810190601f1680156101155780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561012f57600080fd5b50610138610334565b005b34801561014657600080fd5b5061014f610406565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561019d57600080fd5b506101a661042f565b604051808215151515815260200191505060405180910390f35b3480156101cc57600080fd5b506101d5610486565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561022357600080fd5b5061022c6104b0565b6040518082815260200191505060405180910390f35b34801561024e57600080fd5b50610283600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506105af565b005b34801561029157600080fd5b506102dd600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190803560ff1690602001909291905050506105ce565b604051808215151515815260200191505060405180910390f35b60606040805190810160405280601181526020017f5052495641544520504c4143454d454e54000000000000000000000000000000815250905090565b61033c61042f565b151561034757600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561056f57600080fd5b505af1158015610583573d6000803e3d6000fd5b505050506040513d602081101561059957600080fd5b8101908080519060200190929190505050905090565b6105b761042f565b15156105c257600080fd5b6105cb8161085b565b50565b60006105d861042f565b15156105e357600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b1580156106a057600080fd5b505af11580156106b4573d6000803e3d6000fd5b505050506040513d60208110156106ca57600080fd5b810190808051906020019092919050505083111515156106e957600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb85856040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b1580156107ae57600080fd5b505af11580156107c2573d6000803e3d6000fd5b505050506040513d60208110156107d857600080fd5b810190808051906020019092919050505015156107f457600080fd5b8373ffffffffffffffffffffffffffffffffffffffff167fa254c04eefa2b3459dff6e70a8a28dc5876401ccfb247ad27c56f0c32970cf068484604051808381526020018260ff1660ff1681526020019250505060405180910390a2600190509392505050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561089757600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058207eac5f6dd34914ee9e48bfacff8ef2db000e83ae2a79b98d6444e79e18b5971b0029`
 
 // DeployBaasPP deploys a new Ethereum contract, binding an instance of BaasPP to it.
 func DeployBaasPP(auth *bind.TransactOpts, backend bind.ContractBackend, token common.Address) (common.Address, *types.Transaction, *BaasPP, error) {
@@ -228,6 +228,32 @@ func (_BaasPP *BaasPPCallerSession) IsOwner() (bool, error) {
 	return _BaasPP.Contract.IsOwner(&_BaasPP.CallOpts)
 }
 
+// Name is a free data retrieval call binding the contract method 0x06fdde03.
+//
+// Solidity: function name() constant returns(string)
+func (_BaasPP *BaasPPCaller) Name(opts *bind.CallOpts) (string, error) {
+	var (
+		ret0 = new(string)
+	)
+	out := ret0
+	err := _BaasPP.contract.Call(opts, out, "name")
+	return *ret0, err
+}
+
+// Name is a free data retrieval call binding the contract method 0x06fdde03.
+//
+// Solidity: function name() constant returns(string)
+func (_BaasPP *BaasPPSession) Name() (string, error) {
+	return _BaasPP.Contract.Name(&_BaasPP.CallOpts)
+}
+
+// Name is a free data retrieval call binding the contract method 0x06fdde03.
+//
+// Solidity: function name() constant returns(string)
+func (_BaasPP *BaasPPCallerSession) Name() (string, error) {
+	return _BaasPP.Contract.Name(&_BaasPP.CallOpts)
+}
+
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() constant returns(address)
@@ -278,27 +304,6 @@ func (_BaasPP *BaasPPSession) TokenAddress() (common.Address, error) {
 // Solidity: function tokenAddress() constant returns(address)
 func (_BaasPP *BaasPPCallerSession) TokenAddress() (common.Address, error) {
 	return _BaasPP.Contract.TokenAddress(&_BaasPP.CallOpts)
-}
-
-// DeliverToken is a paid mutator transaction binding the contract method 0x887d5643.
-//
-// Solidity: function deliverToken(account address, amount uint256, conversionRate uint8) returns(bool)
-func (_BaasPP *BaasPPTransactor) DeliverToken(opts *bind.TransactOpts, account common.Address, amount *big.Int, conversionRate uint8) (*types.Transaction, error) {
-	return _BaasPP.contract.Transact(opts, "deliverToken", account, amount, conversionRate)
-}
-
-// DeliverToken is a paid mutator transaction binding the contract method 0x887d5643.
-//
-// Solidity: function deliverToken(account address, amount uint256, conversionRate uint8) returns(bool)
-func (_BaasPP *BaasPPSession) DeliverToken(account common.Address, amount *big.Int, conversionRate uint8) (*types.Transaction, error) {
-	return _BaasPP.Contract.DeliverToken(&_BaasPP.TransactOpts, account, amount, conversionRate)
-}
-
-// DeliverToken is a paid mutator transaction binding the contract method 0x887d5643.
-//
-// Solidity: function deliverToken(account address, amount uint256, conversionRate uint8) returns(bool)
-func (_BaasPP *BaasPPTransactorSession) DeliverToken(account common.Address, amount *big.Int, conversionRate uint8) (*types.Transaction, error) {
-	return _BaasPP.Contract.DeliverToken(&_BaasPP.TransactOpts, account, amount, conversionRate)
 }
 
 // ProvideToken is a paid mutator transaction binding the contract method 0xfcbcac1d.

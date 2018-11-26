@@ -13,7 +13,7 @@ import "./IERC20.sol";
     conversion rate 1.0.
 */
 interface IBaasPP {
-    function deliverToken(address account, uint256 amount, uint8 conversionRate) external returns (bool);
+    function provideToken(address account, uint256 amount, uint8 conversionRate) external returns (bool);
 
     event TokenDelivered(address indexed to, uint256 amount, uint8 conversionRate);
 }
@@ -23,9 +23,11 @@ interface IBaasPP {
 contract BaasPP is IBaasPP, Ownable {
     using SafeMath for uint256;
 
+    string private constant NAME = "PRIVATE PLACEMENT";
+
     IERC20 private _token;
 
-    constructor(IERC20 token)  {
+    constructor(IERC20 token)  public{
         _token = token;
     }
 
@@ -50,5 +52,9 @@ contract BaasPP is IBaasPP, Ownable {
 
     function tokenAddress() public view returns (address) {
         return _token;
+    }
+
+    function name() public pure returns (string) {
+        return NAME;
     }
 }

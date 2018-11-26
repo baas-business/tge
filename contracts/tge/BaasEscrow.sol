@@ -7,21 +7,21 @@ import "./IERC20.sol";
 
 
 contract IBaasEscrow {
-    function tokenAddress() public view returns (address);
-
-    function balance() public view returns (uint256);
 }
 
 contract BaasEscrow is Ownable {
     using SafeMath for uint256;
 
+    string private constant NAME = "ESCROW";
     IERC20 private _token;
+
 
     constructor(IERC20 token) public {
         _token = token;
     }
 
     function raiseCapital(uint256 amount) public onlyOwner returns (bool) {
+        require(amount <= balance());
         return true;
     }
 
@@ -33,5 +33,9 @@ contract BaasEscrow is Ownable {
 
     function tokenAddress() public view returns (address) {
         return _token;
+    }
+
+    function name() public pure returns (string) {
+        return NAME;
     }
 }

@@ -15,6 +15,8 @@ interface IBaasFounder {
 contract BaasFounder is Ownable, IBaasFounder {
     using SafeMath for uint256;
 
+    string private constant NAME = "FOUNDER";
+
     uint256 constant FOUNDER1_SUPPLY = 8 * 10 ** 18;                // 8m Founder1 Token
     uint256 constant FOUNDER2_SUPPLY = 2 * 10 ** 18;                // 2m Founder2 Token
 
@@ -42,10 +44,6 @@ contract BaasFounder is Ownable, IBaasFounder {
         _vestingPeriod = vestingPeriod;
     }
 
-    function withdrawTokens() external returns (bool) {
-
-        return true;
-    }
 
     function changeFounder(address newAddress, int index)
     external onlyOwner returns (bool) {
@@ -66,11 +64,11 @@ contract BaasFounder is Ownable, IBaasFounder {
     /*
         VIEWS
     */
-    function Founder1() view returns (address) {
+    function Founder1() public view returns (address) {
         return _founder1;
     }
 
-    function Founder2() view returns (address) {
+    function Founder2() public view returns (address) {
         return _founder2;
     }
 
@@ -80,6 +78,10 @@ contract BaasFounder is Ownable, IBaasFounder {
 
     function tokenAddress() public view returns (address) {
         return _token;
+    }
+
+    function name() public pure returns (string) {
+        return NAME;
     }
 
 }

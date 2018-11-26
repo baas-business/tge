@@ -1,1 +1,9 @@
-{"deployer":"0x80def17bb76025eaba069de8d5ebfd8fbfc64d51","token_address":"0xb0a6c53c5d6810e803b04c4eb45e005c7593b1ee","escrow_address":"0x796f59723afad833de92bb219f784f8986c4ecc2","founder_address":"0x3a3ff130fa129b4e9a2ae6907ee319fc09385021","incentives_address":"0xc80b6e25acb169e608e6127d1e22f982e41cd6d0","pp_address":"0xf8d59ad4245d42654fa767147895fec6e17320c1","roi_address":"0xdd912ddab4de01b6b7d8c757522ad7afe00311c7"}
+{
+  "deployer": "0x80def17bb76025eaba069de8d5ebfd8fbfc64d51",
+  "token_address": "0xb0a6c53c5d6810e803b04c4eb45e005c7593b1ee",
+  "escrow_address": "0x796f59723afad833de92bb219f784f8986c4ecc2",
+  "founder_address": "0x3a3ff130fa129b4e9a2ae6907ee319fc09385021",
+  "incentives_address": "0xc80b6e25acb169e608e6127d1e22f982e41cd6d0",
+  "pp_address": "0xf8d59ad4245d42654fa767147895fec6e17320c1",
+  "roi_address": "0xdd912ddab4de01b6b7d8c757522ad7afe00311c7"
+}
