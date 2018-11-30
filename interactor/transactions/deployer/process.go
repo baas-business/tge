@@ -1,17 +1,47 @@
 package deployer
 
 import (
-	"github.com/baas/tge-sol/deployer/contracts"
+	"github.com/baas/tge-sol/interactor/contracts"
+	"github.com/baas/tge-sol/interactor/utils"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"golang.org/x/net/context"
 	"log"
+	"math/big"
 	"time"
 )
 
-func DeployTGEContracts(txOps *bind.TransactOpts, client *ethclient.Client) (*ContractConfig, error) {
+func process(httpPath string, keystoreUTCPath string, passwordFile string, version string) error {
+	client, err := utils.RPCClient(httpPath)
+
+	if err != nil {
+		return err
+	}
+
+	privKey, err := utils.PrivateKeyFromWalletAndPasswordFile(keystoreUTCPath, passwordFile)
+
+	if err != nil {
+		return err
+	}
+
+	txOps := bind.NewKeyedTransactor(privKey.PrivateKey)
+	txOps.Value = big.NewInt(0)
+
+	// DEPLOY
+	cc, err := deployTGEContracts(txOps, client)
+
+	if err != nil {
+		return err
+	}
+
+	// export configuration
+	return cc.ExportResult( version)
+}
+
+
+func deployTGEContracts(txOps *bind.TransactOpts, client *ethclient.Client) (*ContractConfig, error) {
 	var err error
 
 	cc := &ContractConfig{
@@ -131,4 +161,3 @@ func deploy(label string, txOps *bind.TransactOpts, client *ethclient.Client, tx
 
 	return addr, nil
 }
-

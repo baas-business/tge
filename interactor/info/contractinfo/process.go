@@ -1,18 +1,40 @@
-package info
+package contractinfo
 
 import (
 	"fmt"
-	"github.com/baas/tge-sol/deployer/contracts"
-	"github.com/baas/tge-sol/deployer/deployer"
+	"github.com/baas/tge-sol/interactor/contracts"
+	"github.com/baas/tge-sol/interactor/transactions/deployer"
+	"github.com/baas/tge-sol/interactor/utils"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
 )
 
-func ShowInfo(client *ethclient.Client, filename string) error {
-	cc, err := deployer.LoadContractConfig(filename)
 
-	cc.DAppConfig().Write("dapp_v3.json")
+func process(httpPath string, version string) error {
+	client, err := utils.RPCClient(httpPath)
+
+	if err != nil {
+		return err
+	}
+	return ShowInfo(client, version)
+}
+
+func ShowInfo(client *ethclient.Client, version string) error {
+	configFilename := fmt.Sprintf("build/%v/contract_config.json", version)
+	cc, err := deployer.LoadContractConfig(configFilename)
+
+
+	err = cc.ExportResult("test")
+
+	if err != nil {
+		return err
+	}
+
+	if true {
+		return nil
+	}
+
 	fmt.Println(cc)
 
 	if err != nil {

@@ -25,7 +25,17 @@ Build
 
     truffle compile
     
-Current Contract:
 
-//https://ropsten.etherscan.io/address/0xe27396555f2a682cef62f7ec54d4fa9ef0a70264
+
+## Deploy Contracts
+
+#### 1 Test
+   
+    truffle test
+   
+#### 4 Compile Solidity
+
+    truffle compile
+    
+    
     

@@ -8,6 +8,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"io/ioutil"
 	"log"
+	"os"
 )
 
 type ContractConfig struct {
@@ -25,6 +26,32 @@ type ContractConfig struct {
 	PPHash            common.Hash     `json:"pp_hash"`
 	ROIAddress        *common.Address `json:"roi_address"`
 	ROIHash           common.Hash     `json:"roi_hash"`
+}
+
+func (cc *ContractConfig) ExportResult(version string) error {
+	path := fmt.Sprintf("build/%v", version)
+
+
+	if _, err := os.Stat(path); !os.IsNotExist(err) {
+		version = version + "_alternative"
+		path = fmt.Sprintf("build/%v", version)
+	}
+
+
+	err := os.MkdirAll(path, os.ModePerm)
+
+	if err != nil {
+		return err
+	}
+
+	err = cc.Write(fmt.Sprintf("%v/contract_config.json", path))
+
+	if err != nil {
+		return err
+	}
+
+	// write dapp.json for Etherlytics
+	return cc.DAppConfig().Write(fmt.Sprintf("%v/dapp.json", path))
 }
 
 func (cc *ContractConfig) DAppConfig() *dapp.DAppRaw {
