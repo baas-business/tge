@@ -24,7 +24,7 @@ contract('BaasPP', function (accounts) {
 
         let token = await baasToken.setup(accounts[0], baasPP.address, accounts[1], accounts[2]).catch(e => console.log(e));
         let balance = await baasPP.balance();
-        utils.compareBigNumber(new BigNumber('20e18'), balance, "PP Balance");
+        utils.compareBigNumber(new BigNumber('20e24'), balance, "PP Balance");
 
     });
 });

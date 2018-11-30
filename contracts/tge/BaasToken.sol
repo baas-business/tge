@@ -13,10 +13,10 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
 
     string private constant NAME = "TOKEN";
 
-    uint256 constant ESCROW_SUPPLY = 60 * 10 ** 18;                 // 60m Escrow Token
-    uint256 constant PP_SUPPLY = 20 * 10 ** 18;                     // 20m Private Placement Token
-    uint256 constant FOUNDER_SUPPLY = 10 * 10 ** 18;                // 10m Founder Token
-    uint256 constant INCENTIVES_SUPPLY = 10 * 10 ** 18;             // 10m Incentives Token
+    uint256 constant ESCROW_SUPPLY = 60 * 10 ** 24;                 // 60m Escrow Token
+    uint256 constant PP_SUPPLY = 20 * 10 ** 24;                     // 20m Private Placement Token
+    uint256 constant FOUNDER_SUPPLY = 10 * 10 ** 24;                // 10m Founder Token
+    uint256 constant INCENTIVES_SUPPLY = 10 * 10 ** 24;             // 10m Incentives Token
 
     // prohibits usage of transfer and transferFrom
     bool private _isInitialized = false;

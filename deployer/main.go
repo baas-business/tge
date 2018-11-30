@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/baas/tge-sol/deployer/contracts"
 	"github.com/baas/tge-sol/deployer/deployer"
+	"github.com/baas/tge-sol/deployer/info"
 	"github.com/baas/tge-sol/deployer/utils"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/accounts/keystore"
@@ -17,6 +18,8 @@ import (
 	"math/big"
 	"os"
 )
+
+const version = "v4"
 
 func main() {
 	var keystoreUTCPath string
@@ -113,10 +116,12 @@ func main() {
 			txOps.Value = big.NewInt(0)
 		}
 
-		//info.ShowInfo(client, "contract_config_v2.json")
+		info.ShowInfo(client, "contract_config_v3.json")
+		DeployContracts(txOps, client)
+
 		SetupContracts(txOps, client)
 
-		//DeployContracts(txOps, client)
+
 	}
 
 	err := app.Run(os.Args)
@@ -126,21 +131,28 @@ func main() {
 }
 
 func DeployContracts(txOps *bind.TransactOpts, client *ethclient.Client) {
+
 	cc, err := deployer.DeployTGEContracts(txOps, client)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = cc.Write("contract_config_v2.json")
+	err = cc.Write("contract_config_" + version + ".json")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = cc.DAppConfig().Write("dapp_" + version + ".json")
 
 	if err != nil {
 		log.Fatal(err)
 	}
 }
+
 func SetupContracts(txOps *bind.TransactOpts, client *ethclient.Client) {
 
-	cc, err := deployer.LoadContractConfig("contract_config_v2.json")
+	cc, err := deployer.LoadContractConfig("contract_config_" + version + ".json")
 
 	contract, err := contracts.NewBaasToken(*cc.TokenAddress, client)
 

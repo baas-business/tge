@@ -1,16 +1,12 @@
 package deployer
 
 import (
-	"bytes"
-	"encoding/json"
-	"fmt"
 	"github.com/baas/tge-sol/deployer/contracts"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"golang.org/x/net/context"
-	"io/ioutil"
 	"log"
 	"time"
 )
@@ -62,6 +58,7 @@ func deployBaasToken(txOps *bind.TransactOpts, client *ethclient.Client, cc *Con
 		return nil, err
 	}
 
+	cc.TokenHash = tx.Hash()
 	return deploy("Token", txOps, client, tx, &addr)
 }
 
@@ -71,6 +68,7 @@ func deployBaasFounder(txOps *bind.TransactOpts, client *ethclient.Client, cc *C
 	if err != nil {
 		return nil, err
 	}
+	cc.FounderHash = tx.Hash()
 
 	return deploy("Founder", txOps, client, tx, &addr)
 }
@@ -82,6 +80,7 @@ func deployBaasEscrow(txOps *bind.TransactOpts, client *ethclient.Client, cc *Co
 		return nil, err
 	}
 
+	cc.EscrowHash = tx.Hash()
 	return deploy("Escrow", txOps, client, tx, &addr)
 }
 
@@ -92,6 +91,7 @@ func deployBaasIncentives(txOps *bind.TransactOpts, client *ethclient.Client, cc
 		return nil, err
 	}
 
+	cc.IncentivesHash = tx.Hash()
 	return deploy("Incentives", txOps, client, tx, &addr)
 }
 
@@ -102,6 +102,7 @@ func DeployBaasPP(txOps *bind.TransactOpts, client *ethclient.Client, cc *Contra
 		return nil, err
 	}
 
+	cc.PPHash = tx.Hash()
 	return deploy("Private Placement", txOps, client, tx, &addr)
 }
 
@@ -112,6 +113,7 @@ func deployBaasROI(txOps *bind.TransactOpts, client *ethclient.Client, cc *Contr
 		return nil, err
 	}
 
+	cc.ROIHash = tx.Hash()
 	return deploy("ROI", txOps, client, tx, &addr)
 }
 
@@ -130,98 +132,3 @@ func deploy(label string, txOps *bind.TransactOpts, client *ethclient.Client, tx
 	return addr, nil
 }
 
-type ContractConfig struct {
-	Deployer          *common.Address `json:"deployer"`
-	TokenAddress      *common.Address `json:"token_address"`
-	EscrowAddress     *common.Address `json:"escrow_address"`
-	FounderAddress    *common.Address `json:"founder_address"`
-	IncentivesAddress *common.Address `json:"incentives_address"`
-	PPAddress         *common.Address `json:"pp_address"`
-	ROIAddress        *common.Address `json:"roi_address"`
-}
-
-func (cc *ContractConfig) Write(filename string) error {
-	j, err := json.Marshal(cc)
-	if err != nil {
-		return err
-	}
-	err = ioutil.WriteFile(filename, j, 0644)
-	fmt.Printf("%+v", cc)
-	return nil
-}
-
-func LoadContractConfig(filename string) (*ContractConfig, error) {
-	f, err := ioutil.ReadFile(filename)
-
-	if err != nil {
-		return nil, err
-	}
-
-	raw := &ContractConfigRaw{}
-	err = json.Unmarshal(f, raw)
-	if err != nil {
-		return nil, err
-	}
-
-	deployer := common.HexToAddress(raw.Deployer)
-	token := common.HexToAddress(raw.TokenAddress)
-	escrow := common.HexToAddress(raw.EscrowAddress)
-	founder := common.HexToAddress(raw.FounderAddress)
-	pp := common.HexToAddress(raw.PPAddress)
-	incentives := common.HexToAddress(raw.IncentivesAddress)
-	roi := common.HexToAddress(raw.ROIAddress)
-
-	return &ContractConfig{
-		Deployer:          &deployer,
-		TokenAddress:      &token,
-		EscrowAddress:     &escrow,
-		FounderAddress:    &founder,
-		IncentivesAddress: &incentives,
-		PPAddress:         &pp,
-		ROIAddress:        &roi,
-	}, nil
-}
-
-type ContractConfigRaw struct {
-	Deployer          string `json:"deployer"`
-	TokenAddress      string `json:"token_address"`
-	EscrowAddress     string `json:"escrow_address"`
-	FounderAddress    string `json:"founder_address"`
-	IncentivesAddress string `json:"incentives_address"`
-	PPAddress         string `json:"pp_address"`
-	ROIAddress        string `json:"roi_address"`
-}
-
-func (cc *ContractConfig) String() string{
-	bb := bytes.Buffer{}
-
-	bb.WriteString("Deployer:   ")
-	bb.WriteString(cc.Deployer.String())
-	bb.WriteString("\n")
-
-	bb.WriteString("Token:      ")
-	bb.WriteString(cc.TokenAddress.String())
-	bb.WriteString("\n")
-
-	bb.WriteString("Escrow:     ")
-	bb.WriteString(cc.EscrowAddress.String())
-	bb.WriteString("\n")
-
-	bb.WriteString("Founder:    ")
-	bb.WriteString(cc.FounderAddress.String())
-	bb.WriteString("\n")
-
-	bb.WriteString("Incentives: ")
-	bb.WriteString(cc.IncentivesAddress.String())
-	bb.WriteString("\n")
-
-	bb.WriteString("Private P.: ")
-	bb.WriteString(cc.PPAddress.String())
-	bb.WriteString("\n")
-
-	bb.WriteString("ROI:        ")
-	bb.WriteString(cc.ROIAddress.String())
-	bb.WriteString("\n")
-
-	return bb.String()
-}

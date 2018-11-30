@@ -12,12 +12,12 @@ import (
 func ShowInfo(client *ethclient.Client, filename string) error {
 	cc, err := deployer.LoadContractConfig(filename)
 
+	cc.DAppConfig().Write("dapp_v3.json")
 	fmt.Println(cc)
 
 	if err != nil {
 		return err
 	}
-
 
 	TokenInfo(client, cc)
 	EscrowInfo(client, cc)

@@ -1,0 +1,16 @@
+{
+  "deployer": "0x80def17bb76025eaba069de8d5ebfd8fbfc64d51",
+  "block": 0,
+  "token_address": "0x38a42bcde44fad0599666b7b07a9ba2efdceb7da",
+  "token_hash": "0x076e62b4b9f000c0270faabecf27f01f2c056b787c9bb6a3faa0e51edcd43900",
+  "escrow_address": "0x3e2cff518fa052ad8c4522a761c02adec13c9443",
+  "escrow_hash": "0x0ae6dc37569ecae886ec98d4bfdea2bfb306e4adc833c3d0a4e4895200c6fe9c",
+  "founder_address": "0xe2732436ed74e704c8fa7cf3c9f296034aa4f16c",
+  "founder_hash": "0x772f860fc25f01f15aa7e58e51a92ae5045aab417594c35bab5a18df45c56ca4",
+  "incentives_address": "0x505506068f8aea942282535caa6c439f57459829",
+  "incentives_hash": "0x8e0bc9753ba623254181b0084844bba7588b0ab4b4763dae7f5851d645053946",
+  "pp_address": "0xadd056c6787a27021785e45194e7870ea9fe7686",
+  "pp_hash": "0xb6c4e63f1f52c4e941766e792d1ab19cd33ea24a528720e114da7dad62d5dd31",
+  "roi_address": "0x73fc2c2f43b83aa8db41dad4e855daf2c7084211",
+  "roi_hash": "0xeb9a06995402e349d84c7d6eee3855581c794884280124383221ab705ddd95a5"
+}

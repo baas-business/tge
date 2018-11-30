@@ -38,7 +38,7 @@ contract('BaasToken', function (accounts) {
 
         // check total supply
         let totalSupply = await baasToken.totalSupply();
-        utils.compareBigNumber(new BigNumber('100e18'), totalSupply, "Total Supply");
+        utils.compareBigNumber(new BigNumber('100e24'), totalSupply, "Total Supply");
 
         // check pots
         let pots = await baasToken.pots();
@@ -48,13 +48,13 @@ contract('BaasToken', function (accounts) {
 
         // check balances
         let escrowSupply = await baasToken.balanceOf(escrowAddress);
-        utils.compareBigNumber(new BigNumber('60e18'), escrowSupply, "Escrow Supply");
+        utils.compareBigNumber(new BigNumber('60e24'), escrowSupply, "Escrow Supply");
         let ppSupply = await baasToken.balanceOf(ppAddress);
-        utils.compareBigNumber(new BigNumber('20e18'), ppSupply, "PP Supply");
+        utils.compareBigNumber(new BigNumber('20e24'), ppSupply, "PP Supply");
         let founderSupply = await baasToken.balanceOf(founderAddress);
-        utils.compareBigNumber(new BigNumber('10e18'), founderSupply, "Founder Supply")
+        utils.compareBigNumber(new BigNumber('10e24'), founderSupply, "Founder Supply")
         let incentivesSupply = await baasToken.balanceOf(incentivesAddress);
-        utils.compareBigNumber(new BigNumber('10e18'), incentivesSupply, "Incentives Supply")
+        utils.compareBigNumber(new BigNumber('10e24'), incentivesSupply, "Incentives Supply")
 
     });
 });
