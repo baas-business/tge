@@ -3,4 +3,4 @@
 set  -e
 truffle compile
 pushd scripts
-./generate_go_code.sh
+./generate_code.sh "v0.0.1"

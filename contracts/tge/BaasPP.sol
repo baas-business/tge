@@ -15,6 +15,8 @@ import "./IERC20.sol";
 interface IBaasPP {
     function provideToken(address account, uint256 amount, uint8 conversionRate) external returns (bool);
 
+    function burnRest() external returns (bool);
+
     event TokenDelivered(address indexed to, uint256 amount, uint8 discountType);
 }
 
@@ -62,7 +64,7 @@ contract BaasPP is IBaasPP, Ownable {
             provideNotDiscountedToken(account, amount);
         }
 
-        emit TokenDelivered(account, amount, tokenType);
+        emit TokenDelivered(account, amount, discountType);
 
         return true;
     }
@@ -70,20 +72,22 @@ contract BaasPP is IBaasPP, Ownable {
     function provideDiscountedToken(address account, uint256 amount) internal {
         require(amount <= HARD_CAP_DISCOUNTED_TOKEN.sub(providedDiscountedToken));
         require(_token.transfer(account, amount));
-        providedDiscountedToken.add(amount);
+        providedDiscountedToken = providedDiscountedToken.add(amount);
     }
 
     function provideNotDiscountedToken(address account, uint256 amount) internal {
         require(amount <= HARD_CAP_NOT_DISCOUNTED_TOKEN.sub(providedNotDiscountedToken));
         require(_token.transfer(account, amount));
-        providedNotDiscountedToken.add(amount);
+        providedNotDiscountedToken = providedNotDiscountedToken.add(amount);
     }
 
 
     /*
     */
-    function burnRest() {
+    function burnRest()
+    external onlyOwner returns (bool) {
         // TODO
+        return true;
     }
 
     // Views
@@ -115,5 +119,4 @@ contract BaasPP is IBaasPP, Ownable {
 
         return 0;
     }
-
 }

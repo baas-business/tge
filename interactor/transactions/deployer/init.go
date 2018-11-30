@@ -5,7 +5,6 @@ import (
 	"github.com/urfave/cli"
 )
 
-
 func Command() *cli.Command {
 	return &cli.Command{
 		Usage:     "deploys 6 tge contracts",
@@ -18,7 +17,7 @@ func Command() *cli.Command {
 				Usage: "version of smart contracts",
 			}).Get(),
 		Action: func(c *cli.Context) error {
-			return process(c.String("httpPath"), c.String("passwordFile"), c.String("keystoreUTCPath"), c.String("version"))
+			return process(c.String("httpPath"), c.String("keystoreUTCPath"), c.String("passwordFile"), c.String("version"))
 		},
 	}
 }

@@ -1,6 +1,7 @@
 package deployer
 
 import (
+	"fmt"
 	"github.com/baas/tge-sol/interactor/contracts"
 	"github.com/baas/tge-sol/interactor/utils"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -14,16 +15,17 @@ import (
 )
 
 func process(httpPath string, keystoreUTCPath string, passwordFile string, version string) error {
+	log.Println("Deploying contracts to ", httpPath)
 	client, err := utils.RPCClient(httpPath)
 
 	if err != nil {
-		return err
+		return fmt.Errorf("dial client %v", err.Error())
 	}
 
 	privKey, err := utils.PrivateKeyFromWalletAndPasswordFile(keystoreUTCPath, passwordFile)
 
 	if err != nil {
-		return err
+		return fmt.Errorf("read private key %v", err.Error())
 	}
 
 	txOps := bind.NewKeyedTransactor(privKey.PrivateKey)
@@ -33,7 +35,7 @@ func process(httpPath string, keystoreUTCPath string, passwordFile string, versi
 	cc, err := deployTGEContracts(txOps, client)
 
 	if err != nil {
-		return err
+		return fmt.Errorf("deploy contracts %v", err.Error())
 	}
 
 	// export configuration
