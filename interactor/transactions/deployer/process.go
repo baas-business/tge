@@ -16,7 +16,6 @@ import (
 )
 
 func process(tgeContext *utils.TGEContext) error {
-
 	txOps := bind.NewKeyedTransactor(tgeContext.Key.PrivateKey)
 	txOps.Value = big.NewInt(0)
 

@@ -45,6 +45,30 @@ func GetTGEContext(c *cli.Context) (*TGEContext, error) {
 	return con, nil
 }
 
+func GetDeployContext(c *cli.Context) (*TGEContext, error) {
+	con := &TGEContext{}
+
+	cliCon := GetBaasContext(c)
+	fmt.Println(cliCon.String())
+	var err error
+
+	con.Client, err = RPCClient(cliCon.HttpPath)
+
+	if err != nil {
+		return nil, err
+	}
+
+	con.Key, err = PrivateKeyFromWalletAndPasswordFile(cliCon.KeystoreUTCPath, cliCon.PasswordFile)
+
+	if err != nil {
+		return nil, err
+	}
+
+	con.Version = c.String("version")
+
+	return con, nil
+}
+
 func (it *TGEContext) TokenAddress() *common.Address {
 	return it.ContractConfig.TokenAddress
 }

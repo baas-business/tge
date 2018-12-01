@@ -15,7 +15,8 @@ truffle compile
 
 
 pushd interactor
-go run main.go deploy -version $version
+go run main.go e d -version $version
+go run main.go e s -version $version
 popd
 
 git add -A

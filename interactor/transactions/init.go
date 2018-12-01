@@ -1,7 +1,9 @@
 package transactions
 
 import (
+	"github.com/baas/tge-sol/interactor/transactions/deployer"
 	"github.com/baas/tge-sol/interactor/transactions/pp"
+	"github.com/baas/tge-sol/interactor/transactions/setup"
 	"github.com/urfave/cli"
 )
 
@@ -12,6 +14,8 @@ func Command() *cli.Command {
 		Name:      "execute",
 		Subcommands: []cli.Command{
 			*pp.Command(),
+			*deployer.Command(),
+			*setup.Command(),
 		},
 	}
 }

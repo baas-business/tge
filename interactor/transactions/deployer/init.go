@@ -13,7 +13,7 @@ func Command() *cli.Command {
 		Flags: utils.NewFlags().Get(),
 		Action: func(c *cli.Context) error {
 
-			tgeContext, err := utils.GetTGEContext(c)
+			tgeContext, err := utils.GetDeployContext(c)
 
 			if err != nil {
 				return err
