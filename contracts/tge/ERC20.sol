@@ -203,6 +203,4 @@ contract ERC20 is IBaasToken {
             value);
         _burn(account, value);
     }
-
-
 }

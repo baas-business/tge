@@ -78,9 +78,7 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
 
     function transferFrom(address from, address to, uint256 value)
     public returns (bool){
-        if (!_isInitialized) {
-            return false;
-        }
+        require(_isInitialized && !_paused);
 
         bool result = super.transferFrom(from, to, value);
 
@@ -89,13 +87,11 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
             updateTokenHolderList(to);
         }
 
-        return result;
+        return true;
     }
 
     function transfer(address to, uint256 value) public returns (bool) {
-        if (!_isInitialized) {
-            return false;
-        }
+        require(_isInitialized && !_paused);
 
         bool result = super.transfer(to, value);
 
