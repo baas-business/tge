@@ -3,7 +3,7 @@ pragma solidity ^0.4.24;
 
 import "../math/SafeMath.sol";
 import "../ownership/Ownable.sol";
-import "./IERC20.sol";
+import "./IBaasToken.sol";
 
 interface IBaasIncentives {
     function provideIncentive(address account, uint256 amount) external returns (bool);
@@ -18,7 +18,7 @@ interface IBaasIncentives {
 contract BaasIncentives is IBaasIncentives, Ownable {
     using SafeMath for uint256;
 
-    string private constant NAME = "INCENTIVES  ";
+    string private constant NAME = "INCENTIVES";
     uint constant STAGES = 4;
 
     struct Incentive {
@@ -36,9 +36,9 @@ contract BaasIncentives is IBaasIncentives, Ownable {
     uint private _vestingPeriodInBlocks;
     bool private _isInitialized = false;
 
-    IERC20 private _token;
+    IBaasToken private _token;
 
-    constructor(IERC20 token) public {
+    constructor(IBaasToken token) public {
         _token = token;
     }
 

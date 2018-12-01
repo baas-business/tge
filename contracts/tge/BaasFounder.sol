@@ -3,7 +3,7 @@ pragma solidity ^0.4.24;
 
 import "../math/SafeMath.sol";
 import "../ownership/Ownable.sol";
-import "./IERC20.sol";
+import "./IBaasToken.sol";
 
 
 interface IBaasFounder {
@@ -26,9 +26,9 @@ contract BaasFounder is Ownable, IBaasFounder {
     uint256 private _vestingStart;
     uint256 private _vestingPeriod;
 
-    IERC20 private _token;
+    IBaasToken private _token;
 
-    constructor(IERC20 token) public {
+    constructor(IBaasToken token) public {
         _token = token;
     }
 

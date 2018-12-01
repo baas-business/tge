@@ -3,25 +3,36 @@ pragma solidity ^0.4.24;
 
 import "../math/SafeMath.sol";
 import "../ownership/Ownable.sol";
-import "./IERC20.sol";
+import "./IBaasToken.sol";
 
 
-contract IBaasEscrow {
+interface IBaasEscrow {
+    function raiseCapital(uint256 amount) external returns (bool);
+
+    event CapitalRaised(uint256 amount);
 }
 
-contract BaasEscrow is Ownable {
+
+/*
+    Question: any limitation on raising time?
+*/
+contract BaasEscrow is IBaasEscrow, Ownable {
     using SafeMath for uint256;
 
     string private constant NAME = "ESCROW";
-    IERC20 private _token;
+    IBaasToken private _token;
 
+    uint256 private raisedCapital;
 
-    constructor(IERC20 token) public {
+    constructor(IBaasToken token) public {
         _token = token;
     }
 
     function raiseCapital(uint256 amount) public onlyOwner returns (bool) {
         require(amount <= balance());
+        require(amount <= balance());
+
+        emit CapitalRaised(amount);
         return true;
     }
 

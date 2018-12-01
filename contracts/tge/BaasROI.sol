@@ -3,7 +3,7 @@ pragma solidity ^0.4.24;
 
 import "../math/SafeMath.sol";
 import "../ownership/Ownable.sol";
-import "./IERC20.sol";
+import "./IBaasToken.sol";
 
 interface IBaasROI {
 }
@@ -13,9 +13,9 @@ contract BaasROI is IBaasROI, Ownable {
 
     string private constant NAME = "RETURN OF INVESTMENT";
 
-    IERC20 private _token;
+    IBaasToken private _token;
 
-    constructor(IERC20 token) public {
+    constructor(IBaasToken token) public {
         _token = token;
     }
 

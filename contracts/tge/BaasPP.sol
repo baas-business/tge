@@ -3,7 +3,7 @@ pragma solidity ^0.4.24;
 
 import "../math/SafeMath.sol";
 import "../ownership/Ownable.sol";
-import "./IERC20.sol";
+import "./IBaasToken.sol";
 
 
 /*
@@ -36,12 +36,12 @@ contract BaasPP is IBaasPP, Ownable {
     uint8 private constant DISCOUNT_TYPE_DISCOUNTED = 1;
     uint8 private constant DISCOUNT_TYPE_NOT_DISCOUNTED = 2;
 
-    uint256 private constant HARD_CAP_DISCOUNTED_TOKEN = 25 * 10 ** 24;
-    uint256 private constant HARD_CAP_NOT_DISCOUNTED_TOKEN = 175 * 10 ** 24;
+    uint256 private constant HARD_CAP_DISCOUNTED_TOKEN = 25 * 10 ** 23;
+    uint256 private constant HARD_CAP_NOT_DISCOUNTED_TOKEN = 175 * 10 ** 23;
 
-    IERC20 private _token;
+    IBaasToken private _token;
 
-    constructor(IERC20 token)  public{
+    constructor(IBaasToken token)  public{
         _token = token;
     }
 
@@ -115,6 +115,22 @@ contract BaasPP is IBaasPP, Ownable {
 
         if (discountType == DISCOUNT_TYPE_NOT_DISCOUNTED) {
             return providedNotDiscountedToken;
+        }
+
+        return 0;
+    }
+
+    function Cap(uint discountType) public pure returns (uint256) {
+        if (discountType == TOKEN_TYPE_TOTAL) {
+            return HARD_CAP_NOT_DISCOUNTED_TOKEN.add(HARD_CAP_DISCOUNTED_TOKEN);
+        }
+
+        if (discountType == DISCOUNT_TYPE_DISCOUNTED) {
+            return HARD_CAP_DISCOUNTED_TOKEN;
+        }
+
+        if (discountType == DISCOUNT_TYPE_NOT_DISCOUNTED) {
+            return HARD_CAP_NOT_DISCOUNTED_TOKEN;
         }
 
         return 0;
