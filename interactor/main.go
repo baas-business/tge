@@ -1,7 +1,8 @@
 package main
 
 import (
-	"github.com/baas/tge-sol/interactor/info/contractinfo"
+	"github.com/baas/tge-sol/interactor/info"
+	"github.com/baas/tge-sol/interactor/transactions"
 	"github.com/baas/tge-sol/interactor/transactions/deployer"
 	"github.com/baas/tge-sol/interactor/transactions/setup"
 	"github.com/urfave/cli"
@@ -18,7 +19,8 @@ func main() {
 	app.Commands = []cli.Command{
 		*deployer.Command(),
 		*setup.Command(),
-		*contractinfo.Command(),
+		*info.Command(),
+		*transactions.Command(),
 	}
 
 	app.Run(os.Args)

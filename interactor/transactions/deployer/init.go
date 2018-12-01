@@ -10,14 +10,15 @@ func Command() *cli.Command {
 		Usage:     "deploys 6 tge contracts",
 		ShortName: "d",
 		Name:      "deploy",
-		Flags: utils.NewFlags().Add(
-			cli.StringFlag{
-				Name:  "version",
-				Value: "v0",
-				Usage: "version of smart contracts",
-			}).Get(),
+		Flags: utils.NewFlags().Get(),
 		Action: func(c *cli.Context) error {
-			return process(c.String("httpPath"), c.String("keystoreUTCPath"), c.String("passwordFile"), c.String("version"))
+
+			tgeContext, err := utils.GetTGEContext(c)
+
+			if err != nil {
+				return err
+			}
+			return process(tgeContext)
 		},
 	}
 }

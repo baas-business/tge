@@ -2,6 +2,7 @@ package deployer
 
 import (
 	"fmt"
+	"github.com/baas/tge-sol/interactor/contractconf"
 	"github.com/baas/tge-sol/interactor/contracts"
 	"github.com/baas/tge-sol/interactor/utils"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -14,39 +15,26 @@ import (
 	"time"
 )
 
-func process(httpPath string, keystoreUTCPath string, passwordFile string, version string) error {
-	log.Println("Deploying contracts to ", httpPath)
-	client, err := utils.RPCClient(httpPath)
+func process(tgeContext *utils.TGEContext) error {
 
-	if err != nil {
-		return fmt.Errorf("dial client %v", err.Error())
-	}
-
-	privKey, err := utils.PrivateKeyFromWalletAndPasswordFile(keystoreUTCPath, passwordFile)
-
-	if err != nil {
-		return fmt.Errorf("read private key %v", err.Error())
-	}
-
-	txOps := bind.NewKeyedTransactor(privKey.PrivateKey)
+	txOps := bind.NewKeyedTransactor(tgeContext.Key.PrivateKey)
 	txOps.Value = big.NewInt(0)
 
 	// DEPLOY
-	cc, err := deployTGEContracts(txOps, client)
+	cc, err := deployTGEContracts(txOps, tgeContext.Client)
 
 	if err != nil {
 		return fmt.Errorf("deploy contracts %v", err.Error())
 	}
 
 	// export configuration
-	return cc.ExportResult( version)
+	return cc.ExportResult(tgeContext.Version)
 }
 
-
-func deployTGEContracts(txOps *bind.TransactOpts, client *ethclient.Client) (*ContractConfig, error) {
+func deployTGEContracts(txOps *bind.TransactOpts, client *ethclient.Client) (*config.ContractConfig, error) {
 	var err error
 
-	cc := &ContractConfig{
+	cc := &config.ContractConfig{
 		Deployer: &txOps.From,
 	}
 
@@ -83,7 +71,7 @@ func deployTGEContracts(txOps *bind.TransactOpts, client *ethclient.Client) (*Co
 	return cc, nil
 }
 
-func deployBaasToken(txOps *bind.TransactOpts, client *ethclient.Client, cc *ContractConfig) (*common.Address, error) {
+func deployBaasToken(txOps *bind.TransactOpts, client *ethclient.Client, cc *config.ContractConfig) (*common.Address, error) {
 	addr, tx, _, err := contracts.DeployBaasToken(txOps, client)
 
 	if err != nil {
@@ -94,7 +82,7 @@ func deployBaasToken(txOps *bind.TransactOpts, client *ethclient.Client, cc *Con
 	return deploy("Token", txOps, client, tx, &addr)
 }
 
-func deployBaasFounder(txOps *bind.TransactOpts, client *ethclient.Client, cc *ContractConfig) (*common.Address, error) {
+func deployBaasFounder(txOps *bind.TransactOpts, client *ethclient.Client, cc *config.ContractConfig) (*common.Address, error) {
 	addr, tx, _, err := contracts.DeployBaasFounder(txOps, client, *cc.TokenAddress)
 
 	if err != nil {
@@ -105,7 +93,7 @@ func deployBaasFounder(txOps *bind.TransactOpts, client *ethclient.Client, cc *C
 	return deploy("Founder", txOps, client, tx, &addr)
 }
 
-func deployBaasEscrow(txOps *bind.TransactOpts, client *ethclient.Client, cc *ContractConfig) (*common.Address, error) {
+func deployBaasEscrow(txOps *bind.TransactOpts, client *ethclient.Client, cc *config.ContractConfig) (*common.Address, error) {
 	addr, tx, _, err := contracts.DeployBaasEscrow(txOps, client, *cc.TokenAddress)
 
 	if err != nil {
@@ -116,7 +104,7 @@ func deployBaasEscrow(txOps *bind.TransactOpts, client *ethclient.Client, cc *Co
 	return deploy("Escrow", txOps, client, tx, &addr)
 }
 
-func deployBaasIncentives(txOps *bind.TransactOpts, client *ethclient.Client, cc *ContractConfig) (*common.Address, error) {
+func deployBaasIncentives(txOps *bind.TransactOpts, client *ethclient.Client, cc *config.ContractConfig) (*common.Address, error) {
 	addr, tx, _, err := contracts.DeployBaasIncentive(txOps, client, *cc.TokenAddress)
 
 	if err != nil {
@@ -127,7 +115,7 @@ func deployBaasIncentives(txOps *bind.TransactOpts, client *ethclient.Client, cc
 	return deploy("Incentives", txOps, client, tx, &addr)
 }
 
-func DeployBaasPP(txOps *bind.TransactOpts, client *ethclient.Client, cc *ContractConfig) (*common.Address, error) {
+func DeployBaasPP(txOps *bind.TransactOpts, client *ethclient.Client, cc *config.ContractConfig) (*common.Address, error) {
 	addr, tx, _, err := contracts.DeployBaasPP(txOps, client, *cc.TokenAddress)
 
 	if err != nil {
@@ -138,7 +126,7 @@ func DeployBaasPP(txOps *bind.TransactOpts, client *ethclient.Client, cc *Contra
 	return deploy("Private Placement", txOps, client, tx, &addr)
 }
 
-func deployBaasROI(txOps *bind.TransactOpts, client *ethclient.Client, cc *ContractConfig) (*common.Address, error) {
+func deployBaasROI(txOps *bind.TransactOpts, client *ethclient.Client, cc *config.ContractConfig) (*common.Address, error) {
 	addr, tx, _, err := contracts.DeployBaasROI(txOps, client, *cc.TokenAddress)
 
 	if err != nil {

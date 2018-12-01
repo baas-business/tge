@@ -3,59 +3,27 @@ package contractinfo
 import (
 	"fmt"
 	"github.com/baas/tge-sol/interactor/contracts"
-	"github.com/baas/tge-sol/interactor/transactions/deployer"
 	"github.com/baas/tge-sol/interactor/utils"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
 )
 
 
-func process(httpPath string, version string) error {
-	client, err := utils.RPCClient(httpPath)
-
-	if err != nil {
-		return err
-	}
-	return ShowInfo(client, version)
-}
-
-func ShowInfo(client *ethclient.Client, version string) error {
-	configFilename := fmt.Sprintf("build/%v/contract_config.json", version)
-	cc, err := deployer.LoadContractConfig(configFilename)
-
-
-	err = cc.ExportResult("test")
-
-	if err != nil {
-		return err
-	}
-
-	if true {
-		return nil
-	}
-
-	fmt.Println(cc)
-
-	if err != nil {
-		return err
-	}
-
-	TokenInfo(client, cc)
-	EscrowInfo(client, cc)
-	PPInfo(client, cc)
-	FounderInfo(client, cc)
-	IncentiveInfo(client, cc)
-
-	ROIInfo(client, cc)
+func process(tgeContext *utils.TGEContext) error {
+	TokenInfo(tgeContext)
+	EscrowInfo(tgeContext)
+	PPInfo(tgeContext)
+	FounderInfo(tgeContext)
+	IncentiveInfo(tgeContext)
+	ROIInfo(tgeContext)
 
 	return nil
 }
 
-func TokenInfo(client *ethclient.Client, cc *deployer.ContractConfig) {
+func TokenInfo(tgeContext *utils.TGEContext) {
 	fmt.Println("\nToken: ")
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasToken(*cc.TokenAddress, client)
+	contract, err := contracts.NewBaasToken(*tgeContext.TokenAddress(), tgeContext.Client)
 
 	if err != nil {
 		log.Fatal(err)
@@ -82,10 +50,10 @@ func TokenInfo(client *ethclient.Client, cc *deployer.ContractConfig) {
 	fmt.Println("Owner: ", owner.String())
 }
 
-func EscrowInfo(client *ethclient.Client, cc *deployer.ContractConfig) {
+func EscrowInfo(tgeContext *utils.TGEContext) {
 	fmt.Println("\nEscrow: ")
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasEscrow(*cc.EscrowAddress, client)
+	contract, err := contracts.NewBaasEscrow(*tgeContext.EscrowAddress(), tgeContext.Client)
 
 	if err != nil {
 		log.Fatal(err)
@@ -119,10 +87,10 @@ func EscrowInfo(client *ethclient.Client, cc *deployer.ContractConfig) {
 	fmt.Println("Balance: ", balance.String())
 }
 
-func FounderInfo(client *ethclient.Client, cc *deployer.ContractConfig) {
+func FounderInfo(tgeContext *utils.TGEContext) {
 	fmt.Println("\nFounder: ")
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasFounder(*cc.FounderAddress, client)
+	contract, err := contracts.NewBaasFounder(*tgeContext.FounderAddress(), tgeContext.Client)
 
 	if err != nil {
 		log.Fatal(err)
@@ -156,10 +124,10 @@ func FounderInfo(client *ethclient.Client, cc *deployer.ContractConfig) {
 	fmt.Println("Balance: ", balance.String())
 }
 
-func IncentiveInfo(client *ethclient.Client, cc *deployer.ContractConfig) {
+func IncentiveInfo(tgeContext *utils.TGEContext) {
 	fmt.Println("\nIncentives: ")
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasIncentive(*cc.IncentivesAddress, client)
+	contract, err := contracts.NewBaasIncentive(*tgeContext.IncentivesAddress(), tgeContext.Client)
 
 	if err != nil {
 		log.Fatal(err)
@@ -193,10 +161,10 @@ func IncentiveInfo(client *ethclient.Client, cc *deployer.ContractConfig) {
 	fmt.Println("Balance: ", balance.String())
 }
 
-func PPInfo(client *ethclient.Client, cc *deployer.ContractConfig) {
-	fmt.Println("\nPrivate Placement: ", cc.PPAddress.String())
+func PPInfo(tgeContext *utils.TGEContext) {
+	fmt.Println("\nPrivate Placement: ", tgeContext.PPAddress().String())
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasPP(*cc.PPAddress, client)
+	contract, err := contracts.NewBaasPP(*tgeContext.PPAddress(), tgeContext.Client)
 
 	if err != nil {
 		log.Fatal(err)
@@ -229,10 +197,10 @@ func PPInfo(client *ethclient.Client, cc *deployer.ContractConfig) {
 	fmt.Println("Balance: ", balance.String())
 }
 
-func ROIInfo(client *ethclient.Client, cc *deployer.ContractConfig) {
+func ROIInfo(tgeContext *utils.TGEContext) {
 	fmt.Println("\nROI: ")
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasROI(*cc.ROIAddress, client)
+	contract, err := contracts.NewBaasROI(*tgeContext.ROIAddress(), tgeContext.Client)
 
 	if err != nil {
 		log.Fatal(err)

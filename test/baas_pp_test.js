@@ -37,8 +37,6 @@ contract('BaasPP', function (accounts) {
 
         // first provision
         let firstAccountProvision = web3.toBigNumber("1000000000000000000000000");
-
-
         const investor = accounts[9];
         // correct modifier
         let shouldFail = await baasPP.provideToken(investor, firstAccountProvision, 1, {from: accounts[1]}).catch(e => true);
@@ -67,10 +65,16 @@ contract('BaasPP', function (accounts) {
         assert.equal("0x00000000000000000000000000000000000000000000d3c21bcecceda1000000" + discountType, logs[1].data, "data of second log is wrong");
 
 
-        // balance is correct
+        // balance of investor is correct
         let balance = await baasToken.balanceOf(investor);
         utils.compareBigNumber(new BigNumber('1e24'), balance, "provided Balance ");
 
+        // balance of pot pp is correct
+        balance = await baasPP.balance();
+        utils.compareBigNumber(new BigNumber('19e24'), balance, "PP Balance");
+        // balance of pot pp is correct
+        balance = await baasToken.balanceOf(baasPP.address);
+        utils.compareBigNumber(new BigNumber('19e24'), balance, "PP Balance");
 
         let discounted = await baasPP.totalTokenProvided(1);
         utils.compareBigNumber(new BigNumber('1e24'), discounted, "total discounted tokens provided ");
@@ -80,6 +84,5 @@ contract('BaasPP', function (accounts) {
 
         let not_discounted = await baasPP.totalTokenProvided(2);
         utils.compareBigNumber(new BigNumber('0'), not_discounted, "provided total not discounted ");
-
     });
 });

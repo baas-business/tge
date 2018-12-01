@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/ethereum/go-ethereum/accounts/keystore"
 	"io/ioutil"
-	"log"
 	"os"
 )
 
@@ -16,7 +15,7 @@ func PrivateKeyFromWalletAndPasswordFile(keystoreUTCPath string, passwordFile st
 		return nil, fmt.Errorf("couldn't read password file %v", err.Error())
 	}
 
-	log.Println("Reading wallet ", keystoreUTCPath)
+	PrintColoredln("Reading wallet", keystoreUTCPath)
 	keyJSON, err := ioutil.ReadFile(keystoreUTCPath)
 
 	if err != nil {
@@ -25,9 +24,13 @@ func PrivateKeyFromWalletAndPasswordFile(keystoreUTCPath string, passwordFile st
 
 	key, err := keystore.DecryptKey(keyJSON, password)
 
-	log.Println("Loaded key: ", key.Address)
+	if err != nil {
+		return nil, err
+	}
 
-	return key, err
+	PrintColoredln("Loaded key", key.Address.String())
+
+	return key, nil
 }
 
 func password(passwordFile string) (string, error) {
