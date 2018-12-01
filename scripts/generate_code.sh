@@ -2,11 +2,6 @@
 
 set -e
 
-if [ $# -eq 0 ]
-  then
-    echo "no version supplied"
-    exit 1
-fi
 
 generate_go_code(){
     name=$1

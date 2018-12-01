@@ -57,19 +57,19 @@ contract('BaasToken', function (accounts) {
         utils.compareBigNumber(new BigNumber('10e24'), incentivesSupply, "Incentives Supply");
 
         let tokenHolders = await baasToken.tokenHolderSnapShot();
-        assert.equal(escrowAddress, tokenHolders[0], "escrow address should be token holder");
-        assert.equal(incentivesAddress, tokenHolders[3], "incentives address should be token holder");
-        assert.equal(ppAddress, tokenHolders[1], "pp address should be token holder");
-        assert.equal(founderAddress, tokenHolders[2], "founder address should be token holder");
+        assert.equal(escrowAddress, tokenHolders[0], "escrow address should be token holders");
+        assert.equal(incentivesAddress, tokenHolders[3], "incentives address should be token holders");
+        assert.equal(ppAddress, tokenHolders[1], "pp address should be token holders");
+        assert.equal(founderAddress, tokenHolders[2], "founder address should be token holders");
 
         let tokenHolderCount = await baasToken.tokenHolderCount();
-        assert.equal(4, tokenHolderCount, "token holder count wrong");
+        assert.equal(4, tokenHolderCount, "token holders count wrong");
 
-        assert.equal(true, await baasToken.isTokenHolder(escrowAddress), "should be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(incentivesAddress), "should be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(founderAddress), "should be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(ppAddress), "should be token holder");
-        assert.equal(false, await baasToken.isTokenHolder(accounts[9]), "should not be token holder");
+        assert.equal(true, await baasToken.isTokenHolder(escrowAddress), "should be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(incentivesAddress), "should be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(founderAddress), "should be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(ppAddress), "should be token holders");
+        assert.equal(false, await baasToken.isTokenHolder(accounts[9]), "should not be token holders");
     });
 
     it("should deal with token holders", async () => {
@@ -88,32 +88,32 @@ contract('BaasToken', function (accounts) {
         let tokenHolders = await baasToken.tokenHolderSnapShot();
 
         // address moved
-        assert.equal(incentivesAddress, tokenHolders[0], "incentives address should be token holder");
-        assert.equal(ppAddress, tokenHolders[1], "pp address should be token holder");
-        assert.equal(founderAddress, tokenHolders[2], "founder address should be token holder");
-        assert.equal(receiver, tokenHolders[3], "receiver address should be token holder");
+        assert.equal(incentivesAddress, tokenHolders[0], "incentives address should be token holders");
+        assert.equal(ppAddress, tokenHolders[1], "pp address should be token holders");
+        assert.equal(founderAddress, tokenHolders[2], "founder address should be token holders");
+        assert.equal(receiver, tokenHolders[3], "receiver address should be token holders");
 
-        assert.equal(4, await baasToken.tokenHolderCount(), "token holder count wrong");
+        assert.equal(4, await baasToken.tokenHolderCount(), "token holders count wrong");
 
-        assert.equal(false, await baasToken.isTokenHolder(escrowAddress), "should not be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(incentivesAddress), "should be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(founderAddress), "should be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(ppAddress), "should be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(receiver), "should be token holder");
-        assert.equal(false, await baasToken.isTokenHolder(receiver2), "should not be token holder");
+        assert.equal(false, await baasToken.isTokenHolder(escrowAddress), "should not be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(incentivesAddress), "should be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(founderAddress), "should be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(ppAddress), "should be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(receiver), "should be token holders");
+        assert.equal(false, await baasToken.isTokenHolder(receiver2), "should not be token holders");
 
         /*
             Smaller amount
          */
 
         receipt = await baasToken.transfer(receiver2, web3.toBigNumber("10e24"), {from: receiver});
-        assert.equal(5, await baasToken.tokenHolderCount(), "token holder count wrong");
-        assert.equal(false, await baasToken.isTokenHolder(escrowAddress), "should not be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(incentivesAddress), "should be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(founderAddress), "should be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(ppAddress), "should be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(receiver), "should be token holder");
-        assert.equal(true, await baasToken.isTokenHolder(receiver2), "should be token holder");
+        assert.equal(5, await baasToken.tokenHolderCount(), "token holders count wrong");
+        assert.equal(false, await baasToken.isTokenHolder(escrowAddress), "should not be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(incentivesAddress), "should be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(founderAddress), "should be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(ppAddress), "should be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(receiver), "should be token holders");
+        assert.equal(true, await baasToken.isTokenHolder(receiver2), "should be token holders");
 
     });
 

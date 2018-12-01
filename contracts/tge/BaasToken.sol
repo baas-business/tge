@@ -119,14 +119,14 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
     }
 
     function updateTokenHolderList(address tokenHolderAddress) internal returns (bool success) {
-        // delete if token holder registered
+        // delete if token holders registered
         if (balanceOf(tokenHolderAddress) == 0) {
             if (isTokenHolder(tokenHolderAddress)) {
                 deleteTokenHolder(tokenHolderAddress);
             }
 
         } else {
-            // add if token holder not registered yet
+            // add if token holders not registered yet
             if (!isTokenHolder(tokenHolderAddress)) {
                 _tokenHolders[tokenHolderAddress].wallet = tokenHolderAddress;
                 _tokenHolders[tokenHolderAddress].listPointer = _tokenHolderList.push(tokenHolderAddress) - 1;
