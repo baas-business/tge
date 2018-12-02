@@ -110,7 +110,7 @@ contract BaasROI is IBaasROI, Ownable {
             return 0;
         }
 
-        return token.mul(INTEREST_RATE).div(100).div(tokenEuroConversionRate);
+        return token.mul(INTEREST_RATE).div(tokenEuroConversionRate);
     }
 
     function roiOf(address wallet, uint256 tokenEuroConversionRate) public view returns (uint256, uint256) {
@@ -121,6 +121,23 @@ contract BaasROI is IBaasROI, Ownable {
     function currentPayout(uint256 tokenEuroConversionRate) public view returns (uint256) {
         return roi(eligibleToken(), tokenEuroConversionRate);
     }
+
+
+    function maxTokensToBeRewarded(uint256 tokenEuroConversionRate) public view returns (uint256) {
+        uint256 cri = tokenEuroConversionRate.add(INTEREST_RATE);
+        return circulatingSupply().mul(tokenEuroConversionRate).div(cri);
+    }
+
+    function minPayout(uint256 tokenEuroConversionRate) public view returns (uint256) {
+        uint256 cri = INTEREST_RATE.add(tokenEuroConversionRate);
+        return circulatingSupply().mul(cri).div(tokenEuroConversionRate);
+    }
+
+
+
+
+
+
 
     // Pure
 

@@ -11,6 +11,9 @@ import (
 func ExecuteTransaction(label string, client *ethclient.Client, tx *types.Transaction) (error) {
 	var err error
 	fmt.Println(ConsoleInRed("Executing Transaction"), label, tx.Hash().String())
+	PrintColoredln("GasPrice", tx.GasPrice())
+	PrintColoredln("Gas", tx.Gas())
+
 	for pending := true; pending; _, pending, err = client.TransactionByHash(context.Background(), tx.Hash()) {
 		if err != nil {
 			return err

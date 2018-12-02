@@ -16,10 +16,10 @@ import (
 )
 
 // BaasEscrowABI is the input ABI used to generate the binding from.
-const BaasEscrowABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"CapitalRaised\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"raiseCapital\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
+const BaasEscrowABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"id\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"CapitalRaised\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"raiseCapital\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"raiseCapital\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
 
 // BaasEscrowBin is the compiled bytecode used for deploying new contracts.
-const BaasEscrowBin = `0x608060405234801561001057600080fd5b5060405160208061088883398101806040528101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050610748806101406000396000f30060806040526004361061008e576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306fdde0314610093578063715018a6146101235780638da5cb5b1461013a5780638f32d59b146101915780639d76ea58146101c0578063b69ef8a814610217578063c621bf8a14610242578063f2fde38b14610287575b600080fd5b34801561009f57600080fd5b506100a86102ca565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100e85780820151818401526020810190506100cd565b50505050905090810190601f1680156101155780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561012f57600080fd5b50610138610307565b005b34801561014657600080fd5b5061014f6103d9565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561019d57600080fd5b506101a6610402565b604051808215151515815260200191505060405180910390f35b3480156101cc57600080fd5b506101d5610459565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561022357600080fd5b5061022c610483565b6040518082815260200191505060405180910390f35b34801561024e57600080fd5b5061026d60048036038101908080359060200190929190505050610582565b604051808215151515815260200191505060405180910390f35b34801561029357600080fd5b506102c8600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610603565b005b60606040805190810160405280600681526020017f455343524f570000000000000000000000000000000000000000000000000000815250905090565b61030f610402565b151561031a57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561054257600080fd5b505af1158015610556573d6000803e3d6000fd5b505050506040513d602081101561056c57600080fd5b8101908080519060200190929190505050905090565b600061058c610402565b151561059757600080fd5b61059f610483565b82111515156105ad57600080fd5b6105b5610483565b82111515156105c357600080fd5b7f300283bdc9ca661e983285eff22a4decd9d0eb7ab78d357ce8e0f6533f727fa4826040518082815260200191505060405180910390a160019050919050565b61060b610402565b151561061657600080fd5b61061f81610622565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561065e57600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820dfb3e9c28d89f5fc13956ccaa456d6c90c557cbb302cc65131babf7071a977800029`
+const BaasEscrowBin = `0x`
 
 // DeployBaasEscrow deploys a new Ethereum contract, binding an instance of BaasEscrow to it.
 func DeployBaasEscrow(auth *bind.TransactOpts, backend bind.ContractBackend, token common.Address) (common.Address, *types.Transaction, *BaasEscrow, error) {
@@ -306,25 +306,25 @@ func (_BaasEscrow *BaasEscrowCallerSession) TokenAddress() (common.Address, erro
 	return _BaasEscrow.Contract.TokenAddress(&_BaasEscrow.CallOpts)
 }
 
-// RaiseCapital is a paid mutator transaction binding the contract method 0xc621bf8a.
+// RaiseCapital is a paid mutator transaction binding the contract method 0xfbd207ed.
 //
-// Solidity: function raiseCapital(amount uint256) returns(bool)
-func (_BaasEscrow *BaasEscrowTransactor) RaiseCapital(opts *bind.TransactOpts, amount *big.Int) (*types.Transaction, error) {
-	return _BaasEscrow.contract.Transact(opts, "raiseCapital", amount)
+// Solidity: function raiseCapital(amount uint256, id uint256) returns(bool)
+func (_BaasEscrow *BaasEscrowTransactor) RaiseCapital(opts *bind.TransactOpts, amount *big.Int, id *big.Int) (*types.Transaction, error) {
+	return _BaasEscrow.contract.Transact(opts, "raiseCapital", amount, id)
 }
 
-// RaiseCapital is a paid mutator transaction binding the contract method 0xc621bf8a.
+// RaiseCapital is a paid mutator transaction binding the contract method 0xfbd207ed.
 //
-// Solidity: function raiseCapital(amount uint256) returns(bool)
-func (_BaasEscrow *BaasEscrowSession) RaiseCapital(amount *big.Int) (*types.Transaction, error) {
-	return _BaasEscrow.Contract.RaiseCapital(&_BaasEscrow.TransactOpts, amount)
+// Solidity: function raiseCapital(amount uint256, id uint256) returns(bool)
+func (_BaasEscrow *BaasEscrowSession) RaiseCapital(amount *big.Int, id *big.Int) (*types.Transaction, error) {
+	return _BaasEscrow.Contract.RaiseCapital(&_BaasEscrow.TransactOpts, amount, id)
 }
 
-// RaiseCapital is a paid mutator transaction binding the contract method 0xc621bf8a.
+// RaiseCapital is a paid mutator transaction binding the contract method 0xfbd207ed.
 //
-// Solidity: function raiseCapital(amount uint256) returns(bool)
-func (_BaasEscrow *BaasEscrowTransactorSession) RaiseCapital(amount *big.Int) (*types.Transaction, error) {
-	return _BaasEscrow.Contract.RaiseCapital(&_BaasEscrow.TransactOpts, amount)
+// Solidity: function raiseCapital(amount uint256, id uint256) returns(bool)
+func (_BaasEscrow *BaasEscrowTransactorSession) RaiseCapital(amount *big.Int, id *big.Int) (*types.Transaction, error) {
+	return _BaasEscrow.Contract.RaiseCapital(&_BaasEscrow.TransactOpts, amount, id)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
@@ -438,28 +438,39 @@ func (it *BaasEscrowCapitalRaisedIterator) Close() error {
 
 // BaasEscrowCapitalRaised represents a CapitalRaised event raised by the BaasEscrow contract.
 type BaasEscrowCapitalRaised struct {
+	Id     *big.Int
 	Amount *big.Int
 	Raw    types.Log // Blockchain specific contextual infos
 }
 
-// FilterCapitalRaised is a free log retrieval operation binding the contract event 0x300283bdc9ca661e983285eff22a4decd9d0eb7ab78d357ce8e0f6533f727fa4.
+// FilterCapitalRaised is a free log retrieval operation binding the contract event 0xbc65650fcb1dd5a9e3c92e066533c3425c66a51f1f60fbfe11ce352452c9b08d.
 //
-// Solidity: e CapitalRaised(amount uint256)
-func (_BaasEscrow *BaasEscrowFilterer) FilterCapitalRaised(opts *bind.FilterOpts) (*BaasEscrowCapitalRaisedIterator, error) {
+// Solidity: e CapitalRaised(id indexed uint256, amount uint256)
+func (_BaasEscrow *BaasEscrowFilterer) FilterCapitalRaised(opts *bind.FilterOpts, id []*big.Int) (*BaasEscrowCapitalRaisedIterator, error) {
 
-	logs, sub, err := _BaasEscrow.contract.FilterLogs(opts, "CapitalRaised")
+	var idRule []interface{}
+	for _, idItem := range id {
+		idRule = append(idRule, idItem)
+	}
+
+	logs, sub, err := _BaasEscrow.contract.FilterLogs(opts, "CapitalRaised", idRule)
 	if err != nil {
 		return nil, err
 	}
 	return &BaasEscrowCapitalRaisedIterator{contract: _BaasEscrow.contract, event: "CapitalRaised", logs: logs, sub: sub}, nil
 }
 
-// WatchCapitalRaised is a free log subscription operation binding the contract event 0x300283bdc9ca661e983285eff22a4decd9d0eb7ab78d357ce8e0f6533f727fa4.
+// WatchCapitalRaised is a free log subscription operation binding the contract event 0xbc65650fcb1dd5a9e3c92e066533c3425c66a51f1f60fbfe11ce352452c9b08d.
 //
-// Solidity: e CapitalRaised(amount uint256)
-func (_BaasEscrow *BaasEscrowFilterer) WatchCapitalRaised(opts *bind.WatchOpts, sink chan<- *BaasEscrowCapitalRaised) (event.Subscription, error) {
+// Solidity: e CapitalRaised(id indexed uint256, amount uint256)
+func (_BaasEscrow *BaasEscrowFilterer) WatchCapitalRaised(opts *bind.WatchOpts, sink chan<- *BaasEscrowCapitalRaised, id []*big.Int) (event.Subscription, error) {
 
-	logs, sub, err := _BaasEscrow.contract.WatchLogs(opts, "CapitalRaised")
+	var idRule []interface{}
+	for _, idItem := range id {
+		idRule = append(idRule, idItem)
+	}
+
+	logs, sub, err := _BaasEscrow.contract.WatchLogs(opts, "CapitalRaised", idRule)
 	if err != nil {
 		return nil, err
 	}

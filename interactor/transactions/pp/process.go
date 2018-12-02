@@ -15,6 +15,7 @@ func process(tgeContext *utils.TGEContext, isDiscounted bool, target string, amo
 	txOps := bind.NewKeyedTransactor(tgeContext.Key.PrivateKey)
 	txOps.Value = big.NewInt(0)
 
+
 	contract, err := contracts.NewBaasPP(*tgeContext.ContractConfig.PPAddress, tgeContext.Client)
 
 	if err != nil {
@@ -44,6 +45,10 @@ func process(tgeContext *utils.TGEContext, isDiscounted bool, target string, amo
 	}
 
 	log.Println("DiscountType:", discountType)
+
+
+	utils.PrintColoredln("GasPrice", txOps.GasPrice)
+	utils.PrintColoredln("GasLimit", txOps.GasLimit)
 	tx, err := contract.ProvideToken(txOps, t, val.BigInt(), discountType)
 
 	if err != nil {
