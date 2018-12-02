@@ -130,7 +130,7 @@ contract BaasROI is IBaasROI, Ownable {
 
     function minPayout(uint256 tokenEuroConversionRate) public view returns (uint256) {
         uint256 cri = INTEREST_RATE.add(tokenEuroConversionRate);
-        return circulatingSupply().mul(cri).div(tokenEuroConversionRate);
+        return circulatingSupply().mul(INTEREST_RATE).div(cri);
     }
 
 
