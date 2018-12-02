@@ -14,10 +14,21 @@ version=$1
 truffle compile
 
 
+pushd scripts
+./copy_config.sh
+popd
+
 pushd interactor
+# deploy contracts
 go run main.go e d -version $version
+# setup BaasToken
 go run main.go e s -version $version
 popd
+
+pushd scripts
+./copy_config.sh
+popd
+
 
 git add -A
 git commit -a -m "deployed $version to ropsten"

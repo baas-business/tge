@@ -5,6 +5,9 @@ import "../ownership/Ownable.sol";
 import "./IBaasToken.sol";
 
 
+/*
+
+*/
 contract BaasToken is IBaasToken, ERC20, Ownable {
     using SafeMath for uint256;
 
@@ -79,6 +82,7 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
     function transferFrom(address from, address to, uint256 value)
     public returns (bool){
         require(_isInitialized && !_paused);
+        require(!isPotAddress(to));  // not allowed to send to pots any but the initial amount
 
         bool result = super.transferFrom(from, to, value);
 
@@ -92,6 +96,7 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
 
     function transfer(address to, uint256 value) public returns (bool) {
         require(_isInitialized && !_paused);
+        require(!isPotAddress(to)); // not allowed to send to pots any but the initial amount
 
         bool result = super.transfer(to, value);
 
@@ -170,7 +175,11 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
         return _isInitialized;
     }
 
-    function pots() public view returns (address, address, address, address) {
+    function isPotAddress(address account) public view returns (bool){
+        return account == _escrowAddress || account == _incentivesAddress || account == _founderAddress || account == _ppAddress;
+    }
+
+    function pots() external view returns (address, address, address, address) {
         return (_escrowAddress, _ppAddress, _founderAddress, _incentivesAddress);
     }
 
@@ -193,5 +202,23 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
 
     function paused() public view returns (bool) {
         return _paused;
+    }
+
+    function circulatingSupply() public view returns (uint256) {
+        return totalSupply().sub(potSupply());
+    }
+
+    function potSupply() public view returns (uint256) {
+        if(_isInitialized) {
+            return 0;
+        }
+
+        // get balances of pots
+        uint256 escrowBalance = balanceOf(_escrowAddress);
+        uint256 ppBalance = balanceOf(_ppAddress);
+        uint256 founderBalance = balanceOf(_founderAddress);
+        uint256 incentivesBalance = balanceOf(_incentivesAddress);
+
+        return escrowBalance.add(ppBalance).add(founderBalance).add(incentivesBalance);
     }
 }

@@ -16,10 +16,10 @@ import (
 )
 
 // BaasROIABI is the input ABI used to generate the binding from.
-const BaasROIABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
+const BaasROIABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"PayoutOmitted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"receiver\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"tokensReceived\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"tokensPossessed\",\"type\":\"uint256\"}],\"name\":\"PaidOut\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"tokensProvided\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"tokensPossessed\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"tokenHolders\",\"type\":\"uint256\"}],\"name\":\"PaidOutAll\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"payoutAll\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"circulatingSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"eligibleToken\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"hasEnoughTokensForPayout\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"tokensNeededForPayout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"token\",\"type\":\"uint256\"},{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"roi\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"wallet\",\"type\":\"address\"},{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"roiOf\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"currentPayout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"interestRate\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
 
 // BaasROIBin is the compiled bytecode used for deploying new contracts.
-const BaasROIBin = `0x608060405234801561001057600080fd5b506040516020806107b783398101806040528101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050610677806101406000396000f300608060405260043610610083576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306fdde0314610088578063715018a6146101185780638da5cb5b1461012f5780638f32d59b146101865780639d76ea58146101b5578063b69ef8a81461020c578063f2fde38b14610237575b600080fd5b34801561009457600080fd5b5061009d61027a565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100dd5780820151818401526020810190506100c2565b50505050905090810190601f16801561010a5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561012457600080fd5b5061012d6102b7565b005b34801561013b57600080fd5b50610144610389565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561019257600080fd5b5061019b6103b2565b604051808215151515815260200191505060405180910390f35b3480156101c157600080fd5b506101ca610409565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561021857600080fd5b50610221610433565b6040518082815260200191505060405180910390f35b34801561024357600080fd5b50610278600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610532565b005b60606040805190810160405280601481526020017f52455455524e204f4620494e564553544d454e54000000000000000000000000815250905090565b6102bf6103b2565b15156102ca57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b1580156104f257600080fd5b505af1158015610506573d6000803e3d6000fd5b505050506040513d602081101561051c57600080fd5b8101908080519060200190929190505050905090565b61053a6103b2565b151561054557600080fd5b61054e81610551565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561058d57600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058209958f6e864bd5fdee42144ccc034e32ffa58384e7a783aecade9076bcbd3f50d0029`
+const BaasROIBin = `0x608060405234801561001057600080fd5b506040516020806114c283398101806040528101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050611382806101406000396000f3006080604052600436106100e6576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806301b32f0a146100eb57806306fdde03146101365780631da2649b146101c657806325804c971461022e578063578c0b271461026f578063715018a6146102b05780637c3a00fd146102c75780638d10ca26146102f25780638da5cb5b146103375780638f32d59b1461038e5780639358928b146103bd5780639d76ea58146103e8578063b69ef8a81461043f578063bb7314671461046a578063daf3841914610495578063f2fde38b146104da575b600080fd5b3480156100f757600080fd5b50610120600480360381019080803590602001909291908035906020019092919050505061051d565b6040518082815260200191505060405180910390f35b34801561014257600080fd5b5061014b610572565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561018b578082015181840152602081019050610170565b50505050905090810190601f1680156101b85780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b3480156101d257600080fd5b50610211600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506105af565b604051808381526020018281526020019250505060405180910390f35b34801561023a57600080fd5b50610259600480360381019080803590602001909291905050506106c5565b6040518082815260200191505060405180910390f35b34801561027b57600080fd5b5061029a600480360381019080803590602001909291905050506106f8565b6040518082815260200191505060405180910390f35b3480156102bc57600080fd5b506102c5610712565b005b3480156102d357600080fd5b506102dc6107e4565b6040518082815260200191505060405180910390f35b3480156102fe57600080fd5b5061031d600480360381019080803590602001909291905050506107ed565b604051808215151515815260200191505060405180910390f35b34801561034357600080fd5b5061034c610809565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561039a57600080fd5b506103a3610832565b604051808215151515815260200191505060405180910390f35b3480156103c957600080fd5b506103d2610889565b6040518082815260200191505060405180910390f35b3480156103f457600080fd5b506103fd610951565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561044b57600080fd5b5061045461097b565b6040518082815260200191505060405180910390f35b34801561047657600080fd5b5061047f610a7a565b6040518082815260200191505060405180910390f35b3480156104a157600080fd5b506104c060048036038101908080359060200190929190505050610b5b565b604051808215151515815260200191505060405180910390f35b3480156104e657600080fd5b5061051b600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610ff3565b005b600080821415610530576000905061056c565b6105698261055b606461054d60098861101290919063ffffffff16565b61105090919063ffffffff16565b61105090919063ffffffff16565b90505b92915050565b60606040805190810160405280601481526020017f52455455524e204f4620494e564553544d454e54000000000000000000000000815250905090565b6000806000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231866040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561067157600080fd5b505af1158015610685573d6000803e3d6000fd5b505050506040513d602081101561069b57600080fd5b810190808051906020019092919050505090506106b8818561051d565b8192509250509250929050565b60006106d0826107ed565b156106de57600090506106f3565b6106e661097b565b6106ef836106f8565b0390505b919050565b600061070b610705610a7a565b8361051d565b9050919050565b61071a610832565b151561072557600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60006009905090565b60006107f761097b565b610800836106f8565b11159050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16639358928b6040518163ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401602060405180830381600087803b15801561091157600080fd5b505af1158015610925573d6000803e3d6000fd5b505050506040513d602081101561093b57600080fd5b8101908080519060200190929190505050905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b158015610a3a57600080fd5b505af1158015610a4e573d6000803e3d6000fd5b505050506040513d6020811015610a6457600080fd5b8101908080519060200190929190505050905090565b6000610b56610a8761097b565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16639358928b6040518163ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401602060405180830381600087803b158015610b0d57600080fd5b505af1158015610b21573d6000803e3d6000fd5b505050506040513d6020811015610b3757600080fd5b810190808051906020019092919050505061107a90919063ffffffff16565b905090565b6000806000806000806060600080600080600080610b77610832565b1515610b8257600080fd5b610b8b8e6107ed565b1515610b9657600080fd5b610b9e61097b565b9b50600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a654cfab6040518163ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401608060405180830381600087803b158015610c2657600080fd5b505af1158015610c3a573d6000803e3d6000fd5b505050506040513d6080811015610c5057600080fd5b8101908080519060200190929190805190602001909291908051906020019092919080519060200190929190505050809b50819c50829d50839e5050505050600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16637af70c1f6040518163ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401600060405180830381600087803b158015610d1557600080fd5b505af1158015610d29573d6000803e3d6000fd5b505050506040513d6000823e3d601f19601f820116820180604052506020811015610d5357600080fd5b810190808051640100000000811115610d6b57600080fd5b82810190506020810184811115610d8157600080fd5b8151856020820283011164010000000082111715610d9e57600080fd5b50509291905050509650865195506000945060009350600092505b85831015610f9b578683815181101515610dcf57fe5b9060200190602002015191508a73ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff161480610e4057508773ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16145b80610e7657508873ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16145b80610eac57508973ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16145b80610ee257503073ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16145b15610f4f577f1ce49881e4d47088c220804148559e4103d5df83e4fc9e98101ff01eb74ecb7282604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1610f8e565b610f708784815181101515610f6057fe5b906020019060200201518f61109b565b9050610f85818661123b90919063ffffffff16565b94506001840193505b8280600101935050610db9565b7fda72e69b624518c6d2f93807ec73b6a8a638ae29f7f0a8fa353946027d72fba9858d8660405180848152602001838152602001828152602001935050505060405180910390a1505050505050505050505050919050565b610ffb610832565b151561100657600080fd5b61100f8161125c565b50565b60008060008414156110275760009150611049565b828402905082848281151561103857fe5b0414151561104557600080fd5b8091505b5092915050565b60008060008311151561106257600080fd5b828481151561106d57fe5b0490508091505092915050565b60008083831115151561108c57600080fd5b82840390508091505092915050565b60008060006110aa85856105af565b8092508193505050600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb86846040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15801561117757600080fd5b505af115801561118b573d6000803e3d6000fd5b505050506040513d60208110156111a157600080fd5b810190808051906020019092919050505015156111bd57600080fd5b7f7ca7469714f3e1d8732b3a67b0599fba3be82b826137fcfa805c19afc2b20aeb858383604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001838152602001828152602001935050505060405180910390a1819250505092915050565b600080828401905083811015151561125257600080fd5b8091505092915050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561129857600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058209a99826cf746291efdece3ace73b3ddefb10bf97b04226871da153c807ac41460029`
 
 // DeployBaasROI deploys a new Ethereum contract, binding an instance of BaasROI to it.
 func DeployBaasROI(auth *bind.TransactOpts, backend bind.ContractBackend, token common.Address) (common.Address, *types.Transaction, *BaasROI, error) {
@@ -202,6 +202,136 @@ func (_BaasROI *BaasROICallerSession) Balance() (*big.Int, error) {
 	return _BaasROI.Contract.Balance(&_BaasROI.CallOpts)
 }
 
+// CirculatingSupply is a free data retrieval call binding the contract method 0x9358928b.
+//
+// Solidity: function circulatingSupply() constant returns(uint256)
+func (_BaasROI *BaasROICaller) CirculatingSupply(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasROI.contract.Call(opts, out, "circulatingSupply")
+	return *ret0, err
+}
+
+// CirculatingSupply is a free data retrieval call binding the contract method 0x9358928b.
+//
+// Solidity: function circulatingSupply() constant returns(uint256)
+func (_BaasROI *BaasROISession) CirculatingSupply() (*big.Int, error) {
+	return _BaasROI.Contract.CirculatingSupply(&_BaasROI.CallOpts)
+}
+
+// CirculatingSupply is a free data retrieval call binding the contract method 0x9358928b.
+//
+// Solidity: function circulatingSupply() constant returns(uint256)
+func (_BaasROI *BaasROICallerSession) CirculatingSupply() (*big.Int, error) {
+	return _BaasROI.Contract.CirculatingSupply(&_BaasROI.CallOpts)
+}
+
+// CurrentPayout is a free data retrieval call binding the contract method 0x578c0b27.
+//
+// Solidity: function currentPayout(tokenEuroConversionRate uint256) constant returns(uint256)
+func (_BaasROI *BaasROICaller) CurrentPayout(opts *bind.CallOpts, tokenEuroConversionRate *big.Int) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasROI.contract.Call(opts, out, "currentPayout", tokenEuroConversionRate)
+	return *ret0, err
+}
+
+// CurrentPayout is a free data retrieval call binding the contract method 0x578c0b27.
+//
+// Solidity: function currentPayout(tokenEuroConversionRate uint256) constant returns(uint256)
+func (_BaasROI *BaasROISession) CurrentPayout(tokenEuroConversionRate *big.Int) (*big.Int, error) {
+	return _BaasROI.Contract.CurrentPayout(&_BaasROI.CallOpts, tokenEuroConversionRate)
+}
+
+// CurrentPayout is a free data retrieval call binding the contract method 0x578c0b27.
+//
+// Solidity: function currentPayout(tokenEuroConversionRate uint256) constant returns(uint256)
+func (_BaasROI *BaasROICallerSession) CurrentPayout(tokenEuroConversionRate *big.Int) (*big.Int, error) {
+	return _BaasROI.Contract.CurrentPayout(&_BaasROI.CallOpts, tokenEuroConversionRate)
+}
+
+// EligibleToken is a free data retrieval call binding the contract method 0xbb731467.
+//
+// Solidity: function eligibleToken() constant returns(uint256)
+func (_BaasROI *BaasROICaller) EligibleToken(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasROI.contract.Call(opts, out, "eligibleToken")
+	return *ret0, err
+}
+
+// EligibleToken is a free data retrieval call binding the contract method 0xbb731467.
+//
+// Solidity: function eligibleToken() constant returns(uint256)
+func (_BaasROI *BaasROISession) EligibleToken() (*big.Int, error) {
+	return _BaasROI.Contract.EligibleToken(&_BaasROI.CallOpts)
+}
+
+// EligibleToken is a free data retrieval call binding the contract method 0xbb731467.
+//
+// Solidity: function eligibleToken() constant returns(uint256)
+func (_BaasROI *BaasROICallerSession) EligibleToken() (*big.Int, error) {
+	return _BaasROI.Contract.EligibleToken(&_BaasROI.CallOpts)
+}
+
+// HasEnoughTokensForPayout is a free data retrieval call binding the contract method 0x8d10ca26.
+//
+// Solidity: function hasEnoughTokensForPayout(tokenEuroConversionRate uint256) constant returns(bool)
+func (_BaasROI *BaasROICaller) HasEnoughTokensForPayout(opts *bind.CallOpts, tokenEuroConversionRate *big.Int) (bool, error) {
+	var (
+		ret0 = new(bool)
+	)
+	out := ret0
+	err := _BaasROI.contract.Call(opts, out, "hasEnoughTokensForPayout", tokenEuroConversionRate)
+	return *ret0, err
+}
+
+// HasEnoughTokensForPayout is a free data retrieval call binding the contract method 0x8d10ca26.
+//
+// Solidity: function hasEnoughTokensForPayout(tokenEuroConversionRate uint256) constant returns(bool)
+func (_BaasROI *BaasROISession) HasEnoughTokensForPayout(tokenEuroConversionRate *big.Int) (bool, error) {
+	return _BaasROI.Contract.HasEnoughTokensForPayout(&_BaasROI.CallOpts, tokenEuroConversionRate)
+}
+
+// HasEnoughTokensForPayout is a free data retrieval call binding the contract method 0x8d10ca26.
+//
+// Solidity: function hasEnoughTokensForPayout(tokenEuroConversionRate uint256) constant returns(bool)
+func (_BaasROI *BaasROICallerSession) HasEnoughTokensForPayout(tokenEuroConversionRate *big.Int) (bool, error) {
+	return _BaasROI.Contract.HasEnoughTokensForPayout(&_BaasROI.CallOpts, tokenEuroConversionRate)
+}
+
+// InterestRate is a free data retrieval call binding the contract method 0x7c3a00fd.
+//
+// Solidity: function interestRate() constant returns(uint256)
+func (_BaasROI *BaasROICaller) InterestRate(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasROI.contract.Call(opts, out, "interestRate")
+	return *ret0, err
+}
+
+// InterestRate is a free data retrieval call binding the contract method 0x7c3a00fd.
+//
+// Solidity: function interestRate() constant returns(uint256)
+func (_BaasROI *BaasROISession) InterestRate() (*big.Int, error) {
+	return _BaasROI.Contract.InterestRate(&_BaasROI.CallOpts)
+}
+
+// InterestRate is a free data retrieval call binding the contract method 0x7c3a00fd.
+//
+// Solidity: function interestRate() constant returns(uint256)
+func (_BaasROI *BaasROICallerSession) InterestRate() (*big.Int, error) {
+	return _BaasROI.Contract.InterestRate(&_BaasROI.CallOpts)
+}
+
 // IsOwner is a free data retrieval call binding the contract method 0x8f32d59b.
 //
 // Solidity: function isOwner() constant returns(bool)
@@ -280,6 +410,62 @@ func (_BaasROI *BaasROICallerSession) Owner() (common.Address, error) {
 	return _BaasROI.Contract.Owner(&_BaasROI.CallOpts)
 }
 
+// Roi is a free data retrieval call binding the contract method 0x01b32f0a.
+//
+// Solidity: function roi(token uint256, tokenEuroConversionRate uint256) constant returns(uint256)
+func (_BaasROI *BaasROICaller) Roi(opts *bind.CallOpts, token *big.Int, tokenEuroConversionRate *big.Int) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasROI.contract.Call(opts, out, "roi", token, tokenEuroConversionRate)
+	return *ret0, err
+}
+
+// Roi is a free data retrieval call binding the contract method 0x01b32f0a.
+//
+// Solidity: function roi(token uint256, tokenEuroConversionRate uint256) constant returns(uint256)
+func (_BaasROI *BaasROISession) Roi(token *big.Int, tokenEuroConversionRate *big.Int) (*big.Int, error) {
+	return _BaasROI.Contract.Roi(&_BaasROI.CallOpts, token, tokenEuroConversionRate)
+}
+
+// Roi is a free data retrieval call binding the contract method 0x01b32f0a.
+//
+// Solidity: function roi(token uint256, tokenEuroConversionRate uint256) constant returns(uint256)
+func (_BaasROI *BaasROICallerSession) Roi(token *big.Int, tokenEuroConversionRate *big.Int) (*big.Int, error) {
+	return _BaasROI.Contract.Roi(&_BaasROI.CallOpts, token, tokenEuroConversionRate)
+}
+
+// RoiOf is a free data retrieval call binding the contract method 0x1da2649b.
+//
+// Solidity: function roiOf(wallet address, tokenEuroConversionRate uint256) constant returns(uint256, uint256)
+func (_BaasROI *BaasROICaller) RoiOf(opts *bind.CallOpts, wallet common.Address, tokenEuroConversionRate *big.Int) (*big.Int, *big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+		ret1 = new(*big.Int)
+	)
+	out := &[]interface{}{
+		ret0,
+		ret1,
+	}
+	err := _BaasROI.contract.Call(opts, out, "roiOf", wallet, tokenEuroConversionRate)
+	return *ret0, *ret1, err
+}
+
+// RoiOf is a free data retrieval call binding the contract method 0x1da2649b.
+//
+// Solidity: function roiOf(wallet address, tokenEuroConversionRate uint256) constant returns(uint256, uint256)
+func (_BaasROI *BaasROISession) RoiOf(wallet common.Address, tokenEuroConversionRate *big.Int) (*big.Int, *big.Int, error) {
+	return _BaasROI.Contract.RoiOf(&_BaasROI.CallOpts, wallet, tokenEuroConversionRate)
+}
+
+// RoiOf is a free data retrieval call binding the contract method 0x1da2649b.
+//
+// Solidity: function roiOf(wallet address, tokenEuroConversionRate uint256) constant returns(uint256, uint256)
+func (_BaasROI *BaasROICallerSession) RoiOf(wallet common.Address, tokenEuroConversionRate *big.Int) (*big.Int, *big.Int, error) {
+	return _BaasROI.Contract.RoiOf(&_BaasROI.CallOpts, wallet, tokenEuroConversionRate)
+}
+
 // TokenAddress is a free data retrieval call binding the contract method 0x9d76ea58.
 //
 // Solidity: function tokenAddress() constant returns(address)
@@ -304,6 +490,53 @@ func (_BaasROI *BaasROISession) TokenAddress() (common.Address, error) {
 // Solidity: function tokenAddress() constant returns(address)
 func (_BaasROI *BaasROICallerSession) TokenAddress() (common.Address, error) {
 	return _BaasROI.Contract.TokenAddress(&_BaasROI.CallOpts)
+}
+
+// TokensNeededForPayout is a free data retrieval call binding the contract method 0x25804c97.
+//
+// Solidity: function tokensNeededForPayout(tokenEuroConversionRate uint256) constant returns(uint256)
+func (_BaasROI *BaasROICaller) TokensNeededForPayout(opts *bind.CallOpts, tokenEuroConversionRate *big.Int) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasROI.contract.Call(opts, out, "tokensNeededForPayout", tokenEuroConversionRate)
+	return *ret0, err
+}
+
+// TokensNeededForPayout is a free data retrieval call binding the contract method 0x25804c97.
+//
+// Solidity: function tokensNeededForPayout(tokenEuroConversionRate uint256) constant returns(uint256)
+func (_BaasROI *BaasROISession) TokensNeededForPayout(tokenEuroConversionRate *big.Int) (*big.Int, error) {
+	return _BaasROI.Contract.TokensNeededForPayout(&_BaasROI.CallOpts, tokenEuroConversionRate)
+}
+
+// TokensNeededForPayout is a free data retrieval call binding the contract method 0x25804c97.
+//
+// Solidity: function tokensNeededForPayout(tokenEuroConversionRate uint256) constant returns(uint256)
+func (_BaasROI *BaasROICallerSession) TokensNeededForPayout(tokenEuroConversionRate *big.Int) (*big.Int, error) {
+	return _BaasROI.Contract.TokensNeededForPayout(&_BaasROI.CallOpts, tokenEuroConversionRate)
+}
+
+// PayoutAll is a paid mutator transaction binding the contract method 0xdaf38419.
+//
+// Solidity: function payoutAll(tokenEuroConversionRate uint256) returns(bool)
+func (_BaasROI *BaasROITransactor) PayoutAll(opts *bind.TransactOpts, tokenEuroConversionRate *big.Int) (*types.Transaction, error) {
+	return _BaasROI.contract.Transact(opts, "payoutAll", tokenEuroConversionRate)
+}
+
+// PayoutAll is a paid mutator transaction binding the contract method 0xdaf38419.
+//
+// Solidity: function payoutAll(tokenEuroConversionRate uint256) returns(bool)
+func (_BaasROI *BaasROISession) PayoutAll(tokenEuroConversionRate *big.Int) (*types.Transaction, error) {
+	return _BaasROI.Contract.PayoutAll(&_BaasROI.TransactOpts, tokenEuroConversionRate)
+}
+
+// PayoutAll is a paid mutator transaction binding the contract method 0xdaf38419.
+//
+// Solidity: function payoutAll(tokenEuroConversionRate uint256) returns(bool)
+func (_BaasROI *BaasROITransactorSession) PayoutAll(tokenEuroConversionRate *big.Int) (*types.Transaction, error) {
+	return _BaasROI.Contract.PayoutAll(&_BaasROI.TransactOpts, tokenEuroConversionRate)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
@@ -469,6 +702,376 @@ func (_BaasROI *BaasROIFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts,
 				// New log arrived, parse the event and forward to the user
 				event := new(BaasROIOwnershipTransferred)
 				if err := _BaasROI.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// BaasROIPaidOutIterator is returned from FilterPaidOut and is used to iterate over the raw logs and unpacked data for PaidOut events raised by the BaasROI contract.
+type BaasROIPaidOutIterator struct {
+	Event *BaasROIPaidOut // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *BaasROIPaidOutIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(BaasROIPaidOut)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(BaasROIPaidOut)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *BaasROIPaidOutIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *BaasROIPaidOutIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// BaasROIPaidOut represents a PaidOut event raised by the BaasROI contract.
+type BaasROIPaidOut struct {
+	Receiver        common.Address
+	TokensReceived  *big.Int
+	TokensPossessed *big.Int
+	Raw             types.Log // Blockchain specific contextual infos
+}
+
+// FilterPaidOut is a free log retrieval operation binding the contract event 0x7ca7469714f3e1d8732b3a67b0599fba3be82b826137fcfa805c19afc2b20aeb.
+//
+// Solidity: e PaidOut(receiver address, tokensReceived uint256, tokensPossessed uint256)
+func (_BaasROI *BaasROIFilterer) FilterPaidOut(opts *bind.FilterOpts) (*BaasROIPaidOutIterator, error) {
+
+	logs, sub, err := _BaasROI.contract.FilterLogs(opts, "PaidOut")
+	if err != nil {
+		return nil, err
+	}
+	return &BaasROIPaidOutIterator{contract: _BaasROI.contract, event: "PaidOut", logs: logs, sub: sub}, nil
+}
+
+// WatchPaidOut is a free log subscription operation binding the contract event 0x7ca7469714f3e1d8732b3a67b0599fba3be82b826137fcfa805c19afc2b20aeb.
+//
+// Solidity: e PaidOut(receiver address, tokensReceived uint256, tokensPossessed uint256)
+func (_BaasROI *BaasROIFilterer) WatchPaidOut(opts *bind.WatchOpts, sink chan<- *BaasROIPaidOut) (event.Subscription, error) {
+
+	logs, sub, err := _BaasROI.contract.WatchLogs(opts, "PaidOut")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(BaasROIPaidOut)
+				if err := _BaasROI.contract.UnpackLog(event, "PaidOut", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// BaasROIPaidOutAllIterator is returned from FilterPaidOutAll and is used to iterate over the raw logs and unpacked data for PaidOutAll events raised by the BaasROI contract.
+type BaasROIPaidOutAllIterator struct {
+	Event *BaasROIPaidOutAll // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *BaasROIPaidOutAllIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(BaasROIPaidOutAll)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(BaasROIPaidOutAll)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *BaasROIPaidOutAllIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *BaasROIPaidOutAllIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// BaasROIPaidOutAll represents a PaidOutAll event raised by the BaasROI contract.
+type BaasROIPaidOutAll struct {
+	TokensProvided  *big.Int
+	TokensPossessed *big.Int
+	TokenHolders    *big.Int
+	Raw             types.Log // Blockchain specific contextual infos
+}
+
+// FilterPaidOutAll is a free log retrieval operation binding the contract event 0xda72e69b624518c6d2f93807ec73b6a8a638ae29f7f0a8fa353946027d72fba9.
+//
+// Solidity: e PaidOutAll(tokensProvided uint256, tokensPossessed uint256, tokenHolders uint256)
+func (_BaasROI *BaasROIFilterer) FilterPaidOutAll(opts *bind.FilterOpts) (*BaasROIPaidOutAllIterator, error) {
+
+	logs, sub, err := _BaasROI.contract.FilterLogs(opts, "PaidOutAll")
+	if err != nil {
+		return nil, err
+	}
+	return &BaasROIPaidOutAllIterator{contract: _BaasROI.contract, event: "PaidOutAll", logs: logs, sub: sub}, nil
+}
+
+// WatchPaidOutAll is a free log subscription operation binding the contract event 0xda72e69b624518c6d2f93807ec73b6a8a638ae29f7f0a8fa353946027d72fba9.
+//
+// Solidity: e PaidOutAll(tokensProvided uint256, tokensPossessed uint256, tokenHolders uint256)
+func (_BaasROI *BaasROIFilterer) WatchPaidOutAll(opts *bind.WatchOpts, sink chan<- *BaasROIPaidOutAll) (event.Subscription, error) {
+
+	logs, sub, err := _BaasROI.contract.WatchLogs(opts, "PaidOutAll")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(BaasROIPaidOutAll)
+				if err := _BaasROI.contract.UnpackLog(event, "PaidOutAll", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// BaasROIPayoutOmittedIterator is returned from FilterPayoutOmitted and is used to iterate over the raw logs and unpacked data for PayoutOmitted events raised by the BaasROI contract.
+type BaasROIPayoutOmittedIterator struct {
+	Event *BaasROIPayoutOmitted // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *BaasROIPayoutOmittedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(BaasROIPayoutOmitted)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(BaasROIPayoutOmitted)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *BaasROIPayoutOmittedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *BaasROIPayoutOmittedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// BaasROIPayoutOmitted represents a PayoutOmitted event raised by the BaasROI contract.
+type BaasROIPayoutOmitted struct {
+	Receiver common.Address
+	Raw      types.Log // Blockchain specific contextual infos
+}
+
+// FilterPayoutOmitted is a free log retrieval operation binding the contract event 0x1ce49881e4d47088c220804148559e4103d5df83e4fc9e98101ff01eb74ecb72.
+//
+// Solidity: e PayoutOmitted(receiver address)
+func (_BaasROI *BaasROIFilterer) FilterPayoutOmitted(opts *bind.FilterOpts) (*BaasROIPayoutOmittedIterator, error) {
+
+	logs, sub, err := _BaasROI.contract.FilterLogs(opts, "PayoutOmitted")
+	if err != nil {
+		return nil, err
+	}
+	return &BaasROIPayoutOmittedIterator{contract: _BaasROI.contract, event: "PayoutOmitted", logs: logs, sub: sub}, nil
+}
+
+// WatchPayoutOmitted is a free log subscription operation binding the contract event 0x1ce49881e4d47088c220804148559e4103d5df83e4fc9e98101ff01eb74ecb72.
+//
+// Solidity: e PayoutOmitted(receiver address)
+func (_BaasROI *BaasROIFilterer) WatchPayoutOmitted(opts *bind.WatchOpts, sink chan<- *BaasROIPayoutOmitted) (event.Subscription, error) {
+
+	logs, sub, err := _BaasROI.contract.WatchLogs(opts, "PayoutOmitted")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(BaasROIPayoutOmitted)
+				if err := _BaasROI.contract.UnpackLog(event, "PayoutOmitted", log); err != nil {
 					return err
 				}
 				event.Raw = log

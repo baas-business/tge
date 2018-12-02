@@ -6,6 +6,12 @@ interface IBaasToken  {
 
     function burnTokensFromPot(address potAddress, uint256 amount) external returns(bool);
 
+    function tokenHolderSnapShot() external returns (address[]);
+
+    function circulatingSupply() external view returns (uint256);
+
+    function pots() external view returns (address, address, address, address);
+
     function totalSupply() external view returns (uint256);
 
     function balanceOf(address who) external view returns (uint256);
