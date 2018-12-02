@@ -209,7 +209,7 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
     }
 
     function potSupply() public view returns (uint256) {
-        if(_isInitialized) {
+        if(!_isInitialized) {
             return 0;
         }
 

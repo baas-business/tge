@@ -70,6 +70,10 @@ contract('BaasToken', function (accounts) {
         assert.equal(true, await baasToken.isTokenHolder(founderAddress), "should be token holders");
         assert.equal(true, await baasToken.isTokenHolder(ppAddress), "should be token holders");
         assert.equal(false, await baasToken.isTokenHolder(accounts[9]), "should not be token holders");
+
+
+        utils.compareBigNumber(new BigNumber('0'),  await baasToken.circulatingSupply(), "tokens pot supply");
+        utils.compareBigNumber(new BigNumber('1e+26'),  await baasToken.potSupply(), "tokens pot supply");
     });
 
     it("should deal with token holders", async () => {
