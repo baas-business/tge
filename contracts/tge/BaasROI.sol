@@ -8,7 +8,7 @@ import "./IBaasToken.sol";
 interface IBaasROI {
     function payoutAll(uint256 tokenEuroConversionRate) external returns (bool);
 
-    event PayoutOmitted(address receiver);
+    event PayoutOmitted(address omittedReceiver);
     event PaidOut(address receiver, uint256 tokensReceived, uint256 tokensPossessed);
     event PaidOutAll(uint256 tokensProvided, uint256 tokensPossessed, uint tokenHolders);
 }
@@ -76,6 +76,13 @@ contract BaasROI is IBaasROI, Ownable {
         return amount;
     }
 
+    function withdraw(address receiver) external onlyOwner returns (bool) {
+        uint256 amount = balance();
+        require(amount > 0);
+        require(_token.transfer(receiver, amount));
+        return true;
+    }
+
     // Views
     function balance() public view returns (uint256) {
         return _token.balanceOf(address(this));
@@ -94,15 +101,13 @@ contract BaasROI is IBaasROI, Ownable {
     }
 
     function hasEnoughTokensForPayout(uint256 tokenEuroConversionRate) public view returns (bool) {
-        return currentPayout(tokenEuroConversionRate) <= balance();
-    }
+        uint256 maxTokenToBeRewarded;
+        uint256 minPayoutBalance;
+        uint256 error;
 
-    function tokensNeededForPayout(uint256 tokenEuroConversionRate) public view returns (uint256) {
-        if (hasEnoughTokensForPayout(tokenEuroConversionRate)) {
-            return 0;
-        }
+        (maxTokenToBeRewarded, minPayoutBalance, error) = optimalPayoutDistribution(tokenEuroConversionRate);
 
-        return currentPayout(tokenEuroConversionRate) - balance();
+        return minPayoutBalance <= balance();
     }
 
     function roi(uint256 token, uint256 tokenEuroConversionRate) public pure returns (uint256) {
@@ -118,7 +123,7 @@ contract BaasROI is IBaasROI, Ownable {
         return (roi(walletBalance, tokenEuroConversionRate), walletBalance);
     }
 
-    function currentPayout(uint256 tokenEuroConversionRate) public view returns (uint256) {
+    function currentPayoutObligation(uint256 tokenEuroConversionRate) public view returns (uint256) {
         return roi(eligibleToken(), tokenEuroConversionRate);
     }
 
@@ -128,19 +133,17 @@ contract BaasROI is IBaasROI, Ownable {
         return circulatingSupply().mul(tokenEuroConversionRate).div(cri);
     }
 
-    function minPayout(uint256 tokenEuroConversionRate) public view returns (uint256) {
+    function optimalPayoutDistribution(uint256 tokenEuroConversionRate) public view returns (uint256 maxTokenToBeRewarded, uint256 minPayoutBalance, uint256 error) {
         uint256 cri = INTEREST_RATE.add(tokenEuroConversionRate);
-        return circulatingSupply().mul(INTEREST_RATE).div(cri);
+
+        minPayoutBalance = circulatingSupply().mul(INTEREST_RATE).div(cri);
+        maxTokenToBeRewarded = circulatingSupply().mul(tokenEuroConversionRate).div(cri);
+        error = circulatingSupply().sub(minPayoutBalance).sub(maxTokenToBeRewarded);
+
+        return (maxTokenToBeRewarded, minPayoutBalance, error);
     }
 
-
-
-
-
-
-
     // Pure
-
     function interestRate() public pure returns (uint256) {
         return INTEREST_RATE;
     }

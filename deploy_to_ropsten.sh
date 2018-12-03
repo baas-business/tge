@@ -5,7 +5,7 @@ set  -e
 
 if [ $# -eq 0 ]
   then
-    echo "No destination supplied"
+    echo "no version supplied"
     exit 1
 fi
 
