@@ -1,4 +1,4 @@
-package setup
+package payoutall
 
 import (
 	"github.com/baas/tge-sol/interactor/utils"
@@ -8,9 +8,9 @@ import (
 
 func Command() *cli.Command {
 	return &cli.Command{
-		Usage:     "setup roi",
-		ShortName: "s",
-		Name:      "setup",
+		Usage:     "payout all",
+		ShortName: "p",
+		Name:      "payout",
 		Flags: utils.NewFlags().Get(),
 		Action: func(c *cli.Context) error {
 			tgeContext, err := utils.GetTGEContext(c)

@@ -127,7 +127,6 @@ contract BaasROI is IBaasROI, Ownable {
         return roi(eligibleToken(), tokenEuroConversionRate);
     }
 
-
     function maxTokensToBeRewarded(uint256 tokenEuroConversionRate) public view returns (uint256) {
         uint256 cri = tokenEuroConversionRate.add(INTEREST_RATE);
         return circulatingSupply().mul(tokenEuroConversionRate).div(cri);

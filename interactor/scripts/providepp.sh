@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Example  ./providepp.sh 0x80dEF17bb76025EaBa069dE8D5eBfd8FbFc64D51 300 v0.0.2
+# Example  .scripts/providepp.sh 0x80dEF17bb76025EaBa069dE8D5eBfd8FbFc64D51 300 v0.0.2
 
 set -e
 
@@ -23,3 +23,5 @@ if [ -z "$3" ]
 fi
 
 go run main.go e pp p -target $1 -amount $2 -version $3
+
+#go run main.go e pp p -target 0xc4a5096a2785761dc7c24861d95d1a5cd33b7234 -amount 100000 -version v0.0.10 -discounted

@@ -1,7 +1,7 @@
 package roi
 
 import (
-	"github.com/baas/tge-sol/interactor/transactions/roi/setup"
+	"github.com/baas/tge-sol/interactor/transactions/roi/payoutall"
 	"github.com/urfave/cli"
 )
 
@@ -11,7 +11,7 @@ func Command() *cli.Command {
 		ShortName: "r",
 		Name:      "roi",
 		Subcommands: []cli.Command{
-			*setup.Command(),
+			*payoutall.Command(),
 		},
 	}
 }
