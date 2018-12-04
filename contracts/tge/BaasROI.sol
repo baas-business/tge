@@ -142,6 +142,7 @@ contract BaasROI is IBaasROI, Ownable {
         return (maxTokenToBeRewarded, minPayoutBalance, error);
     }
 
+
     // Pure
     function interestRate() public pure returns (uint256) {
         return INTEREST_RATE;

@@ -36,8 +36,8 @@ contract BaasPP is IBaasPP, Ownable {
     uint8 private constant DISCOUNT_TYPE_DISCOUNTED = 1;
     uint8 private constant DISCOUNT_TYPE_NOT_DISCOUNTED = 2;
 
-    uint256 private constant HARD_CAP_DISCOUNTED_TOKEN = 25 * 10 ** 23;
-    uint256 private constant HARD_CAP_NOT_DISCOUNTED_TOKEN = 175 * 10 ** 23;
+    uint256 private constant HARD_CAP_DISCOUNTED_TOKEN = 50 * 10 ** 23;
+    uint256 private constant HARD_CAP_NOT_DISCOUNTED_TOKEN = 150 * 10 ** 23;
 
     IBaasToken private _token;
 

@@ -6,34 +6,48 @@ import "../ownership/Ownable.sol";
 import "./IBaasToken.sol";
 
 interface IBaasIncentives {
-    function provideIncentive(address account, uint256 amount) external returns (bool);
 
-    function withdraw() external returns (bool);
 
-    event IncentiveProvided(address indexed account, uint256 amount);
+    event IncentiveProvided1(address indexed account, uint256 amount);
+    event IncentiveProvided2(address indexed account, uint vestingStages, uint vestingBlocks);
 
-    event Withdrawn(address indexed account, uint256 amount, uint stage);
+    event Claimed(address indexed account, uint256 amount, uint stage);
+    event Forfeited(address indexed account, uint256 remainingToken);
+
+    event SetupCompleted(uint256 supply);
 }
 
 contract BaasIncentives is IBaasIncentives, Ownable {
     using SafeMath for uint256;
+    using SafeMath for uint;
 
     string private constant NAME = "INCENTIVES";
-    uint constant STAGES = 4;
+    uint8 constant STATE_CAN_CLAIM = 0;
+    uint8 constant STATE_CAN_NOT_CLAIM_YET = 1;
+    uint8 constant STATE_HAS_CLAIMED = 2;
+    uint8 constant STATE_STAGE_NOT_AVAILABLE = 3;
+    uint8 constant STATE_USER_NON_EXISTENT_OR_FORFEITED = 4;
 
     struct Incentive {
         address account;        // the beneficiary of this incentive
-        uint256 initialAmount;  // the incentive amount
-        uint256 withdrawn;      // the amount of tokens already withdrawn
+        uint256 amountPerStage;  // the incentive amount
+        uint256 amountClaimed;      // the amount of tokens already withdrawn
         uint atBlock;           // the time in blocks this incentive was initiated
-        uint stage;            // which stage was withdrawn already
+        uint currentStage;             // which stage was withdrawn already
+        uint totalVestingStages;             // which stage was withdrawn already
+        uint blockTimePerStage;
+        bool[] stagesClaimed;
+        uint[] stagesBlockTime;
+        uint listPointer;
         bool isValue;
     }
 
     mapping(address => Incentive) _incentives;
+    address[] private _incentivesList;
+
     uint256 private _incentivesLeft;
     uint256 private _incentivesProvided;
-    uint private _vestingPeriodInBlocks;
+
     bool private _isInitialized = false;
 
     IBaasToken private _token;
@@ -42,45 +56,106 @@ contract BaasIncentives is IBaasIncentives, Ownable {
         _token = token;
     }
 
-    function setup(uint vestingPeriodInBlocks, uint256 supply) external {
+    function setup() external {
         require(!_isInitialized);
-        _incentivesLeft = supply;
+        _incentivesLeft = balance();
         _incentivesProvided = 0;
-        _vestingPeriodInBlocks = vestingPeriodInBlocks;
+        emit SetupCompleted(_incentivesLeft);
     }
 
-    function provideIncentive(address account, uint256 amount) external onlyOwner returns (bool) {
-        require(amount <= _incentivesLeft);
+    function reward(address account, uint256 amountPerStage, uint totalVestingStages, uint blockTimePerStage) external onlyOwner returns (bool) {
+        require(!_isInitialized);
+        require(blockTimePerStage > 0);
+        require(totalVestingStages > 0);
         require(!_incentives[account].isValue);
+        require(amountPerStage <= _incentivesLeft);
 
-        _incentivesLeft = _incentivesLeft.sub(amount);
-        _incentivesProvided = _incentivesProvided.add(amount);
 
-        _incentives[account] = Incentive(account, amount, 0, block.number, 0, true);
+        // update incentive storage
+        _incentives[account] = Incentive(account, amountPerStage, 0, block.number, 0, totalVestingStages, blockTimePerStage, new bool[](0), new uint[](0), _incentivesList.length, true);
+        _incentivesList.push(account);
 
-        emit IncentiveProvided(account, amount);
+        for (uint i = 0; i < totalVestingStages; i++) {
+            _incentives[account].stagesClaimed.push(false);
+
+            uint blockTime = blockTimePerStage.mul(i) + block.number;
+            _incentives[account].stagesBlockTime.push(blockTime);
+        }
+
+
+        // update contract balance
+        _incentivesLeft = _incentivesLeft.sub(amountPerStage);
+        _incentivesProvided = _incentivesProvided.add(amountPerStage);
+
+        emit IncentiveProvided1(account, amountPerStage);
+        emit IncentiveProvided2(account, totalVestingStages, blockTimePerStage);
 
         return true;
     }
 
-    function withdraw() external returns (bool) {
-        require(_incentives[msg.sender].isValue);
+    function forfeited(address account) external onlyOwner returns (bool) {
+        require(_incentives[account].isValue);
+        _incentives[account].isValue = false;
 
-        uint256 chunks = _incentives[msg.sender].initialAmount / STAGES;
-
-        uint stagesCurrentlyAllowed = (block.number - _incentives[msg.sender].atBlock) / _vestingPeriodInBlocks;
-        uint stagesToBePaidOut = stagesCurrentlyAllowed - _incentives[msg.sender].stage + 1;
-        uint256 amount = chunks.mul(stagesToBePaidOut);
-
-        require(stagesToBePaidOut > 0);
-        require(_token.transfer(msg.sender, amount));
-
-        _incentives[msg.sender].stage = stagesToBePaidOut;
-        _incentives[msg.sender].withdrawn = _incentives[msg.sender].withdrawn.add(amount);
-
-        emit Withdrawn(msg.sender, amount, stagesToBePaidOut);
+        uint256 remaining = _claim(account);
+        _incentivesLeft = _incentivesLeft.add(remaining);
+        _incentivesProvided = _incentivesProvided.sub(remaining);
+        emit Forfeited(account, remaining);
+        return true;
     }
 
+    function claim() external returns (uint256) {
+        return _claim(msg.sender);
+    }
+
+    function _claim(address account) internal returns (uint256 rest) {
+        require(!_isInitialized);
+
+        Incentive memory incentive = _incentives[msg.sender];
+        require(incentive.isValue);
+
+        uint256 total = 0;
+        for (uint i = 0; i < incentive.totalVestingStages; i++) {
+            if (!incentive.stagesClaimed[i]) {
+                if (incentive.stagesBlockTime[i] <= block.number) {
+                    incentive.amountClaimed = incentive.amountClaimed.add(incentive.amountPerStage);
+                    incentive.stagesClaimed[i] = true;
+                    total = total.add(incentive.amountPerStage);
+
+                    emit Claimed(account, incentive.amountPerStage, i);
+                } else {
+                    break;
+                }
+            }
+        }
+
+
+        require(_token.transfer(account, total));
+
+        return incentive.amountPerStage.mul(incentive.totalVestingStages).sub(incentive.amountClaimed);
+    }
+
+    function claimState(address account, uint stage) public view returns (uint8) {
+        Incentive memory i = _incentives[account];
+
+        if (!i.isValue) {
+            return STATE_USER_NON_EXISTENT_OR_FORFEITED;
+        }
+
+        if (i.stagesClaimed.length - 1 <= stage) {
+            return STATE_STAGE_NOT_AVAILABLE;
+        }
+
+        if (i.stagesClaimed[stage]) {
+            return STATE_HAS_CLAIMED;
+        }
+
+        if (i.stagesBlockTime[stage] < block.number) {
+            return STATE_CAN_NOT_CLAIM_YET;
+        }
+
+        return STATE_CAN_CLAIM;
+    }
     // Views
 
     function balance() public view returns (uint256) {
@@ -99,38 +174,32 @@ contract BaasIncentives is IBaasIncentives, Ownable {
         return _incentivesProvided;
     }
 
-    function vestingPeriodInBlocks() public view returns (uint) {
-        return _vestingPeriodInBlocks;
-    }
-
     function isInitialized() public view returns (bool) {
         return _isInitialized;
     }
 
+    function incentives() public view returns (address[]) {
+        return _incentivesList;
+    }
+
     function getIncentive(address account)
-    public view returns (uint256 initialAmount, uint256 withdrawn, uint atBlock, uint stage, bool isValue) {
+    public view returns (
+        uint256 initialAmount,
+        uint256 withdrawn,
+        uint atBlock,
+        uint currentStage,
+        uint totalStages,
+        uint totalBlocks,
+        bool[] stagesClaimed,
+        uint[] stagesBlockTime,
+        bool isValue
+    ) {
         Incentive memory i = _incentives[account];
 
-        return (i.initialAmount, i.withdrawn, i.atBlock, i.stage, i.isValue);
+        return (i.amountPerStage, i.amountClaimed, i.atBlock, i.currentStage, i.totalVestingStages, i.blockTimePerStage, i.stagesClaimed, i.stagesBlockTime, i.isValue);
     }
 
-    /*
-        canWithdraw returns the amount, block number at which account can withdraw this stage
-        and a flag if it already happened.
-    */
-    function canWithdraw(address account, uint stage) public view returns (uint256 amount, uint atBlock, bool alreadyWithdrawn) {
-        if (stage == 0) {
-            return (0, 0, false);
-        }
-
-        Incentive memory i = _incentives[account];
-
-        amount = i.initialAmount / STAGES;
-        atBlock = i.atBlock + (stage - 1) * _vestingPeriodInBlocks;
-        alreadyWithdrawn = i.stage >= stage;
-
-        return (amount, atBlock, alreadyWithdrawn);
-    }
+    // pure
 
     function name() public pure returns (string) {
         return NAME;
