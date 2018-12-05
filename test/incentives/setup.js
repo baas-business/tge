@@ -4,7 +4,6 @@ var BaasInc = artifacts.require("./BaasIncentives.sol");
 
 module.exports = {
     setup: async function(accounts)  {
-        console.log("Setting up contracts");
         const escrowAddress = accounts[0];
         const ppAddress = accounts[1];
         const founderAddress = accounts[2];

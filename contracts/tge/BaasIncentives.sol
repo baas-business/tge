@@ -16,24 +16,26 @@ interface IBaasIncentives {
 
     event SetupCompleted(uint256 supply);
 }
-
+/*
+    Can claim first stage immediately?
+*/
 contract BaasIncentives is IBaasIncentives, Ownable {
     using SafeMath for uint256;
     using SafeMath for uint;
 
     string private constant NAME = "INCENTIVES";
-    uint8 constant STATE_CAN_CLAIM = 0;
-    uint8 constant STATE_CAN_NOT_CLAIM_YET = 1;
-    uint8 constant STATE_HAS_CLAIMED = 2;
-    uint8 constant STATE_STAGE_NOT_AVAILABLE = 3;
-    uint8 constant STATE_USER_NON_EXISTENT_OR_FORFEITED = 4;
+
+    uint8 private constant STATE_CAN_CLAIM = 0;
+    uint8 private constant STATE_CAN_NOT_CLAIM_YET = 1;
+    uint8 private constant STATE_HAS_CLAIMED = 2;
+    uint8 private constant STATE_STAGE_NOT_AVAILABLE = 3;
+    uint8 private constant STATE_USER_NON_EXISTENT_OR_FORFEITED = 4;
 
     struct Incentive {
         address account;        // the beneficiary of this incentive
         uint256 amountPerStage;  // the incentive amount
         uint256 amountClaimed;      // the amount of tokens already withdrawn
         uint atBlock;           // the time in blocks this incentive was initiated
-        uint currentStage;             // which stage was withdrawn already
         uint totalVestingStages;             // which stage was withdrawn already
         uint blockTimePerStage;
         bool[] stagesClaimed;
@@ -73,7 +75,7 @@ contract BaasIncentives is IBaasIncentives, Ownable {
 
 
         // update incentive storage
-        _incentives[account] = Incentive(account, amountPerStage, 0, block.number, 0, totalVestingStages, blockTimePerStage, new bool[](0), new uint[](0), _incentivesList.length, true);
+        _incentives[account] = Incentive(account, amountPerStage, 0, block.number, totalVestingStages, blockTimePerStage, new bool[](0), new uint[](0), _incentivesList.length, true);
         _incentivesList.push(account);
 
         for (uint i = 0; i < totalVestingStages; i++) {
@@ -136,7 +138,7 @@ contract BaasIncentives is IBaasIncentives, Ownable {
         return incentive.amountPerStage.mul(incentive.totalVestingStages).sub(incentive.amountClaimed);
     }
 
-    function claimState(address account, uint stage) public view returns (uint8) {
+    function state(address account, uint stage, uint blockNumber) public view returns (uint8) {
         Incentive memory i = _incentives[account];
 
         if (!i.isValue) {
@@ -151,7 +153,7 @@ contract BaasIncentives is IBaasIncentives, Ownable {
             return STATE_HAS_CLAIMED;
         }
 
-        if (i.stagesBlockTime[stage] < block.number) {
+        if (i.stagesBlockTime[stage] > blockNumber) {
             return STATE_CAN_NOT_CLAIM_YET;
         }
 
@@ -188,7 +190,6 @@ contract BaasIncentives is IBaasIncentives, Ownable {
         uint256 initialAmount,
         uint256 withdrawn,
         uint atBlock,
-        uint currentStage,
         uint totalStages,
         uint totalBlocks,
         bool[] stagesClaimed,
@@ -197,7 +198,7 @@ contract BaasIncentives is IBaasIncentives, Ownable {
     ) {
         Incentive memory i = _incentives[account];
 
-        return (i.amountPerStage, i.amountClaimed, i.atBlock, i.currentStage, i.totalVestingStages, i.blockTimePerStage, i.stagesClaimed, i.stagesBlockTime, i.isValue);
+        return (i.amountPerStage, i.amountClaimed, i.atBlock, i.totalVestingStages, i.blockTimePerStage, i.stagesClaimed, i.stagesBlockTime, i.isValue);
     }
 
     // pure

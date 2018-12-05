@@ -59,22 +59,20 @@ const validateContractState = async (baasInc, arg) => {
     i[1].should.be.bignumber.equal(0);
     //     uint atBlock
     const blocknumber = i[2];
-    //     uint currentStage
-    i[3].should.be.bignumber.equal(0);
     //     uint totalStages
-    i[4].should.be.bignumber.equal(arg.vestingStages);
+    i[3].should.be.bignumber.equal(arg.vestingStages);
     //     uint totalBlocks
-    i[5].should.be.bignumber.equal(arg.stagesBlockTime);
+    i[4].should.be.bignumber.equal(arg.stagesBlockTime);
     //     bool[] stagesClaimed
-    assert.equal(arg.vestingStages, i[6].length);
-    i[6].forEach((e) => {
+    assert.equal(arg.vestingStages, i[5].length);
+    i[5].forEach((e) => {
         assert.equal(false, e);
     });
     //     uint[] stagesBlockTime
-    assert.equal(arg.vestingStages, i[7].length);
-    i[7].forEach((e,i) => {
+    assert.equal(arg.vestingStages, i[6].length);
+    i[6].forEach((e,i) => {
         e.should.be.bignumber.equal(blocknumber.add(arg.stagesBlockTime * i));
     });
     //     bool isValue
-    assert.equal(true, i[8]);
+    assert.equal(true, i[7]);
 };
