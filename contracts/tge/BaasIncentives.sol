@@ -65,7 +65,7 @@ contract BaasIncentives is IBaasIncentives, Ownable {
     }
 
     function reward(address account, uint256 amountPerStage, uint totalVestingStages, uint blockTimePerStage) external onlyOwner returns (bool) {
-        require(!_isInitialized);
+        require(_isInitialized);
         require(blockTimePerStage > 0);
         require(totalVestingStages > 0);
         require(!_incentives[account].isValue);
