@@ -29,7 +29,7 @@ go run main.go e d -version $version
 echo "4/$total Setting Up Baas Token"
 go run main.go e s -version $version
 echo "5/$total Setting Up Baas Token"
-go run main.go e i
+go run main.go e i s -version $version
 popd
 
 echo "6/$total Copying configuration to web3 app and Etherlytics"

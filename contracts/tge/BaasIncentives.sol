@@ -60,6 +60,7 @@ contract BaasIncentives is IBaasIncentives, Ownable {
         require(!_isInitialized);
         _incentivesLeft = balance();
         _incentivesProvided = 0;
+        _isInitialized = true;
         emit SetupCompleted(_incentivesLeft);
     }
 

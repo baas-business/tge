@@ -12,6 +12,7 @@ import (
 
 func process(tgeContext *utils.TGEContext, args *CommandArgs) error {
 	fmt.Println("Reward Incentive")
+	fmt.Println(args)
 	txOps := bind.NewKeyedTransactor(tgeContext.Key.PrivateKey)
 	txOps.Value = big.NewInt(0)
 
