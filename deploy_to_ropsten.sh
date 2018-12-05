@@ -10,30 +10,34 @@ if [ $# -eq 0 ]
 fi
 
 version=$1
+total=7
+current=0
 
-echo "1/6 Compiling Contracts"
+echo "1/$total Compiling Contracts"
 truffle compile
 
-echo "2/6 Generating Code"
+echo "2/$total Generating Code"
 pushd scripts
 ./generate_code.sh
 popd
 
 pushd interactor
 # deploy contracts
-echo "3/6 Deploying Contracts"
+echo "3/$total Deploying Contracts"
 go run main.go e d -version $version
 # setup BaasToken
-echo "4/6 Setting Up Baas Token"
+echo "4/$total Setting Up Baas Token"
 go run main.go e s -version $version
+echo "5/$total Setting Up Baas Token"
+go run main.go e i
 popd
 
-echo "5/6 Copying configuration to web3 app and Etherlytics"
+echo "6/$total Copying configuration to web3 app and Etherlytics"
 pushd scripts
 ./copy_config.sh $version
 popd
 
-echo "6/6 Committing and Pushing"
+echo "7/$total Committing and Pushing"
 git add -A
 git commit -a -m "deployed $version to ropsten"
 git tag -a $version -m 'ropsten deployment'
