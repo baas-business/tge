@@ -127,7 +127,7 @@ func FounderInfo(tgeContext *utils.TGEContext) {
 func IncentiveInfo(tgeContext *utils.TGEContext) {
 	fmt.Println("\nIncentives: ")
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasIncentive(*tgeContext.IncentivesAddress(), tgeContext.Client)
+	contract, err := contracts.NewBaasIncentives(*tgeContext.IncentivesAddress(), tgeContext.Client)
 
 	if err != nil {
 		log.Fatal(err)

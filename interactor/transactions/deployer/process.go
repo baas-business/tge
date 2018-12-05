@@ -104,7 +104,7 @@ func deployBaasEscrow(txOps *bind.TransactOpts, client *ethclient.Client, cc *co
 }
 
 func deployBaasIncentives(txOps *bind.TransactOpts, client *ethclient.Client, cc *config.ContractConfig) (*common.Address, error) {
-	addr, tx, _, err := contracts.DeployBaasIncentive(txOps, client, *cc.TokenAddress)
+	addr, tx, _, err := contracts.DeployBaasIncentives(txOps, client, *cc.TokenAddress)
 
 	if err != nil {
 		return nil, err

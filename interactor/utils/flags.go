@@ -5,7 +5,10 @@ import (
 	"github.com/urfave/cli"
 )
 
-const Infura = "https://ropsten.infura.io/3l5dxBOP3wPspnRDdG1u"
+const RopstenInfura = "https://ropsten.infura.io/qyXg12v7VcFCETVWfUaJ/"
+const KovanInfura = "https://kovan.infura.io/qyXg12v7VcFCETVWfUaJ/"
+const Ganache = "http://localhost:7545"
+const LocalDevNode = "http://localhost:8545"
 
 type CliFlagsBuilder struct {
 	flags []cli.Flag
@@ -16,7 +19,7 @@ func NewFlags() *CliFlagsBuilder {
 		flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "httpPath",
-				Value: "https://ropsten.infura.io/qyXg12v7VcFCETVWfUaJ/",
+				Value: LocalDevNode,
 				Usage: "HTTP-RPC server listening interface",
 			},
 			cli.StringFlag{
