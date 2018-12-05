@@ -145,7 +145,7 @@ contract BaasIncentives is IBaasIncentives, Ownable {
             return STATE_USER_NON_EXISTENT_OR_FORFEITED;
         }
 
-        if (i.stagesClaimed.length - 1 <= stage) {
+        if (stage > i.stagesClaimed.length - 1) {
             return STATE_STAGE_NOT_AVAILABLE;
         }
 
