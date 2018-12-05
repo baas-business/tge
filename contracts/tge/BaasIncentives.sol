@@ -112,7 +112,7 @@ contract BaasIncentives is IBaasIncentives, Ownable {
     }
 
     function _claim(address account) internal returns (uint256 rest) {
-        require(!_isInitialized);
+        require(_isInitialized);
 
         Incentive memory incentive = _incentives[msg.sender];
         require(incentive.isValue);
@@ -121,8 +121,8 @@ contract BaasIncentives is IBaasIncentives, Ownable {
         for (uint i = 0; i < incentive.totalVestingStages; i++) {
             if (!incentive.stagesClaimed[i]) {
                 if (incentive.stagesBlockTime[i] <= block.number) {
-                    incentive.amountClaimed = incentive.amountClaimed.add(incentive.amountPerStage);
-                    incentive.stagesClaimed[i] = true;
+                    _incentives[msg.sender].amountClaimed = _incentives[msg.sender].amountClaimed.add(incentive.amountPerStage);
+                    _incentives[msg.sender].stagesClaimed[i] = true;
                     total = total.add(incentive.amountPerStage);
 
                     emit Claimed(account, incentive.amountPerStage, i);

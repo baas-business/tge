@@ -7,9 +7,12 @@ import "./IBaasToken.sol";
 
 
 interface IBaasEscrow {
-    function raiseCapital(uint256 amount) external returns (bool);
 
     event CapitalRaised(uint indexed id, uint256 amount);
+
+    event SetupCompleted(uint vestingStartBlock, uint vestingPeriod, uint vestingEndBlock);
+
+    event TokenDelivered(address indexed to, uint256 amount, uint256 tokenPrice);
 }
 
 
@@ -24,6 +27,10 @@ contract BaasEscrow is IBaasEscrow, Ownable {
     string private constant NAME = "ESCROW";
     IBaasToken private _token;
 
+
+    uint256 private _vestingStart;
+    uint256 private _vestingPeriod;
+
     uint256 private raisedCapital;
 
     struct CapitalRaise {
@@ -36,16 +43,26 @@ contract BaasEscrow is IBaasEscrow, Ownable {
     mapping(uint => mapping(address => uint256)) private whiteListed;
 
 
+    bool private _isInitialized = false;
+
     constructor(IBaasToken token) public {
         _token = token;
     }
 
+    function setup(uint256 vestingPeriod)
+    external onlyOwner returns (bool) {
+        _vestingStart = block.number;
+        _vestingPeriod = vestingPeriod;
+        _isInitialized = true;
+        emit SetupCompleted(_vestingStart, _vestingPeriod, _vestingStart.add(_vestingPeriod));
+    }
+
     function raiseCapital(uint256 amount, uint id) external onlyOwner returns (bool) {
+        require(canRaise(block.number));
         require(amount <= balance());
         require(!capitalRaises[id].isValue);
 
         capitalRaises[id] = CapitalRaise(id, amount, true);
-
 
 
         address escrowAddress;
@@ -71,11 +88,21 @@ contract BaasEscrow is IBaasEscrow, Ownable {
         return true;
     }
 
-//    function allow(address receiver, uint256 amount, uint256 conversionRate) external onlyOwner returns (bool) {
-//
-//    }
+
+    function provideToken(address account, uint256 amount, uint256 conversionRate)
+    external onlyOwner returns (bool) {
+        require(_token.transfer(account, amount));
+
+        emit TokenDelivered(account, amount, conversionRate);
+
+        return true;
+    }
 
     // Views
+
+    function isInitialized() public view returns (bool) {
+        return _isInitialized;
+    }
 
     function balance() public view returns (uint256) {
         return _token.balanceOf(address(this));
@@ -88,4 +115,22 @@ contract BaasEscrow is IBaasEscrow, Ownable {
     function name() public pure returns (string) {
         return NAME;
     }
+
+
+    function vestingStartBlock() public view returns (uint) {
+        return _vestingStart;
+    }
+
+    function vestingPeriod() public view returns (uint) {
+        return _vestingPeriod;
+    }
+
+    function vestingEndBlock() public view returns (uint) {
+        return _vestingStart.add(_vestingPeriod);
+    }
+
+    function canRaise(uint blocknumber) public view returns (bool) {
+        return vestingEndBlock() <= blocknumber;
+    }
+
 }

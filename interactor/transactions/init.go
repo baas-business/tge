@@ -2,6 +2,9 @@ package transactions
 
 import (
 	"github.com/baas/tge-sol/interactor/transactions/deployer"
+	"github.com/baas/tge-sol/interactor/transactions/escrow"
+	"github.com/baas/tge-sol/interactor/transactions/founder"
+	"github.com/baas/tge-sol/interactor/transactions/helper"
 	"github.com/baas/tge-sol/interactor/transactions/incentive"
 	"github.com/baas/tge-sol/interactor/transactions/pp"
 	"github.com/baas/tge-sol/interactor/transactions/roi"
@@ -20,6 +23,9 @@ func Command() *cli.Command {
 			*setup.Command(),
 			*roi.Command(),
 			*incentive.Command(),
+			*helper.Command(),
+			*founder.Command(),
+			*escrow.Command(),
 		},
 	}
 }

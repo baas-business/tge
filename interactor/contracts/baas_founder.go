@@ -16,10 +16,10 @@ import (
 )
 
 // BaasFounderABI is the input ABI used to generate the binding from.
-const BaasFounderABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"oldAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"newAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"index\",\"type\":\"int256\"}],\"name\":\"FounderChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"founder1\",\"type\":\"address\"},{\"name\":\"founder2\",\"type\":\"address\"},{\"name\":\"vestingStart\",\"type\":\"uint256\"},{\"name\":\"vestingPeriod\",\"type\":\"uint256\"}],\"name\":\"setup\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newAddress\",\"type\":\"address\"},{\"name\":\"index\",\"type\":\"int256\"}],\"name\":\"changeFounder\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"Founder1\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"Founder2\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
+const BaasFounderABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"receiver\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"FounderWithdraw\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"vestingStartBlock\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"vestingPeriod\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"vestingEndBlock\",\"type\":\"uint256\"}],\"name\":\"SetupCompleted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"vestingPeriod\",\"type\":\"uint256\"}],\"name\":\"setup\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isInitialized\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"vestingStartBlock\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"vestingPeriod\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"vestingEndBlock\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"blocknumber\",\"type\":\"uint256\"}],\"name\":\"canWithdraw\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
 
 // BaasFounderBin is the compiled bytecode used for deploying new contracts.
-const BaasFounderBin = `0x608060405234801561001057600080fd5b50604051602080610c2183398101806040528101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600560006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050610ae1806101406000396000f3006080604052600436106100af576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306fdde03146100b457806316ecc686146101445780636ce6cc0a146101d3578063715018a614610238578063880cab291461024f5780638da5cb5b146102a65780638f32d59b146102fd5780639d76ea581461032c578063a192a42514610383578063b69ef8a8146103da578063f2fde38b14610405575b600080fd5b3480156100c057600080fd5b506100c9610448565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101095780820151818401526020810190506100ee565b50505050905090810190601f1680156101365780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561015057600080fd5b506101b9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190505050610485565b604051808215151515815260200191505060405180910390f35b3480156101df57600080fd5b5061021e600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610532565b604051808215151515815260200191505060405180910390f35b34801561024457600080fd5b5061024d6106cd565b005b34801561025b57600080fd5b5061026461079f565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156102b257600080fd5b506102bb6107c9565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561030957600080fd5b506103126107f2565b604051808215151515815260200191505060405180910390f35b34801561033857600080fd5b50610341610849565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561038f57600080fd5b50610398610873565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156103e657600080fd5b506103ef61089d565b6040518082815260200191505060405180910390f35b34801561041157600080fd5b50610446600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061099c565b005b60606040805190810160405280600781526020017f464f554e44455200000000000000000000000000000000000000000000000000815250905090565b600061048f6107f2565b151561049a57600080fd5b84600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555083600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508260038190555081600481905550949350505050565b60008061053d6107f2565b151561054857600080fd5b60008314156105bc57600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905083600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610623565b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905083600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505b7fe1bca451dd7dde7f7e5ea0fce980d0d8f9b19ed289454fa173631c0d07760a94818585604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001935050505060405180910390a1600191505092915050565b6106d56107f2565b15156106e057600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600560009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600560009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561095c57600080fd5b505af1158015610970573d6000803e3d6000fd5b505050506040513d602081101561098657600080fd5b8101908080519060200190929190505050905090565b6109a46107f2565b15156109af57600080fd5b6109b8816109bb565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156109f757600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a7230582036868a7551137c0e885138da34de0cc3772be79a58cee9b898202fb5ab280ad70029`
+const BaasFounderBin = `0x60806040526000600360006101000a81548160ff02191690831515021790555034801561002b57600080fd5b50604051602080610c9d83398101806040528101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600360016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050610b428061015b6000396000f3006080604052600436106100d0576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306fdde03146100d5578063392e53cd146101655780634313b9e51461019457806356d17abf146101d9578063715018a6146102045780637313ee5a1461021b5780638da5cb5b146102465780638f32d59b1461029d5780639d76ea58146102cc5780639edf4e6414610323578063b69ef8a81461034e578063f2fde38b14610379578063f3fef3a3146103bc578063fbe85f0614610421575b600080fd5b3480156100e157600080fd5b506100ea610466565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561012a57808201518184015260208101905061010f565b50505050905090810190601f1680156101575780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561017157600080fd5b5061017a6104a3565b604051808215151515815260200191505060405180910390f35b3480156101a057600080fd5b506101bf600480360381019080803590602001909291905050506104ba565b604051808215151515815260200191505060405180910390f35b3480156101e557600080fd5b506101ee61055e565b6040518082815260200191505060405180910390f35b34801561021057600080fd5b5061021961057c565b005b34801561022757600080fd5b5061023061064e565b6040518082815260200191505060405180910390f35b34801561025257600080fd5b5061025b610658565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156102a957600080fd5b506102b2610681565b604051808215151515815260200191505060405180910390f35b3480156102d857600080fd5b506102e16106d8565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561032f57600080fd5b50610338610702565b6040518082815260200191505060405180910390f35b34801561035a57600080fd5b5061036361070c565b6040518082815260200191505060405180910390f35b34801561038557600080fd5b506103ba600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061080b565b005b3480156103c857600080fd5b50610407600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919050505061082a565b604051808215151515815260200191505060405180910390f35b34801561042d57600080fd5b5061044c600480360381019080803590602001909291905050506109e7565b604051808215151515815260200191505060405180910390f35b60606040805190810160405280600781526020017f464f554e44455200000000000000000000000000000000000000000000000000815250905090565b6000600360009054906101000a900460ff16905090565b60006104c4610681565b15156104cf57600080fd5b43600181905550816002819055506001600360006101000a81548160ff0219169083151502179055507f05e6f0d652e49955317590bd949b5d7600bc573d84320a97c0fec4dc5cdbd0996001546002546105366002546001546109fb90919063ffffffff16565b60405180848152602001838152602001828152602001935050505060405180910390a1919050565b60006105776002546001546109fb90919063ffffffff16565b905090565b610584610681565b151561058f57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000600254905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600360019054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600154905090565b6000600360019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b1580156107cb57600080fd5b505af11580156107df573d6000803e3d6000fd5b505050506040513d60208110156107f557600080fd5b8101908080519060200190929190505050905090565b610813610681565b151561081e57600080fd5b61082781610a1c565b50565b6000610834610681565b151561083f57600080fd5b600360009054906101000a900460ff16151561085a57600080fd5b610863436109e7565b151561086e57600080fd5b61087661070c565b821115151561088457600080fd5b600360019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb84846040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15801561094957600080fd5b505af115801561095d573d6000803e3d6000fd5b505050506040513d602081101561097357600080fd5b8101908080519060200190929190505050151561098f57600080fd5b8273ffffffffffffffffffffffffffffffffffffffff167f60ca83f5e5baea21ed476b19b1333e0823cc130945297b532873df0ba8b970c9836040518082815260200191505060405180910390a26001905092915050565b6000816109f261055e565b11159050919050565b6000808284019050838110151515610a1257600080fd5b8091505092915050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614151515610a5857600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820021b506b4313ae3d060fe64c50e5e331b83d0b2c1466bb5b34f3a5b77e51781b0029`
 
 // DeployBaasFounder deploys a new Ethereum contract, binding an instance of BaasFounder to it.
 func DeployBaasFounder(auth *bind.TransactOpts, backend bind.ContractBackend, token common.Address) (common.Address, *types.Transaction, *BaasFounder, error) {
@@ -176,58 +176,6 @@ func (_BaasFounder *BaasFounderTransactorRaw) Transact(opts *bind.TransactOpts, 
 	return _BaasFounder.Contract.contract.Transact(opts, method, params...)
 }
 
-// Founder1 is a free data retrieval call binding the contract method 0xa192a425.
-//
-// Solidity: function Founder1() constant returns(address)
-func (_BaasFounder *BaasFounderCaller) Founder1(opts *bind.CallOpts) (common.Address, error) {
-	var (
-		ret0 = new(common.Address)
-	)
-	out := ret0
-	err := _BaasFounder.contract.Call(opts, out, "Founder1")
-	return *ret0, err
-}
-
-// Founder1 is a free data retrieval call binding the contract method 0xa192a425.
-//
-// Solidity: function Founder1() constant returns(address)
-func (_BaasFounder *BaasFounderSession) Founder1() (common.Address, error) {
-	return _BaasFounder.Contract.Founder1(&_BaasFounder.CallOpts)
-}
-
-// Founder1 is a free data retrieval call binding the contract method 0xa192a425.
-//
-// Solidity: function Founder1() constant returns(address)
-func (_BaasFounder *BaasFounderCallerSession) Founder1() (common.Address, error) {
-	return _BaasFounder.Contract.Founder1(&_BaasFounder.CallOpts)
-}
-
-// Founder2 is a free data retrieval call binding the contract method 0x880cab29.
-//
-// Solidity: function Founder2() constant returns(address)
-func (_BaasFounder *BaasFounderCaller) Founder2(opts *bind.CallOpts) (common.Address, error) {
-	var (
-		ret0 = new(common.Address)
-	)
-	out := ret0
-	err := _BaasFounder.contract.Call(opts, out, "Founder2")
-	return *ret0, err
-}
-
-// Founder2 is a free data retrieval call binding the contract method 0x880cab29.
-//
-// Solidity: function Founder2() constant returns(address)
-func (_BaasFounder *BaasFounderSession) Founder2() (common.Address, error) {
-	return _BaasFounder.Contract.Founder2(&_BaasFounder.CallOpts)
-}
-
-// Founder2 is a free data retrieval call binding the contract method 0x880cab29.
-//
-// Solidity: function Founder2() constant returns(address)
-func (_BaasFounder *BaasFounderCallerSession) Founder2() (common.Address, error) {
-	return _BaasFounder.Contract.Founder2(&_BaasFounder.CallOpts)
-}
-
 // Balance is a free data retrieval call binding the contract method 0xb69ef8a8.
 //
 // Solidity: function balance() constant returns(uint256)
@@ -252,6 +200,58 @@ func (_BaasFounder *BaasFounderSession) Balance() (*big.Int, error) {
 // Solidity: function balance() constant returns(uint256)
 func (_BaasFounder *BaasFounderCallerSession) Balance() (*big.Int, error) {
 	return _BaasFounder.Contract.Balance(&_BaasFounder.CallOpts)
+}
+
+// CanWithdraw is a free data retrieval call binding the contract method 0xfbe85f06.
+//
+// Solidity: function canWithdraw(blocknumber uint256) constant returns(bool)
+func (_BaasFounder *BaasFounderCaller) CanWithdraw(opts *bind.CallOpts, blocknumber *big.Int) (bool, error) {
+	var (
+		ret0 = new(bool)
+	)
+	out := ret0
+	err := _BaasFounder.contract.Call(opts, out, "canWithdraw", blocknumber)
+	return *ret0, err
+}
+
+// CanWithdraw is a free data retrieval call binding the contract method 0xfbe85f06.
+//
+// Solidity: function canWithdraw(blocknumber uint256) constant returns(bool)
+func (_BaasFounder *BaasFounderSession) CanWithdraw(blocknumber *big.Int) (bool, error) {
+	return _BaasFounder.Contract.CanWithdraw(&_BaasFounder.CallOpts, blocknumber)
+}
+
+// CanWithdraw is a free data retrieval call binding the contract method 0xfbe85f06.
+//
+// Solidity: function canWithdraw(blocknumber uint256) constant returns(bool)
+func (_BaasFounder *BaasFounderCallerSession) CanWithdraw(blocknumber *big.Int) (bool, error) {
+	return _BaasFounder.Contract.CanWithdraw(&_BaasFounder.CallOpts, blocknumber)
+}
+
+// IsInitialized is a free data retrieval call binding the contract method 0x392e53cd.
+//
+// Solidity: function isInitialized() constant returns(bool)
+func (_BaasFounder *BaasFounderCaller) IsInitialized(opts *bind.CallOpts) (bool, error) {
+	var (
+		ret0 = new(bool)
+	)
+	out := ret0
+	err := _BaasFounder.contract.Call(opts, out, "isInitialized")
+	return *ret0, err
+}
+
+// IsInitialized is a free data retrieval call binding the contract method 0x392e53cd.
+//
+// Solidity: function isInitialized() constant returns(bool)
+func (_BaasFounder *BaasFounderSession) IsInitialized() (bool, error) {
+	return _BaasFounder.Contract.IsInitialized(&_BaasFounder.CallOpts)
+}
+
+// IsInitialized is a free data retrieval call binding the contract method 0x392e53cd.
+//
+// Solidity: function isInitialized() constant returns(bool)
+func (_BaasFounder *BaasFounderCallerSession) IsInitialized() (bool, error) {
+	return _BaasFounder.Contract.IsInitialized(&_BaasFounder.CallOpts)
 }
 
 // IsOwner is a free data retrieval call binding the contract method 0x8f32d59b.
@@ -358,25 +358,82 @@ func (_BaasFounder *BaasFounderCallerSession) TokenAddress() (common.Address, er
 	return _BaasFounder.Contract.TokenAddress(&_BaasFounder.CallOpts)
 }
 
-// ChangeFounder is a paid mutator transaction binding the contract method 0x6ce6cc0a.
+// VestingEndBlock is a free data retrieval call binding the contract method 0x56d17abf.
 //
-// Solidity: function changeFounder(newAddress address, index int256) returns(bool)
-func (_BaasFounder *BaasFounderTransactor) ChangeFounder(opts *bind.TransactOpts, newAddress common.Address, index *big.Int) (*types.Transaction, error) {
-	return _BaasFounder.contract.Transact(opts, "changeFounder", newAddress, index)
+// Solidity: function vestingEndBlock() constant returns(uint256)
+func (_BaasFounder *BaasFounderCaller) VestingEndBlock(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasFounder.contract.Call(opts, out, "vestingEndBlock")
+	return *ret0, err
 }
 
-// ChangeFounder is a paid mutator transaction binding the contract method 0x6ce6cc0a.
+// VestingEndBlock is a free data retrieval call binding the contract method 0x56d17abf.
 //
-// Solidity: function changeFounder(newAddress address, index int256) returns(bool)
-func (_BaasFounder *BaasFounderSession) ChangeFounder(newAddress common.Address, index *big.Int) (*types.Transaction, error) {
-	return _BaasFounder.Contract.ChangeFounder(&_BaasFounder.TransactOpts, newAddress, index)
+// Solidity: function vestingEndBlock() constant returns(uint256)
+func (_BaasFounder *BaasFounderSession) VestingEndBlock() (*big.Int, error) {
+	return _BaasFounder.Contract.VestingEndBlock(&_BaasFounder.CallOpts)
 }
 
-// ChangeFounder is a paid mutator transaction binding the contract method 0x6ce6cc0a.
+// VestingEndBlock is a free data retrieval call binding the contract method 0x56d17abf.
 //
-// Solidity: function changeFounder(newAddress address, index int256) returns(bool)
-func (_BaasFounder *BaasFounderTransactorSession) ChangeFounder(newAddress common.Address, index *big.Int) (*types.Transaction, error) {
-	return _BaasFounder.Contract.ChangeFounder(&_BaasFounder.TransactOpts, newAddress, index)
+// Solidity: function vestingEndBlock() constant returns(uint256)
+func (_BaasFounder *BaasFounderCallerSession) VestingEndBlock() (*big.Int, error) {
+	return _BaasFounder.Contract.VestingEndBlock(&_BaasFounder.CallOpts)
+}
+
+// VestingPeriod is a free data retrieval call binding the contract method 0x7313ee5a.
+//
+// Solidity: function vestingPeriod() constant returns(uint256)
+func (_BaasFounder *BaasFounderCaller) VestingPeriod(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasFounder.contract.Call(opts, out, "vestingPeriod")
+	return *ret0, err
+}
+
+// VestingPeriod is a free data retrieval call binding the contract method 0x7313ee5a.
+//
+// Solidity: function vestingPeriod() constant returns(uint256)
+func (_BaasFounder *BaasFounderSession) VestingPeriod() (*big.Int, error) {
+	return _BaasFounder.Contract.VestingPeriod(&_BaasFounder.CallOpts)
+}
+
+// VestingPeriod is a free data retrieval call binding the contract method 0x7313ee5a.
+//
+// Solidity: function vestingPeriod() constant returns(uint256)
+func (_BaasFounder *BaasFounderCallerSession) VestingPeriod() (*big.Int, error) {
+	return _BaasFounder.Contract.VestingPeriod(&_BaasFounder.CallOpts)
+}
+
+// VestingStartBlock is a free data retrieval call binding the contract method 0x9edf4e64.
+//
+// Solidity: function vestingStartBlock() constant returns(uint256)
+func (_BaasFounder *BaasFounderCaller) VestingStartBlock(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasFounder.contract.Call(opts, out, "vestingStartBlock")
+	return *ret0, err
+}
+
+// VestingStartBlock is a free data retrieval call binding the contract method 0x9edf4e64.
+//
+// Solidity: function vestingStartBlock() constant returns(uint256)
+func (_BaasFounder *BaasFounderSession) VestingStartBlock() (*big.Int, error) {
+	return _BaasFounder.Contract.VestingStartBlock(&_BaasFounder.CallOpts)
+}
+
+// VestingStartBlock is a free data retrieval call binding the contract method 0x9edf4e64.
+//
+// Solidity: function vestingStartBlock() constant returns(uint256)
+func (_BaasFounder *BaasFounderCallerSession) VestingStartBlock() (*big.Int, error) {
+	return _BaasFounder.Contract.VestingStartBlock(&_BaasFounder.CallOpts)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
@@ -400,25 +457,25 @@ func (_BaasFounder *BaasFounderTransactorSession) RenounceOwnership() (*types.Tr
 	return _BaasFounder.Contract.RenounceOwnership(&_BaasFounder.TransactOpts)
 }
 
-// Setup is a paid mutator transaction binding the contract method 0x16ecc686.
+// Setup is a paid mutator transaction binding the contract method 0x4313b9e5.
 //
-// Solidity: function setup(founder1 address, founder2 address, vestingStart uint256, vestingPeriod uint256) returns(bool)
-func (_BaasFounder *BaasFounderTransactor) Setup(opts *bind.TransactOpts, founder1 common.Address, founder2 common.Address, vestingStart *big.Int, vestingPeriod *big.Int) (*types.Transaction, error) {
-	return _BaasFounder.contract.Transact(opts, "setup", founder1, founder2, vestingStart, vestingPeriod)
+// Solidity: function setup(vestingPeriod uint256) returns(bool)
+func (_BaasFounder *BaasFounderTransactor) Setup(opts *bind.TransactOpts, vestingPeriod *big.Int) (*types.Transaction, error) {
+	return _BaasFounder.contract.Transact(opts, "setup", vestingPeriod)
 }
 
-// Setup is a paid mutator transaction binding the contract method 0x16ecc686.
+// Setup is a paid mutator transaction binding the contract method 0x4313b9e5.
 //
-// Solidity: function setup(founder1 address, founder2 address, vestingStart uint256, vestingPeriod uint256) returns(bool)
-func (_BaasFounder *BaasFounderSession) Setup(founder1 common.Address, founder2 common.Address, vestingStart *big.Int, vestingPeriod *big.Int) (*types.Transaction, error) {
-	return _BaasFounder.Contract.Setup(&_BaasFounder.TransactOpts, founder1, founder2, vestingStart, vestingPeriod)
+// Solidity: function setup(vestingPeriod uint256) returns(bool)
+func (_BaasFounder *BaasFounderSession) Setup(vestingPeriod *big.Int) (*types.Transaction, error) {
+	return _BaasFounder.Contract.Setup(&_BaasFounder.TransactOpts, vestingPeriod)
 }
 
-// Setup is a paid mutator transaction binding the contract method 0x16ecc686.
+// Setup is a paid mutator transaction binding the contract method 0x4313b9e5.
 //
-// Solidity: function setup(founder1 address, founder2 address, vestingStart uint256, vestingPeriod uint256) returns(bool)
-func (_BaasFounder *BaasFounderTransactorSession) Setup(founder1 common.Address, founder2 common.Address, vestingStart *big.Int, vestingPeriod *big.Int) (*types.Transaction, error) {
-	return _BaasFounder.Contract.Setup(&_BaasFounder.TransactOpts, founder1, founder2, vestingStart, vestingPeriod)
+// Solidity: function setup(vestingPeriod uint256) returns(bool)
+func (_BaasFounder *BaasFounderTransactorSession) Setup(vestingPeriod *big.Int) (*types.Transaction, error) {
+	return _BaasFounder.Contract.Setup(&_BaasFounder.TransactOpts, vestingPeriod)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
@@ -442,9 +499,30 @@ func (_BaasFounder *BaasFounderTransactorSession) TransferOwnership(newOwner com
 	return _BaasFounder.Contract.TransferOwnership(&_BaasFounder.TransactOpts, newOwner)
 }
 
-// BaasFounderFounderChangedIterator is returned from FilterFounderChanged and is used to iterate over the raw logs and unpacked data for FounderChanged events raised by the BaasFounder contract.
-type BaasFounderFounderChangedIterator struct {
-	Event *BaasFounderFounderChanged // Event containing the contract specifics and raw log
+// Withdraw is a paid mutator transaction binding the contract method 0xf3fef3a3.
+//
+// Solidity: function withdraw(receiver address, amount uint256) returns(bool)
+func (_BaasFounder *BaasFounderTransactor) Withdraw(opts *bind.TransactOpts, receiver common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _BaasFounder.contract.Transact(opts, "withdraw", receiver, amount)
+}
+
+// Withdraw is a paid mutator transaction binding the contract method 0xf3fef3a3.
+//
+// Solidity: function withdraw(receiver address, amount uint256) returns(bool)
+func (_BaasFounder *BaasFounderSession) Withdraw(receiver common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _BaasFounder.Contract.Withdraw(&_BaasFounder.TransactOpts, receiver, amount)
+}
+
+// Withdraw is a paid mutator transaction binding the contract method 0xf3fef3a3.
+//
+// Solidity: function withdraw(receiver address, amount uint256) returns(bool)
+func (_BaasFounder *BaasFounderTransactorSession) Withdraw(receiver common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _BaasFounder.Contract.Withdraw(&_BaasFounder.TransactOpts, receiver, amount)
+}
+
+// BaasFounderFounderWithdrawIterator is returned from FilterFounderWithdraw and is used to iterate over the raw logs and unpacked data for FounderWithdraw events raised by the BaasFounder contract.
+type BaasFounderFounderWithdrawIterator struct {
+	Event *BaasFounderFounderWithdraw // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -458,7 +536,7 @@ type BaasFounderFounderChangedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BaasFounderFounderChangedIterator) Next() bool {
+func (it *BaasFounderFounderWithdrawIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -467,7 +545,7 @@ func (it *BaasFounderFounderChangedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BaasFounderFounderChanged)
+			it.Event = new(BaasFounderFounderWithdraw)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -482,7 +560,7 @@ func (it *BaasFounderFounderChangedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BaasFounderFounderChanged)
+		it.Event = new(BaasFounderFounderWithdraw)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -498,43 +576,52 @@ func (it *BaasFounderFounderChangedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BaasFounderFounderChangedIterator) Error() error {
+func (it *BaasFounderFounderWithdrawIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BaasFounderFounderChangedIterator) Close() error {
+func (it *BaasFounderFounderWithdrawIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BaasFounderFounderChanged represents a FounderChanged event raised by the BaasFounder contract.
-type BaasFounderFounderChanged struct {
-	OldAddress common.Address
-	NewAddress common.Address
-	Index      *big.Int
-	Raw        types.Log // Blockchain specific contextual infos
+// BaasFounderFounderWithdraw represents a FounderWithdraw event raised by the BaasFounder contract.
+type BaasFounderFounderWithdraw struct {
+	Receiver common.Address
+	Amount   *big.Int
+	Raw      types.Log // Blockchain specific contextual infos
 }
 
-// FilterFounderChanged is a free log retrieval operation binding the contract event 0xe1bca451dd7dde7f7e5ea0fce980d0d8f9b19ed289454fa173631c0d07760a94.
+// FilterFounderWithdraw is a free log retrieval operation binding the contract event 0x60ca83f5e5baea21ed476b19b1333e0823cc130945297b532873df0ba8b970c9.
 //
-// Solidity: e FounderChanged(oldAddress address, newAddress address, index int256)
-func (_BaasFounder *BaasFounderFilterer) FilterFounderChanged(opts *bind.FilterOpts) (*BaasFounderFounderChangedIterator, error) {
+// Solidity: e FounderWithdraw(receiver indexed address, amount uint256)
+func (_BaasFounder *BaasFounderFilterer) FilterFounderWithdraw(opts *bind.FilterOpts, receiver []common.Address) (*BaasFounderFounderWithdrawIterator, error) {
 
-	logs, sub, err := _BaasFounder.contract.FilterLogs(opts, "FounderChanged")
+	var receiverRule []interface{}
+	for _, receiverItem := range receiver {
+		receiverRule = append(receiverRule, receiverItem)
+	}
+
+	logs, sub, err := _BaasFounder.contract.FilterLogs(opts, "FounderWithdraw", receiverRule)
 	if err != nil {
 		return nil, err
 	}
-	return &BaasFounderFounderChangedIterator{contract: _BaasFounder.contract, event: "FounderChanged", logs: logs, sub: sub}, nil
+	return &BaasFounderFounderWithdrawIterator{contract: _BaasFounder.contract, event: "FounderWithdraw", logs: logs, sub: sub}, nil
 }
 
-// WatchFounderChanged is a free log subscription operation binding the contract event 0xe1bca451dd7dde7f7e5ea0fce980d0d8f9b19ed289454fa173631c0d07760a94.
+// WatchFounderWithdraw is a free log subscription operation binding the contract event 0x60ca83f5e5baea21ed476b19b1333e0823cc130945297b532873df0ba8b970c9.
 //
-// Solidity: e FounderChanged(oldAddress address, newAddress address, index int256)
-func (_BaasFounder *BaasFounderFilterer) WatchFounderChanged(opts *bind.WatchOpts, sink chan<- *BaasFounderFounderChanged) (event.Subscription, error) {
+// Solidity: e FounderWithdraw(receiver indexed address, amount uint256)
+func (_BaasFounder *BaasFounderFilterer) WatchFounderWithdraw(opts *bind.WatchOpts, sink chan<- *BaasFounderFounderWithdraw, receiver []common.Address) (event.Subscription, error) {
 
-	logs, sub, err := _BaasFounder.contract.WatchLogs(opts, "FounderChanged")
+	var receiverRule []interface{}
+	for _, receiverItem := range receiver {
+		receiverRule = append(receiverRule, receiverItem)
+	}
+
+	logs, sub, err := _BaasFounder.contract.WatchLogs(opts, "FounderWithdraw", receiverRule)
 	if err != nil {
 		return nil, err
 	}
@@ -544,8 +631,8 @@ func (_BaasFounder *BaasFounderFilterer) WatchFounderChanged(opts *bind.WatchOpt
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BaasFounderFounderChanged)
-				if err := _BaasFounder.contract.UnpackLog(event, "FounderChanged", log); err != nil {
+				event := new(BaasFounderFounderWithdraw)
+				if err := _BaasFounder.contract.UnpackLog(event, "FounderWithdraw", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -687,6 +774,130 @@ func (_BaasFounder *BaasFounderFilterer) WatchOwnershipTransferred(opts *bind.Wa
 				// New log arrived, parse the event and forward to the user
 				event := new(BaasFounderOwnershipTransferred)
 				if err := _BaasFounder.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// BaasFounderSetupCompletedIterator is returned from FilterSetupCompleted and is used to iterate over the raw logs and unpacked data for SetupCompleted events raised by the BaasFounder contract.
+type BaasFounderSetupCompletedIterator struct {
+	Event *BaasFounderSetupCompleted // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *BaasFounderSetupCompletedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(BaasFounderSetupCompleted)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(BaasFounderSetupCompleted)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *BaasFounderSetupCompletedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *BaasFounderSetupCompletedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// BaasFounderSetupCompleted represents a SetupCompleted event raised by the BaasFounder contract.
+type BaasFounderSetupCompleted struct {
+	VestingStartBlock *big.Int
+	VestingPeriod     *big.Int
+	VestingEndBlock   *big.Int
+	Raw               types.Log // Blockchain specific contextual infos
+}
+
+// FilterSetupCompleted is a free log retrieval operation binding the contract event 0x05e6f0d652e49955317590bd949b5d7600bc573d84320a97c0fec4dc5cdbd099.
+//
+// Solidity: e SetupCompleted(vestingStartBlock uint256, vestingPeriod uint256, vestingEndBlock uint256)
+func (_BaasFounder *BaasFounderFilterer) FilterSetupCompleted(opts *bind.FilterOpts) (*BaasFounderSetupCompletedIterator, error) {
+
+	logs, sub, err := _BaasFounder.contract.FilterLogs(opts, "SetupCompleted")
+	if err != nil {
+		return nil, err
+	}
+	return &BaasFounderSetupCompletedIterator{contract: _BaasFounder.contract, event: "SetupCompleted", logs: logs, sub: sub}, nil
+}
+
+// WatchSetupCompleted is a free log subscription operation binding the contract event 0x05e6f0d652e49955317590bd949b5d7600bc573d84320a97c0fec4dc5cdbd099.
+//
+// Solidity: e SetupCompleted(vestingStartBlock uint256, vestingPeriod uint256, vestingEndBlock uint256)
+func (_BaasFounder *BaasFounderFilterer) WatchSetupCompleted(opts *bind.WatchOpts, sink chan<- *BaasFounderSetupCompleted) (event.Subscription, error) {
+
+	logs, sub, err := _BaasFounder.contract.WatchLogs(opts, "SetupCompleted")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(BaasFounderSetupCompleted)
+				if err := _BaasFounder.contract.UnpackLog(event, "SetupCompleted", log); err != nil {
 					return err
 				}
 				event.Raw = log

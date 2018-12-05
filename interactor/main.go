@@ -14,7 +14,7 @@ func main() {
 
 	app.Name = "baas tge"
 	app.Usage = "app to deploy tge contracts and execute transactions"
-	app.Version = "0.0.1"
+	app.Version = "0.0.5"
 
 	app.Commands = []cli.Command{
 		*deployer.Command(),

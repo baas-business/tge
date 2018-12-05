@@ -7,24 +7,26 @@ import "./IBaasToken.sol";
 
 
 interface IBaasFounder {
-    function setup(address founder1, address founder2, uint256 vestingStart, uint256 vestingPeriod) external returns (bool);
+    function setup(uint256 vestingPeriod) external returns (bool);
 
-    event FounderChanged(address oldAddress, address newAddress, int index);
+    event FounderWithdraw(address indexed receiver, uint256 amount);
+
+    event SetupCompleted(uint vestingStartBlock, uint vestingPeriod, uint vestingEndBlock);
 }
 
 contract BaasFounder is Ownable, IBaasFounder {
     using SafeMath for uint256;
+    using SafeMath for uint;
 
     string private constant NAME = "FOUNDER";
 
     uint256 constant FOUNDER1_SUPPLY = 8 * 10 ** 18;                // 8m Founder1 Token
     uint256 constant FOUNDER2_SUPPLY = 2 * 10 ** 18;                // 2m Founder2 Token
 
-    address private _founder1;
-    address private _founder2;
-
     uint256 private _vestingStart;
     uint256 private _vestingPeriod;
+
+    bool private _isInitialized = false;
 
     IBaasToken private _token;
 
@@ -32,31 +34,23 @@ contract BaasFounder is Ownable, IBaasFounder {
         _token = token;
     }
 
-    function setup(
-        address founder1,
-        address founder2,
-        uint256 vestingStart,
-        uint256 vestingPeriod)
+    function setup(uint256 vestingPeriod)
     external onlyOwner returns (bool) {
-        _founder1 = founder1;
-        _founder2 = founder2;
-        _vestingStart = vestingStart;
+        _vestingStart = block.number;
         _vestingPeriod = vestingPeriod;
+        _isInitialized = true;
+        emit SetupCompleted(_vestingStart, _vestingPeriod, _vestingStart.add(_vestingPeriod));
     }
 
-
-    function changeFounder(address newAddress, int index)
+    function withdraw(address receiver, uint256 amount)
     external onlyOwner returns (bool) {
-        address oldAddress;
-        if (index == 0) {
-            oldAddress = _founder1;
-            _founder1 = newAddress;
-        } else {
-            oldAddress = _founder2;
-            _founder2 = newAddress;
-        }
+        require(_isInitialized);
+        require(canWithdraw(block.number));
+        require(amount <= balance());
 
-        emit FounderChanged(oldAddress, newAddress, index);
+        require(_token.transfer(receiver, amount));
+
+        emit FounderWithdraw(receiver, amount);
 
         return true;
     }
@@ -64,12 +58,9 @@ contract BaasFounder is Ownable, IBaasFounder {
     /*
         VIEWS
     */
-    function Founder1() public view returns (address) {
-        return _founder1;
-    }
 
-    function Founder2() public view returns (address) {
-        return _founder2;
+    function isInitialized() public view returns (bool) {
+        return _isInitialized;
     }
 
     function balance() public view returns (uint256) {
@@ -80,8 +71,26 @@ contract BaasFounder is Ownable, IBaasFounder {
         return _token;
     }
 
+    function vestingStartBlock() public view returns (uint) {
+        return _vestingStart;
+    }
+
+    function vestingPeriod() public view returns (uint) {
+        return _vestingPeriod;
+    }
+
+    function vestingEndBlock() public view returns (uint) {
+        return _vestingStart.add(_vestingPeriod);
+    }
+
+    function canWithdraw(uint blocknumber) public view returns (bool) {
+        return vestingEndBlock() <= blocknumber;
+    }
+
+    /*
+        pure
+    */
     function name() public pure returns (string) {
         return NAME;
     }
-
 }

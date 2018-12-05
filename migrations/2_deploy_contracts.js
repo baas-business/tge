@@ -2,6 +2,7 @@ var BaasToken = artifacts.require("./BaasToken.sol");
 var BaasPP = artifacts.require("./BaasPP.sol");
 var BaasROI = artifacts.require("./BaasROI.sol");
 var BaasInc = artifacts.require("./BaasIncentives.sol");
+var BaasEscrow = artifacts.require("./BaasEscrow.sol");
 
 module.exports = function (deployer, network, accounts) {
     deployer.deploy(BaasToken)
@@ -13,5 +14,8 @@ module.exports = function (deployer, network, accounts) {
         })
         .then(function () {
             return deployer.deploy(BaasInc, BaasToken.address);
+        })
+        .then(function () {
+            return deployer.deploy(BaasEscrow, BaasToken.address);
         })
 };

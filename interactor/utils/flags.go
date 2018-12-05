@@ -70,7 +70,7 @@ func GetBaasContext(c *cli.Context) (*CliBaasContext, error) {
 	}
 
 	return &CliBaasContext{
-		c.String("httpPath"), c.String("keystoreUTCPath"), c.String("passwordFile"), c.String("version"),
+		c.String("httpPath"), c.String("keystoreUTCPath"), c.String("passwordFile"), version,
 	}, nil
 }
 

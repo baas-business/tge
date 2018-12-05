@@ -9,8 +9,8 @@ if [ $# -eq 0 ]
     exit 1
 fi
 
-version="$1_ropsten"
-total=9
+version="$1_dev"
+total=7
 current=0
 
 echo "1/$total Compiling Contracts"
@@ -27,22 +27,16 @@ echo "3/$total Deploying Contracts"
 go run main.go e d -version $version
 # setup BaasToken
 echo "4/$total Setting Up Baas Token"
-go run main.go e s -version $version
+go run main.go e s
 echo "5/$total Setting Up Baas Incentive"
-go run main.go e i s -version $version
+go run main.go e i s
 echo "6/$total Setting Up Baas Founder"
-go run main.go e f s 1000
+go run main.go e f s -vesting 1000
 echo "7/$total Setting Up Baas Escrow"
-go run main.go e f s 1000
+go run main.go e e s -vesting 1000
 popd
 
-echo "8/$total Copying configuration to web3 app and Etherlytics"
+echo "6/$total Copying configuration to web3 app and Etherlytics"
 pushd scripts
 ./copy_config.sh $version
 popd
-
-echo "9/$total Committing and Pushing"
-git add -A
-git commit -a -m "deployed $version to ropsten"
-git tag -a $version -m 'ropsten deployment'
-git push origin $version
