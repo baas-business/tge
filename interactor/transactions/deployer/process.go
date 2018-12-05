@@ -26,6 +26,12 @@ func process(tgeContext *utils.TGEContext) error {
 		return fmt.Errorf("deploy contracts %v", err.Error())
 	}
 
+	err = utils.WriteVersion(tgeContext.Version)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+
 	// export configuration
 	return cc.ExportResult(tgeContext.Version)
 }

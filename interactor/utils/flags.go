@@ -2,6 +2,7 @@ package utils
 
 import (
 	"bytes"
+	"fmt"
 	"github.com/urfave/cli"
 )
 
@@ -34,7 +35,7 @@ func NewFlags() *CliFlagsBuilder {
 			},
 			cli.StringFlag{
 				Name:  "version",
-				Value: "v0",
+				Value: "",
 				Usage: "version of smart contracts",
 			},
 		},
@@ -57,10 +58,33 @@ type CliBaasContext struct {
 	Version         string
 }
 
-func GetBaasContext(c *cli.Context) *CliBaasContext {
+func GetBaasContext(c *cli.Context) (*CliBaasContext, error) {
+	var err error
+	version := c.String("version")
+
+	if version == "" {
+		version, err = ReadVersion()
+		if err != nil {
+			return nil,err
+		}
+	}
+
 	return &CliBaasContext{
 		c.String("httpPath"), c.String("keystoreUTCPath"), c.String("passwordFile"), c.String("version"),
+	}, nil
+}
+
+
+func GetBaasContextIgnoreVersionFromFile(c *cli.Context) (*CliBaasContext, error) {
+	version := c.String("version")
+
+	if version == "" {
+		return nil, fmt.Errorf("version not supplied")
 	}
+
+	return &CliBaasContext{
+		c.String("httpPath"), c.String("keystoreUTCPath"), c.String("passwordFile"), c.String("version"),
+	}, nil
 }
 
 func (con *CliBaasContext) String() string {

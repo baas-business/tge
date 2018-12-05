@@ -1,7 +1,7 @@
 var BaasToken = artifacts.require("./BaasToken.sol");
 var BaasInc = artifacts.require("./BaasIncentives.sol");
 var setup = require("./setup").setup;
-var {advanceBlock, latestBlockNumber} = require('../time')
+var {advanceBlockSteps, latestBlockNumber} = require('../time')
 
 const BigNumber = web3.BigNumber;
 const should = require('chai')
@@ -34,21 +34,24 @@ contract('BaasIncentives', function (accounts) {
         arg.atBlock = t.receipt.blockNumber;
 
 
-        // const i = await baasInc.getIncentive(arg.receiver);
-        // console.log(i[6]);
-        await confirmStates(arg, baasInc, [STATE_CAN_CLAIM, STATE_CAN_NOT_CLAIM_YET, STATE_CAN_NOT_CLAIM_YET, STATE_CAN_NOT_CLAIM_YET, STATE_CAN_NOT_CLAIM_YET, STATE_STAGE_NOT_AVAILABLE])
-        await advanceBlock(arg.stagesBlockTime);
-        await confirmStates(arg, baasInc, [STATE_CAN_CLAIM, STATE_CAN_CLAIM, STATE_CAN_NOT_CLAIM_YET, STATE_CAN_NOT_CLAIM_YET, STATE_CAN_NOT_CLAIM_YET, STATE_STAGE_NOT_AVAILABLE])
-
-
-
+        const i = await baasInc.getIncentive(arg.receiver);
+        console.log(i[6]);
+        console.log("BlockNumber: " +await latestBlockNumber());
+        await confirmStates(arg, baasInc, [STATE_CAN_CLAIM, STATE_CAN_NOT_CLAIM_YET, STATE_CAN_NOT_CLAIM_YET, STATE_CAN_NOT_CLAIM_YET, STATE_STAGE_NOT_AVAILABLE])
+        await advanceBlockSteps(arg.stagesBlockTime);
+        console.log("BlockNumber: " +await latestBlockNumber());
+        arg.atBlock = await latestBlockNumber();
+        await confirmStates(arg, baasInc, [STATE_CAN_CLAIM, STATE_CAN_CLAIM, STATE_CAN_NOT_CLAIM_YET, STATE_CAN_NOT_CLAIM_YET, STATE_STAGE_NOT_AVAILABLE])
     });
 });
 
 const confirmStates = async (arg, contract, states) => {
 
+    console.log(states);
+    console.log(arg.atBlock);
     for (let i = 0; i < states.length; i++) {
-        let s = await contract.state(arg.receiver, states[i], arg.atBlock);
+        let s = await contract.state(arg.receiver, i, arg.atBlock);
         assert.equal(states[i], s)
+        console.log(states[i]+ " "+ s)
     }
 };

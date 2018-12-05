@@ -19,9 +19,12 @@ type TGEContext struct {
 func GetTGEContext(c *cli.Context) (*TGEContext, error) {
 	con := &TGEContext{}
 
-	cliCon := GetBaasContext(c)
+	cliCon, err := GetBaasContext(c)
+
+	if err != nil {
+		return nil, err
+	}
 	fmt.Println(cliCon.String())
-	var err error
 
 	con.Client, err = RPCClient(cliCon.HttpPath)
 
@@ -47,10 +50,14 @@ func GetTGEContext(c *cli.Context) (*TGEContext, error) {
 
 func GetDeployContext(c *cli.Context) (*TGEContext, error) {
 	con := &TGEContext{}
-
-	cliCon := GetBaasContext(c)
-	fmt.Println(cliCon.String())
 	var err error
+	cliCon, err := GetBaasContextIgnoreVersionFromFile(c)
+
+	if err != nil {
+		return nil, err
+	}
+	fmt.Println(cliCon.String())
+
 
 	con.Client, err = RPCClient(cliCon.HttpPath)
 
