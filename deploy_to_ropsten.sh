@@ -31,9 +31,9 @@ go run main.go e s -version $version
 echo "5/$total Setting Up Baas Incentive"
 go run main.go e i s -version $version
 echo "6/$total Setting Up Baas Founder"
-go run main.go e f s 1000
+go run main.go e f s -vesting 1000
 echo "7/$total Setting Up Baas Escrow"
-go run main.go e e s 1000
+go run main.go e e s -vesting 1000
 popd
 
 echo "8/$total Copying configuration to web3 app and Etherlytics"
