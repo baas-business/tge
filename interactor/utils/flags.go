@@ -20,7 +20,7 @@ func NewFlags() *CliFlagsBuilder {
 		flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "httpPath",
-				Value: LocalDevNode,
+				Value: RopstenInfura,
 				Usage: "HTTP-RPC server listening interface",
 			},
 			cli.StringFlag{
