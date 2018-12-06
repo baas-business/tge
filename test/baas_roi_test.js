@@ -161,7 +161,6 @@ contract('BaasROI', function (accounts) {
 
         //Paid Out
         paidOut.forEach((l, i) => {
-            console.log("............." + i);
             testCorrectlyReceived(expectedReturn[i], accounts[5 + i], l)
         });
 

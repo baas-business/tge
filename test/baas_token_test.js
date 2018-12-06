@@ -14,7 +14,7 @@ contract('BaasToken', function (accounts) {
         let isInitialized = await baasToken.isInitialized();
         assert.equal(isInitialized, false, "isInitialized should be false");
         let owner = await baasToken.owner();
-        assert.equal(owner, contractDeployer, "owner should be contract deployer");
+        assert.equal(owner, accounts[0], "owner should be contract deployer");
         let transferResult = await baasToken.transfer(accounts[0], 200).catch(e => false);
         assert.equal(false, transferResult, "transfer should fail")
     });
@@ -147,8 +147,6 @@ contract('BaasToken', function (accounts) {
 
 
         receipt = await baasToken.approve(receiver, web3.toBigNumber("1e24"), {from: ppAddress}).catch(e => false);
-        //receipt = await baasToken.transferFrom(receiver, ppAddress, web3.toBigNumber("1e24"), {from: ppAddress}).catch(e => false);
-        //assert.equal(false, receipt, "transferfrom should fail");
 
         // unpause
         pauseReceipt = await baasToken.setPause(false);

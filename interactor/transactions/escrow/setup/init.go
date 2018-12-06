@@ -27,7 +27,7 @@ func (it *CommandArgs) String() string {
 
 func Command() *cli.Command {
 	return &cli.Command{
-		Usage:     "setup escrow smart contract",
+		Usage:     "setup founder smart contract",
 		ShortName: "s",
 		Name:      "setup",
 		Flags: utils.NewFlags().Add(cli.Int64Flag{

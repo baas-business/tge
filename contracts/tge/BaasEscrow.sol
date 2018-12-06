@@ -7,6 +7,7 @@ import "./IBaasToken.sol";
 
 
 interface IBaasEscrow {
+    function setup(uint256 vestingPeriod) external returns (bool);
 
     event CapitalRaised(uint indexed id, uint256 amount);
 

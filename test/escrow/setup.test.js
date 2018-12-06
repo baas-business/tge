@@ -1,5 +1,6 @@
 var BaasToken = artifacts.require("./BaasToken.sol");
 var BaasEscrow = artifacts.require("./BaasEscrow.sol");
+var setup = require("./setup").setup;
 
 const BigNumber = web3.BigNumber;
 const should = require('chai')
