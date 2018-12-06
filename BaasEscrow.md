@@ -1,25 +1,64 @@
-# BaasEscrow
+# BaaS Escrow
 
 
-. | .
---- | --- 
-**Initial Supply** | *60m Tokens* 
-**Is Ownable** | *true*
+**Initial Supply**  | **Is Ownable** 
+| :-------------: |:-------------:| 
+*60m Tokens* | *true*
 
-### Write Transactions
+## Write Transactions
 
-#### 1 setup(vestingPeriod)
-Activates the contract and specifies a period in blocks until the a raise can happen.
+## setup(vestingPeriod)
+**Signature:** 
+    
+    function setup(uint256 vestingPeriod) external onlyOwner returns (bool){...}
+    
+**Functionality:** Activates the contract and specifies a period in blocks until the first raise can happen.
 
-    function setup(uint256 vestingPeriod) external onlyOwner returns (bool)
+**Params:**
 
-#### 2 raiseCapital(amount, id)
-Raises capital by making amount tokens transferable. It also snapshots the current
-toke holders.
-     
-    raiseCapital(uint256 amount, uint id) external onlyOwner returns (bool) 
+param | type | meaning
+| :-------------: |:-------------:|:-------------|
+*vestingPeriod* | uint256 | the time in blocks until the first raise can is unlocked.
+
+
+## raiseCapital(amount, id)
+**Signature:**
+    
+    raiseCapital(uint256 amount, uint id) external onlyOwner returns (bool) {...}
+
+**Functionality:** Raises capital by making amount tokens transferable. It also snapshots the current
+token holders and stores them in contract.
+
+**Params:**
+
+
+param | type | meaning
+| :-------------: |:-------------:|:-------------| 
+*amount*| uint256 | the total amount raised in this round
+*id* | uint | the id to refer to at delivery 
+      
          
-#### 3 provideToken(account, amount, conversionRate)
-Provides token to account and for the record stores the conversion rate.
+## provideToken(account, amount, conversionRate)
+**Signature:**
 
-    function provideToken(address account, uint256 amount, uint256 conversionRate) external onlyOwner returns (bool) 
+    function provideToken(address account, uint256 amount, uint256 conversionRate) external onlyOwner returns (bool)
+    
+**Functionality:** Provides token to account and stores the provision for the record. 
+
+**Params:**
+
+param | type | meaning
+| :-------------: |:-------------:|:-------------|
+*account* | address | the receiver(investor) of tokens.
+*amount* | uint256 | the amount the ince.
+*conversionRate* | uint256 | The token to Euro conversion rate the investor purhchased the token (Only for the records).
+
+    function provideToken(address account, uint256 amount, uint256 conversionRate) external onlyOwner returns (bool)
+    
+    
+**Open Questions:**
+* Is there a halting period for each raise?
+* Do we lock the time until the investor can claim the tokens and block provision to others (its just masquerade)? 
+
+**Difficulties:**
+* The snapshot can cost a lot of gas if the holder count goes above 10.000! 

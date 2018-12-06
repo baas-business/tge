@@ -1,25 +1,43 @@
-# BaasFounder
- 
+# BaaS Founder 
 
-. | .
---- | --- 
-**Initial Supply** | *20m Tokens* 
-**Is Ownable** | *true*
 
-### Write Transactions
+**Initial Supply**  | **Is Ownable** 
+| :-------------: |:-------------:| 
+*10m Tokens* | *true*
 
-#### 1 setup(vestingPeriod)
-Activates the contract and specifies a period in blocks until the a raise can happen.
+## Write Transactions
 
-    function setup(uint256 vestingPeriod) external onlyOwner returns (bool)
+## setup(vestingPeriod)
+**Signature:** 
+    
+    function setup(uint256 vestingPeriod) external onlyOwner returns (bool){...}
+    
+**Functionality:** Activates the contract and specifies a period in blocks until the founder can withdraw the tokens.
 
-#### 2 raiseCapital(amount, id)
-Raises capital by making amount tokens transferable. It also snapshots the current
-toke holders.
-     
-    raiseCapital(uint256 amount, uint id) external onlyOwner returns (bool) 
-         
-#### 3 provideToken(account, amount, conversionRate)
-Provides token to account and for the record stores the conversion rate.
+**Params:**
 
-    function provideToken(address account, uint256 amount, uint256 conversionRate) external onlyOwner returns (bool) 
+param | type | meaning
+| :-------------: |:-------------:|:-------------|
+*vestingPeriod* | uint256 | the time in blocks until the first raise can is unlocked.
+
+
+## withdraw(receiver, amount)
+**Signature:**
+
+    function withdraw(address receiver, uint256 amount) external onlyOwner returns (bool) {...}
+
+**Functionality:** Sends tokens to the receiver if enough tokens are available.
+**Params:**
+
+param | type | meaning
+| :-------------: |:-------------:|:-------------|
+*receiver* | address | the receiver of the tokens
+*amount* | address | the amount receiver receives
+  
+    
+**Open Questions:**
+* Do we specify the founder address beforehand (not necessary)?
+* Do we want to have more than one receiver address (this would communicate to the public who was served with how much)? 
+
+**Difficulties:**
+* no 
