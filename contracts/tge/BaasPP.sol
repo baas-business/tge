@@ -45,15 +45,9 @@ contract BaasPP is IBaasPP, Ownable {
         _token = token;
     }
 
-    uint256 private providedDiscountedToken;
-    uint256 private providedNotDiscountedToken;
+    uint256 private _providedDiscountedToken;
+    uint256 private _providedNotDiscountedToken;
 
-    /*
-        deliverToken sends amount number of tokens to account if
-        enough tokens are in the balance of this contract.
-
-
-    */
     function provideToken(address account, uint256 amount, uint8 discountType)
     external onlyOwner returns (bool) {
         require(discountType == DISCOUNT_TYPE_DISCOUNTED || discountType == DISCOUNT_TYPE_NOT_DISCOUNTED);
@@ -70,23 +64,19 @@ contract BaasPP is IBaasPP, Ownable {
     }
 
     function provideDiscountedToken(address account, uint256 amount) internal {
-        require(amount <= HARD_CAP_DISCOUNTED_TOKEN.sub(providedDiscountedToken));
+        require(amount <= HARD_CAP_DISCOUNTED_TOKEN.sub(_providedDiscountedToken));
         require(_token.transfer(account, amount));
-        providedDiscountedToken = providedDiscountedToken.add(amount);
+        _providedDiscountedToken = _providedDiscountedToken.add(amount);
     }
 
     function provideNotDiscountedToken(address account, uint256 amount) internal {
-        require(amount <= HARD_CAP_NOT_DISCOUNTED_TOKEN.sub(providedNotDiscountedToken));
+        require(amount <= HARD_CAP_NOT_DISCOUNTED_TOKEN.sub(_providedNotDiscountedToken));
         require(_token.transfer(account, amount));
-        providedNotDiscountedToken = providedNotDiscountedToken.add(amount);
+        _providedNotDiscountedToken = _providedNotDiscountedToken.add(amount);
     }
 
-
-    /*
-    */
-    function burnRest()
-    external onlyOwner returns (bool) {
-        // TODO
+    function burnRest() external onlyOwner returns (bool) {
+        require(_token.burnTokensFromPot(address(this), balance));
         return true;
     }
 
@@ -106,15 +96,15 @@ contract BaasPP is IBaasPP, Ownable {
 
     function totalTokenProvided(uint8 discountType) public view returns (uint256) {
         if (discountType == TOKEN_TYPE_TOTAL) {
-            return providedDiscountedToken.add(providedNotDiscountedToken);
+            return _providedDiscountedToken.add(_providedNotDiscountedToken);
         }
 
         if (discountType == DISCOUNT_TYPE_DISCOUNTED) {
-            return providedDiscountedToken;
+            return _providedDiscountedToken;
         }
 
         if (discountType == DISCOUNT_TYPE_NOT_DISCOUNTED) {
-            return providedNotDiscountedToken;
+            return _providedNotDiscountedToken;
         }
 
         return 0;

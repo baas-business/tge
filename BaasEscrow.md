@@ -7,7 +7,7 @@
 
 ## Write Transactions
 
-## setup(vestingPeriod)
+### setup
 **Signature:** 
     
     function setup(uint256 vestingPeriod) external onlyOwner returns (bool){...}
@@ -21,7 +21,7 @@ param | type | meaning
 *vestingPeriod* | uint256 | the time in blocks until the first raise can is unlocked.
 
 
-## raiseCapital(amount, id)
+### raiseCapital
 **Signature:**
     
     raiseCapital(uint256 amount, uint id) external onlyOwner returns (bool) {...}
@@ -38,7 +38,7 @@ param | type | meaning
 *id* | uint | the id to refer to at delivery 
       
          
-## provideToken(account, amount, conversionRate)
+### provideToken
 **Signature:**
 
     function provideToken(address account, uint256 amount, uint256 conversionRate) external onlyOwner returns (bool)
@@ -57,8 +57,11 @@ param | type | meaning
     
     
 **Open Questions:**
+---
 * Is there a halting period for each raise?
-* Do we lock the time until the investor can claim the tokens and block provision to others (its just masquerade)? 
+* Do we lock the time until the investor can claim the tokens and block provision to others (its just masquerade)?
+* Is there a necessity to burn token if they weren't sold during a capital raise. 
 
 **Difficulties:**
-* The snapshot can cost a lot of gas if the holder count goes above 10.000! 
+---
+* The snapshot can cost a lot of gas if the holder count goes exceeds 10.000! 

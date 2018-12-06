@@ -1,13 +1,17 @@
 # BaaS Founder 
 
 
+The Founder contract is a custom smart contract that acts as a custodian for 
+the tokens rewarded to the founder. After the vesting time the founders in the
+form of the contract owner can withdraw tokens.
+
 **Initial Supply**  | **Is Ownable** 
 | :-------------: |:-------------:| 
 *10m Tokens* | *true*
 
 ## Write Transactions
 
-## setup(vestingPeriod)
+### setup
 **Signature:** 
     
     function setup(uint256 vestingPeriod) external onlyOwner returns (bool){...}
@@ -21,7 +25,7 @@ param | type | meaning
 *vestingPeriod* | uint256 | the time in blocks until the first raise can is unlocked.
 
 
-## withdraw(receiver, amount)
+### withdraw
 **Signature:**
 
     function withdraw(address receiver, uint256 amount) external onlyOwner returns (bool) {...}
