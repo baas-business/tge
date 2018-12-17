@@ -1,8 +1,8 @@
 package info
 
 import (
-	"github.com/baas/tge-sol/interactor/info/contractinfo"
-	"github.com/baas/tge-sol/interactor/info/pp"
+	"github.com/baas-business/tge-sol/interactor/info/contractinfo"
+	"github.com/baas-business/tge-sol/interactor/info/pp"
 	"github.com/urfave/cli"
 )
 

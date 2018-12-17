@@ -2,7 +2,8 @@ package reward
 
 import (
 	"bytes"
-	"github.com/baas/tge-sol/interactor/utils"
+	"github.com/ellsol/solidity-tools/utils"
+	"github.com/ellsol/solidity-tools/utils/web3"
 	"github.com/urfave/cli"
 )
 
@@ -61,7 +62,12 @@ func Command() *cli.Command {
 				}).
 			Get(),
 		Action: func(c *cli.Context) error {
-			tgeContext, err := utils.GetTGEContext(c)
+			context, err := web3.GetDAppContext()
+
+			if err != nil {
+				return err
+			}
+
 
 			args := GetArgs(c)
 
@@ -69,7 +75,7 @@ func Command() *cli.Command {
 				return err
 			}
 
-			return process(tgeContext, args)
+			return process(context, args)
 		},
 	}
 }

@@ -2,28 +2,30 @@ package pp
 
 import (
 	"fmt"
-	"github.com/baas/tge-sol/interactor/contracts"
-	"github.com/baas/tge-sol/interactor/utils"
+	"github.com/baas-business/tge-sol/interactor/contracts"
+	"github.com/baas-business/tge-sol/interactor/tge"
 	"github.com/ellsol/go-ethertypes"
+	"github.com/ellsol/solidity-tools/utils"
+	"github.com/ellsol/solidity-tools/utils/web3"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"log"
 )
 
-func process(tgeContext *utils.TGEContext) error {
-	if err := General(tgeContext); err != nil {
+func process(dAppContext *web3.DAppContext) error {
+	if err := General(dAppContext); err != nil {
 		return err
 	}
-	if err := ProvidedToken(tgeContext); err != nil {
+	if err := ProvidedToken(dAppContext); err != nil {
 		return err
 	}
 	return nil
 }
 
-func General(tgeContext *utils.TGEContext) error {
+func General(dAppContext *web3.DAppContext) error {
 	fmt.Println(utils.ConsoleInBlue("\nGeneral Private Placement: "))
 	fmt.Println(utils.ConsoleInBlue("................................................................................................"))
-	contract, err := contracts.NewBaasPP(*tgeContext.PPAddress(), tgeContext.Client)
+	contract, err := contracts.NewBaasPP(tge.PPAddress(dAppContext), dAppContext.Client)
 
 	if err != nil {
 		log.Fatal(err)
@@ -57,10 +59,10 @@ func General(tgeContext *utils.TGEContext) error {
 	return nil
 }
 
-func ProvidedToken(tgeContext *utils.TGEContext) error {
+func ProvidedToken(dAppContext *web3.DAppContext) error {
 	fmt.Println(utils.ConsoleInBlue("\nProvided Token Private Placement: "))
 	fmt.Println(utils.ConsoleInBlue("................................................................................................"))
-	contract, err := contracts.NewBaasPP(*tgeContext.PPAddress(), tgeContext.Client)
+	contract, err := contracts.NewBaasPP(tge.PPAddress(dAppContext), dAppContext.Client)
 
 	if err != nil {
 		return err
@@ -86,7 +88,7 @@ func ProvidedToken(tgeContext *utils.TGEContext) error {
 
 	iterator, err := contract.FilterTokenDelivered(&bind.FilterOpts{
 		Start: 4000000,
-	}, []common.Address{tgeContext.Key.Address})
+	}, []common.Address{dAppContext.Key.Address})
 
 	for iterator.Next() {
 		fmt.Println(iterator.Event.To.String())

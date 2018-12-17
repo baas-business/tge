@@ -2,19 +2,20 @@ package claim
 
 import (
 	"fmt"
-	"github.com/baas/tge-sol/interactor/contracts"
-	"github.com/baas/tge-sol/interactor/utils"
+	"github.com/baas-business/tge-sol/interactor/contracts"
+	"github.com/baas-business/tge-sol/interactor/tge"
+	"github.com/ellsol/solidity-tools/utils/web3"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"math/big"
 )
 
-func process(tgeContext *utils.TGEContext, args *CommandArgs) error {
+func process(dAppContext *web3.DAppContext, args *CommandArgs) error {
 	fmt.Println("Setup Incentive")
 	fmt.Println(args.String())
-	txOps := bind.NewKeyedTransactor(tgeContext.Key.PrivateKey)
+	txOps := bind.NewKeyedTransactor(dAppContext.Key.PrivateKey)
 	txOps.Value = big.NewInt(0)
 
-	contract, err := contracts.NewBaasIncentives(*tgeContext.ContractConfig.IncentivesAddress, tgeContext.Client)
+	contract, err := contracts.NewBaasIncentives(tge.IncentivesAddress(dAppContext), dAppContext.Client)
 
 	if err != nil {
 		return err
@@ -27,5 +28,5 @@ func process(tgeContext *utils.TGEContext, args *CommandArgs) error {
 		return err
 	}
 
-	return utils.ExecuteTransaction("Setup Incentive", tgeContext.Client, tx)
+	return web3.ExecuteTransaction("Setup Incentives", dAppContext.Client, tx)
 }

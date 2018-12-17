@@ -1,7 +1,7 @@
 package helper
 
 import (
-	"github.com/baas/tge-sol/interactor/transactions/helper/advance"
+	"github.com/baas-business/tge-sol/interactor/transactions/helper/advance"
 	"github.com/urfave/cli"
 )
 

@@ -1,7 +1,7 @@
 package escrow
 
 import (
-	"github.com/baas/tge-sol/interactor/transactions/escrow/setup"
+	"github.com/baas-business/tge-sol/interactor/transactions/escrow/setup"
 	"github.com/urfave/cli"
 )
 

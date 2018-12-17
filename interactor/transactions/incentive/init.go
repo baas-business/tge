@@ -1,9 +1,9 @@
 package incentive
 
 import (
-	"github.com/baas/tge-sol/interactor/transactions/incentive/claim"
-	"github.com/baas/tge-sol/interactor/transactions/incentive/reward"
-	"github.com/baas/tge-sol/interactor/transactions/incentive/setup"
+	"github.com/baas-business/tge-sol/interactor/transactions/incentive/claim"
+	"github.com/baas-business/tge-sol/interactor/transactions/incentive/reward"
+	"github.com/baas-business/tge-sol/interactor/transactions/incentive/setup"
 	"github.com/urfave/cli"
 )
 

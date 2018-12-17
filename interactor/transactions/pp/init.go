@@ -2,7 +2,8 @@ package pp
 
 import (
 	"fmt"
-	"github.com/baas/tge-sol/interactor/utils"
+	"github.com/ellsol/solidity-tools/utils"
+	"github.com/ellsol/solidity-tools/utils/web3"
 	"github.com/urfave/cli"
 )
 
@@ -48,9 +49,7 @@ func provideTokenCommand() *cli.Command {
 				return fmt.Errorf("target cannot be empty")
 			}
 
-			tgeContext, err := utils.GetTGEContext(c)
-
-
+			context, err := web3.GetDAppContext()
 
 			if err != nil {
 				return err
@@ -58,7 +57,7 @@ func provideTokenCommand() *cli.Command {
 
 			fmt.Println("providing token discounted:", isDiscounted, "target: ", target, "amount: ", amount)
 
-			return process(tgeContext,isDiscounted, target, amount)
+			return process(context, isDiscounted, target, amount)
 		},
 	}
 }

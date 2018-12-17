@@ -2,7 +2,8 @@ package claim
 
 import (
 	"bytes"
-	"github.com/baas/tge-sol/interactor/utils"
+	"github.com/ellsol/solidity-tools/utils"
+	"github.com/ellsol/solidity-tools/utils/web3"
 	"github.com/urfave/cli"
 )
 
@@ -37,13 +38,13 @@ func Command() *cli.Command {
 			Usage: "target address of investor",
 		}).Get(),
 		Action: func(c *cli.Context) error {
-			tgeContext, err := utils.GetTGEContext(c)
+			context, err := web3.GetDAppContext()
 
 			if err != nil {
 				return err
 			}
 
-			return process(tgeContext, GetArgs(c))
+			return process(context, GetArgs(c))
 		},
 	}
 }

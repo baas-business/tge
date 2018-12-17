@@ -76,7 +76,7 @@ contract BaasPP is IBaasPP, Ownable {
     }
 
     function burnRest() external onlyOwner returns (bool) {
-        require(_token.burnTokensFromPot(address(this), balance));
+        require(_token.burnTokensFromPot(address(this), balance()));
         return true;
     }
 

@@ -27,7 +27,7 @@ echo "3/$total Deploying Contracts"
 go run main.go e d -version $version
 # setup BaasToken
 echo "4/$total Setting Up Baas Token"
-go run main.go e s -version $version
+go run main.go e t s -version $version
 echo "5/$total Setting Up Baas Incentive"
 go run main.go e i s -version $version
 echo "6/$total Setting Up Baas Founder"

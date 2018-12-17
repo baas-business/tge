@@ -1,7 +1,8 @@
 package contractinfo
 
 import (
-	"github.com/baas/tge-sol/interactor/utils"
+	"github.com/ellsol/solidity-tools/utils"
+	"github.com/ellsol/solidity-tools/utils/web3"
 	"github.com/urfave/cli"
 )
 
@@ -12,7 +13,7 @@ func Command() *cli.Command {
 		Name:      "contract",
 		Flags: utils.NewFlags().Get(),
 		Action: func(c *cli.Context) error {
-			tgeContext, err := utils.GetTGEContext(c)
+			tgeContext, err := web3.GetDAppContext()
 
 			if err != nil {
 				return err

@@ -3,13 +3,7 @@
 set  -e
 
 
-if [ $# -eq 0 ]
-  then
-    echo "no version supplied"
-    exit 1
-fi
 
-version="$1_dev"
 total=7
 current=0
 
@@ -24,19 +18,23 @@ popd
 pushd interactor
 # deploy contracts
 echo "3/$total Deploying Contracts"
-go run main.go e d -version $version
+go run main.go d
 # setup BaasToken
 echo "4/$total Setting Up Baas Token"
-go run main.go e s
+go run main.go e t s
 echo "5/$total Setting Up Baas Incentive"
 go run main.go e i s
 echo "6/$total Setting Up Baas Founder"
 go run main.go e f s -vesting 1000
 echo "7/$total Setting Up Baas Escrow"
 go run main.go e e s -vesting 1000
+
+version="$(go run main.go c v)"
 popd
 
 echo "6/$total Copying configuration to web3 app and Etherlytics"
+
+
 pushd scripts
 ./copy_config.sh $version
 popd

@@ -2,28 +2,29 @@ package contractinfo
 
 import (
 	"fmt"
-	"github.com/baas/tge-sol/interactor/contracts"
-	"github.com/baas/tge-sol/interactor/utils"
+	"github.com/baas-business/tge-sol/interactor/contracts"
+	"github.com/baas-business/tge-sol/interactor/tge"
+	"github.com/ellsol/solidity-tools/utils/web3"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"log"
 )
 
 
-func process(tgeContext *utils.TGEContext) error {
-	TokenInfo(tgeContext)
-	EscrowInfo(tgeContext)
-	PPInfo(tgeContext)
-	FounderInfo(tgeContext)
-	IncentiveInfo(tgeContext)
-	ROIInfo(tgeContext)
+func process(dAppContext *web3.DAppContext) error {
+	TokenInfo(dAppContext)
+	EscrowInfo(dAppContext)
+	PPInfo(dAppContext)
+	FounderInfo(dAppContext)
+	IncentiveInfo(dAppContext)
+	ROIInfo(dAppContext)
 
 	return nil
 }
 
-func TokenInfo(tgeContext *utils.TGEContext) {
+func TokenInfo(dAppContext *web3.DAppContext) {
 	fmt.Println("\nToken: ")
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasToken(*tgeContext.TokenAddress(), tgeContext.Client)
+	contract, err := contracts.NewBaasToken(tge.TokenAddress(dAppContext), dAppContext.Client)
 
 	if err != nil {
 		log.Fatal(err)
@@ -50,10 +51,10 @@ func TokenInfo(tgeContext *utils.TGEContext) {
 	fmt.Println("Owner: ", owner.String())
 }
 
-func EscrowInfo(tgeContext *utils.TGEContext) {
+func EscrowInfo(dAppContext *web3.DAppContext) {
 	fmt.Println("\nEscrow: ")
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasEscrow(*tgeContext.EscrowAddress(), tgeContext.Client)
+	contract, err := contracts.NewBaasEscrow(tge.EscrowAddress(dAppContext), dAppContext.Client)
 
 	if err != nil {
 		log.Fatal(err)
@@ -87,10 +88,10 @@ func EscrowInfo(tgeContext *utils.TGEContext) {
 	fmt.Println("Balance: ", balance.String())
 }
 
-func FounderInfo(tgeContext *utils.TGEContext) {
+func FounderInfo(dAppContext *web3.DAppContext) {
 	fmt.Println("\nFounder: ")
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasFounder(*tgeContext.FounderAddress(), tgeContext.Client)
+	contract, err := contracts.NewBaasFounder(tge.FounderAddress(dAppContext), dAppContext.Client)
 
 	if err != nil {
 		log.Fatal(err)
@@ -124,10 +125,10 @@ func FounderInfo(tgeContext *utils.TGEContext) {
 	fmt.Println("Balance: ", balance.String())
 }
 
-func IncentiveInfo(tgeContext *utils.TGEContext) {
+func IncentiveInfo(dAppContext *web3.DAppContext) {
 	fmt.Println("\nIncentives: ")
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasIncentives(*tgeContext.IncentivesAddress(), tgeContext.Client)
+	contract, err := contracts.NewBaasIncentives(tge.IncentivesAddress(dAppContext), dAppContext.Client)
 
 	if err != nil {
 		log.Fatal(err)
@@ -161,10 +162,8 @@ func IncentiveInfo(tgeContext *utils.TGEContext) {
 	fmt.Println("Balance: ", balance.String())
 }
 
-func PPInfo(tgeContext *utils.TGEContext) {
-	fmt.Println("\nPrivate Placement: ", tgeContext.PPAddress().String())
-	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasPP(*tgeContext.PPAddress(), tgeContext.Client)
+func PPInfo(dAppContext *web3.DAppContext) { 
+	contract, err := contracts.NewBaasPP(tge.PPAddress(dAppContext), dAppContext.Client)
 
 	if err != nil {
 		log.Fatal(err)
@@ -197,10 +196,10 @@ func PPInfo(tgeContext *utils.TGEContext) {
 	fmt.Println("Balance: ", balance.String())
 }
 
-func ROIInfo(tgeContext *utils.TGEContext) {
+func ROIInfo(dAppContext *web3.DAppContext) {
 	fmt.Println("\nROI: ")
 	fmt.Println("................................................................................................")
-	contract, err := contracts.NewBaasROI(*tgeContext.ROIAddress(), tgeContext.Client)
+	contract, err := contracts.NewBaasROI(tge.ROIAddress(dAppContext), dAppContext.Client)
 
 	if err != nil {
 		log.Fatal(err)

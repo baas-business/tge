@@ -1,7 +1,7 @@
 package founder
 
 import (
-	"github.com/baas/tge-sol/interactor/transactions/founder/setup"
+	"github.com/baas-business/tge-sol/interactor/transactions/founder/setup"
 	"github.com/urfave/cli"
 )
 

@@ -1,7 +1,7 @@
 package roi
 
 import (
-	"github.com/baas/tge-sol/interactor/transactions/roi/payoutall"
+	"github.com/baas-business/tge-sol/interactor/transactions/roi/payoutall"
 	"github.com/urfave/cli"
 )
 

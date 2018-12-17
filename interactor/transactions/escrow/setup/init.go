@@ -2,10 +2,10 @@ package setup
 
 import (
 	"bytes"
-	"github.com/baas/tge-sol/interactor/utils"
+	"github.com/ellsol/solidity-tools/utils"
+	"github.com/ellsol/solidity-tools/utils/web3"
 	"github.com/urfave/cli"
 )
-
 
 type CommandArgs struct {
 	Vesting int64
@@ -34,14 +34,15 @@ func Command() *cli.Command {
 			Name:  "vesting",
 			Usage: "vesting period for founder",
 		}).Get(),
-		Action: func (c *cli.Context) error{
-		tgeContext, err := utils.GetTGEContext(c)
+		Action: func(c *cli.Context) error {
 
-		if err != nil{
-		return err
-	}
+			context, err := web3.GetDAppContext()
 
-		return process(tgeContext, GetArgs(c))
-	},
+			if err != nil {
+				return err
+			}
+
+			return process(context, GetArgs(c))
+		},
 	}
 }

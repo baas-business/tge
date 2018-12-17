@@ -2,21 +2,22 @@ package pp
 
 import (
 	"fmt"
-	"github.com/baas/tge-sol/interactor/contracts"
-	"github.com/baas/tge-sol/interactor/utils"
+	"github.com/baas-business/baas-cli/utils"
+	"github.com/baas-business/tge-sol/interactor/contracts"
+	"github.com/baas-business/tge-sol/interactor/tge"
 	"github.com/ellsol/go-ethertypes"
+	"github.com/ellsol/solidity-tools/utils/web3"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"log"
 	"math/big"
 )
 
-func process(tgeContext *utils.TGEContext, isDiscounted bool, target string, amount float64) error {
-	txOps := bind.NewKeyedTransactor(tgeContext.Key.PrivateKey)
+func process(dAppContext *web3.DAppContext, isDiscounted bool, target string, amount float64) error {
+	txOps := bind.NewKeyedTransactor(dAppContext.Key.PrivateKey)
 	txOps.Value = big.NewInt(0)
 
-
-	contract, err := contracts.NewBaasPP(*tgeContext.ContractConfig.PPAddress, tgeContext.Client)
+	contract, err := contracts.NewBaasPP(tge.PPAddress(dAppContext), dAppContext.Client)
 
 	if err != nil {
 		return err
@@ -46,7 +47,6 @@ func process(tgeContext *utils.TGEContext, isDiscounted bool, target string, amo
 
 	log.Println("DiscountType:", discountType)
 
-
 	utils.PrintColoredln("GasPrice", txOps.GasPrice)
 	utils.PrintColoredln("GasLimit", txOps.GasLimit)
 	tx, err := contract.ProvideToken(txOps, t, val.BigInt(), discountType)
@@ -54,5 +54,5 @@ func process(tgeContext *utils.TGEContext, isDiscounted bool, target string, amo
 	if err != nil {
 		return err
 	}
-	return utils.ExecuteTransaction("Provide Token", tgeContext.Client, tx)
+	return web3.ExecuteTransaction("Provide Token", dAppContext.Client, tx)
 }
