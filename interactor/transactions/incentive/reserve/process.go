@@ -1,4 +1,4 @@
-package reward
+package reserve
 
 import (
 	"fmt"
@@ -24,11 +24,10 @@ func process(dAppContext *web3.DAppContext, args *CommandArgs) error {
 	}
 
 	etherValue, err := ethertypes.NewEtherValue().FromFloat64String(fmt.Sprintf("%v", args.Amount))
-	tx, err := contract.Reward(txOps,
+	tx, err := contract.Reserve(txOps,
 		common.HexToAddress(args.Target),
 		etherValue.BigInt(),
-		new(big.Int).SetInt64(args.Stages),
-		new(big.Int).SetInt64(args.Blocks),
+		[32]byte{},
 	)
 
 	if err != nil {

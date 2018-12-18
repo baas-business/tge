@@ -1,8 +1,7 @@
 package incentive
 
 import (
-	"github.com/baas-business/tge-sol/interactor/transactions/incentive/claim"
-	"github.com/baas-business/tge-sol/interactor/transactions/incentive/reward"
+	"github.com/baas-business/tge-sol/interactor/transactions/incentive/reserve"
 	"github.com/baas-business/tge-sol/interactor/transactions/incentive/setup"
 	"github.com/urfave/cli"
 )
@@ -14,8 +13,7 @@ func Command() *cli.Command {
 		Name:      "incentive",
 		Subcommands: []cli.Command{
 			*setup.Command(),
-			*reward.Command(),
-			*claim.Command(),
+			*reserve.Command(),
 		},
 	}
 }
