@@ -5,9 +5,6 @@ import "../ownership/Ownable.sol";
 import "./IBaasToken.sol";
 
 
-/*
-
-*/
 contract BaasToken is IBaasToken, ERC20, Ownable {
     using SafeMath for uint256;
 
@@ -18,12 +15,8 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
     uint256 constant FOUNDER_SUPPLY = 10 * 10 ** 24;                // 10m Founder Token
     uint256 constant INCENTIVES_SUPPLY = 10 * 10 ** 24;             // 10m Incentives Token
 
-
     bool private _paused;
 
-    /*
-        For snap shooting token holders
-    */
     struct TokenHolder {
         address wallet;
         uint listPointer;
@@ -44,9 +37,10 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
     // the incentive, private placement, founder and escrow pots
     //
     // once trading has started the contract can
+    //
     // 1. not be setup again
     // 2. the owner looses control over the contract
-    // 3. token owner can transfer the tokens as they wish
+    // 3. token owner can transfer tokens
     // 4. the escrow, incentive, private placement and founder token can distribute according to their logic
     function setup(
         address escrowAddress,
@@ -82,30 +76,26 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
     function transferFrom(address from, address to, uint256 value)
     public returns (bool){
         require(_isInitialized && !_paused);
-        require(!isPotAddress(to));  // not allowed to send to pots any but the initial amount
+        require(!isPotAddress(to), "cannot send tokens to pots");
 
-        bool result = super.transferFrom(from, to, value);
+        require(super.transferFrom(from, to, value), "failed to transfer tokens");
 
-        if (result) {
-            updateTokenHolderList(from);
-            updateTokenHolderList(to);
-        }
+        updateTokenHolderList(from);
+        updateTokenHolderList(to);
 
         return true;
     }
 
     function transfer(address to, uint256 value) public returns (bool) {
         require(_isInitialized && !_paused);
-        require(!isPotAddress(to)); // not allowed to send to pots any but the initial amount
+        require(!isPotAddress(to), "cannot send tokens to pots");
 
-        bool result = super.transfer(to, value);
+        require(super.transfer(to, value), "failed to transfer tokens");
 
-        if (result) {
-            updateTokenHolderList(msg.sender);
-            updateTokenHolderList(to);
-        }
+        updateTokenHolderList(msg.sender);
+        updateTokenHolderList(to);
 
-        return result;
+        return true;
     }
 
     function burnTokensFromPot(address potAddress, uint256 amount)
@@ -124,14 +114,13 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
     }
 
     function updateTokenHolderList(address tokenHolderAddress) internal returns (bool success) {
-        // delete if token holders registered
+        // delete if token holder is registered
         if (balanceOf(tokenHolderAddress) == 0) {
             if (isTokenHolder(tokenHolderAddress)) {
                 deleteTokenHolder(tokenHolderAddress);
             }
-
         } else {
-            // add if token holders not registered yet
+            // add if token holder is not registered yet
             if (!isTokenHolder(tokenHolderAddress)) {
                 _tokenHolders[tokenHolderAddress].wallet = tokenHolderAddress;
                 _tokenHolders[tokenHolderAddress].listPointer = _tokenHolderList.push(tokenHolderAddress) - 1;
@@ -168,9 +157,10 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
         emit Paused(pause);
     }
 
-    /*
-        Views
-    */
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  VIEWS
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
     function isInitialized() public view returns (bool) {
         return _isInitialized;
     }
@@ -209,16 +199,17 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
     }
 
     function potSupply() public view returns (uint256) {
-        if(!_isInitialized) {
+        if (!_isInitialized) {
             return 0;
         }
 
         // get balances of pots
         uint256 escrowBalance = balanceOf(_escrowAddress);
         uint256 ppBalance = balanceOf(_ppAddress);
-        uint256 founderBalance = balanceOf(_founderAddress);
+        //uint256 founderBalance = balanceOf(_founderAddress);
         uint256 incentivesBalance = balanceOf(_incentivesAddress);
 
-        return escrowBalance.add(ppBalance).add(founderBalance).add(incentivesBalance);
+        return escrowBalance.add(incentivesBalance).add(ppBalance);
+        //.add(founderBalance);
     }
 }

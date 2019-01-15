@@ -6,7 +6,7 @@ import "../ownership/Ownable.sol";
 import "./IBaasToken.sol";
 
 interface IBaasIncentives {
-    event IncentiveProvided(address indexed account, bytes32 indexed id, uint256 amount);
+    event IncentiveIssued(address indexed account, bytes32 indexed id, uint256 amount);
     event Payout(address indexed account, bytes32 indexed id, uint256 amount);
     event Revoked(address indexed account, bytes32 indexed id, uint256 tokenNotDelivered);
 
@@ -23,9 +23,8 @@ contract BaasIncentives is IBaasIncentives, Ownable {
     uint256 private constant INITIAL_SUPPLY = 10 * 10 ** 24;
 
     struct Incentive {
-        address account;        // the beneficiary of this incentive
+        address account;
         uint256 amount;
-        uint256 provided;
         bytes32 id;
         bool isValue;
     }
@@ -52,48 +51,30 @@ contract BaasIncentives is IBaasIncentives, Ownable {
         emit SetupCompleted(_incentivesLeft);
     }
 
-    function reserve(address account, uint256 amount, bytes32 id) external onlyOwner returns (bool) {
+    function issue(address account, uint256 amount, bytes32 id) external onlyOwner returns (bool) {
         require(_isInitialized, "contract must be initialized");
+        require(amount < _incentivesLeft, "not enough token left");
         require(!_incentives[account].isValue, "address should not been incentivized yet");
 
+        // send token
+        require(_token.transfer(address(this), amount), "token transfer failed");
+
         // update incentive storage
-        _incentives[account] = Incentive(account, amount, 0, id, true);
+        _incentives[account] = Incentive(account, amount, id, true);
         _incentivesList.push(account);
 
-        // update contract balance
+        // update balance
         _incentivesLeft = _incentivesLeft.sub(amount);
         _incentivesProvided = _incentivesProvided.add(amount);
 
-        emit IncentiveProvided(account, id, amount);
+        emit IncentiveIssued(account, id, amount);
 
         return true;
     }
 
-    function revoke(address account) external onlyOwner returns (bool) {
-        require(_incentives[account].isValue, "address was never incentivized");
-        _incentives[account].isValue = false;
-
-        uint256 remaining = _incentives[account].amount - _incentives[account].provided;
-        _incentivesLeft = _incentivesLeft.add(remaining);
-        _incentivesProvided = _incentivesProvided.sub(remaining);
-
-        emit Revoked(account, _incentives[account].id, remaining);
-
-        return true;
-    }
-
-    function payout(address account, uint256 amount) external returns (uint256) {
-        require(_incentives[account].isValue, "address was never incentivized");
-        uint256 remaining = _incentives[account].amount - _incentives[account].provided;
-        require(amount < remaining, "not enough token left");
-        require(_token.transfer(address(this), amount), "token transfer failed");
-
-        _incentives[account].provided += amount;
-
-        emit Payout(account, _incentives[account].id, amount);
-    }
-
-    // Views
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  VIEWS
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     function balance() public view returns (uint256) {
         return _token.balanceOf(address(this));
@@ -122,16 +103,18 @@ contract BaasIncentives is IBaasIncentives, Ownable {
     function getIncentive(address account)
     public view returns (
         uint256 amount,
-        uint256 provided,
         bytes32 id,
         bool isValue
     ) {
         Incentive memory i = _incentives[account];
 
-        return (i.amount, i.provided, i.id, i.isValue);
+        return (i.amount, i.id, i.isValue);
     }
 
-    // pure
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  PURE
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     function name() public pure returns (string) {
         return NAME;

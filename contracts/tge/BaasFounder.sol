@@ -7,26 +7,25 @@ import "./IBaasToken.sol";
 
 
 interface IBaasFounder {
-    function setup(uint256 vestingPeriod) external returns (bool);
+    function setup() external returns (bool);
 
-    event FounderWithdraw(address indexed receiver, uint256 amount);
+    function issue(address receiver, uint256 amount, bytes32 id, uint8 founderId) external returns (bool);
 
-    event SetupCompleted(uint vestingStartBlock, uint vestingPeriod, uint vestingEndBlock);
+    event Issued(address indexed receiver, uint256 amount, uint8 founderId);
+
+    event SetupCompleted();
 }
 
 contract BaasFounder is Ownable, IBaasFounder {
     using SafeMath for uint256;
-    using SafeMath for uint;
 
     string private constant NAME = "FOUNDER";
 
-    uint256 constant FOUNDER1_SUPPLY = 8 * 10 ** 18;                // 8m Founder1 Token
-    uint256 constant FOUNDER2_SUPPLY = 2 * 10 ** 18;                // 2m Founder2 Token
-
-    uint256 private _vestingStart;
-    uint256 private _vestingPeriod;
+    uint256 constant FOUNDER1_SUPPLY = 8 * 10 ** 24;                // 8m Founder1 Token
+    uint256 constant FOUNDER2_SUPPLY = 2 * 10 ** 24;                // 2m Founder2 Token
 
     bool private _isInitialized = false;
+    uint256[] private _left;
 
     IBaasToken private _token;
 
@@ -34,30 +33,34 @@ contract BaasFounder is Ownable, IBaasFounder {
         _token = token;
     }
 
-    function setup(uint256 vestingPeriod)
+    function setup()
     external onlyOwner returns (bool) {
-        _vestingStart = block.number;
-        _vestingPeriod = vestingPeriod;
+        require(balance() == FOUNDER1_SUPPLY.add(FOUNDER2_SUPPLY), "not enough tokens in contract");
+        _left.push(FOUNDER1_SUPPLY);
+        _left.push(FOUNDER2_SUPPLY);
+
         _isInitialized = true;
-        emit SetupCompleted(_vestingStart, _vestingPeriod, _vestingStart.add(_vestingPeriod));
+        emit SetupCompleted();
     }
 
-    function withdraw(address receiver, uint256 amount)
+    function issue(address receiver, uint256 amount, bytes32 id, int founderId)
     external onlyOwner returns (bool) {
-        require(_isInitialized);
-        require(canWithdraw(block.number));
-        require(amount <= balance());
-
+        require(_isInitialized, "contract not initialized yet");
+        require(founderId <= 1, "founderId not existent");
+        require(amount <= balance(), "not enough tokens left");
+        require(amount <= _left[founderId], "not enough tokens for this founder");
         require(_token.transfer(receiver, amount));
 
-        emit FounderWithdraw(receiver, amount);
+        _left[founderId] = _left[founderId].sub(amount);
+
+        emit Issued(receiver, amount);
 
         return true;
     }
 
-    /*
-        VIEWS
-    */
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  VIEWS
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     function isInitialized() public view returns (bool) {
         return _isInitialized;
@@ -71,25 +74,13 @@ contract BaasFounder is Ownable, IBaasFounder {
         return _token;
     }
 
-    function vestingStartBlock() public view returns (uint) {
-        return _vestingStart;
+    function left(int founderId) public view returns (uint256){
+        return _left[founderId];
     }
 
-    function vestingPeriod() public view returns (uint) {
-        return _vestingPeriod;
-    }
-
-    function vestingEndBlock() public view returns (uint) {
-        return _vestingStart.add(_vestingPeriod);
-    }
-
-    function canWithdraw(uint blocknumber) public view returns (bool) {
-        return vestingEndBlock() <= blocknumber;
-    }
-
-    /*
-        pure
-    */
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  PURE
+    ///////////////////////////////////////////////////////////////////////////////////////////
     function name() public pure returns (string) {
         return NAME;
     }
