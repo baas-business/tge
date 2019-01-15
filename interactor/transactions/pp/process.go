@@ -23,7 +23,7 @@ func process(dAppContext *web3.DAppContext, isDiscounted bool, target string, am
 		return err
 	}
 
-	tokenProvided, err := contract.TotalTokenProvided(&bind.CallOpts{}, 0)
+	tokenProvided, err := contract.TokensIssued(&bind.CallOpts{}, 0)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -49,7 +49,7 @@ func process(dAppContext *web3.DAppContext, isDiscounted bool, target string, am
 
 	utils.PrintColoredln("GasPrice", txOps.GasPrice)
 	utils.PrintColoredln("GasLimit", txOps.GasLimit)
-	tx, err := contract.ProvideToken(txOps, t, val.BigInt(), discountType)
+	tx, err := contract.Issue(txOps, t, val.BigInt(), discountType)
 
 	if err != nil {
 		return err

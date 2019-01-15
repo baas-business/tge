@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.5;
 
 import "./ERC20.sol";
 import "../ownership/Ownable.sol";
@@ -173,10 +173,6 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
         return (_escrowAddress, _ppAddress, _founderAddress, _incentivesAddress);
     }
 
-    function name() public pure returns (string) {
-        return NAME;
-    }
-
     function isTokenHolder(address tokenHolderAddress) public view returns (bool) {
         if (_tokenHolderList.length == 0) return false;
         return (_tokenHolderList[_tokenHolders[tokenHolderAddress].listPointer] == tokenHolderAddress);
@@ -186,7 +182,7 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
         return _tokenHolderList.length;
     }
 
-    function tokenHolderSnapShot() public view returns (address[]) {
+    function tokenHolderSnapShot() public view returns (address[] memory) {
         return _tokenHolderList;
     }
 
@@ -211,5 +207,17 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
 
         return escrowBalance.add(incentivesBalance).add(ppBalance);
         //.add(founderBalance);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  Pure
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * @dev shows the name of this contract
+     * @return string name of this contract
+     */
+    function name() public pure returns (string memory) {
+        return NAME;
     }
 }

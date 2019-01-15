@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.5;
 
 
 import "../math/SafeMath.sol";
@@ -10,7 +10,6 @@ interface IBaasIncentives {
     event Payout(address indexed account, bytes32 indexed id, uint256 amount);
     event Revoked(address indexed account, bytes32 indexed id, uint256 tokenNotDelivered);
 
-    event SetupCompleted(uint256 supply);
 }
 /*
     Can claim first stage immediately?
@@ -37,19 +36,21 @@ contract BaasIncentives is IBaasIncentives, Ownable {
 
     bool private _isInitialized = false;
 
+    /**
+    * @dev token contract address of BaaSToken
+    */
     IBaasToken private _token;
 
+    /**
+     * @dev constructor
+     * @param token IBaasToken The address of the token smart contract
+     */
     constructor(IBaasToken token) public {
         _token = token;
+        _incentivesLeft = INITIAL_SUPPLY;
+        _incentivesProvided = 0;
     }
 
-    function setup() external {
-        require(!_isInitialized);
-        _incentivesLeft = balance();
-        _incentivesProvided = 0;
-        _isInitialized = true;
-        emit SetupCompleted(_incentivesLeft);
-    }
 
     function issue(address account, uint256 amount, bytes32 id) external onlyOwner returns (bool) {
         require(_isInitialized, "contract must be initialized");
@@ -73,16 +74,25 @@ contract BaasIncentives is IBaasIncentives, Ownable {
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
-    //  VIEWS
+    //  Views
     ///////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * @dev shows balance of this contract
+     * @return uint256 the amount of token held by this contract.
+     */
     function balance() public view returns (uint256) {
         return _token.balanceOf(address(this));
     }
 
+    /**
+     * @dev shows the token address this contracts references
+     * @return address token address of BaaSToken
+     */
     function tokenAddress() public view returns (address) {
-        return _token;
+        return address(_token);
     }
+
 
     function incentivesLeft() public view returns (uint256) {
         return _incentivesLeft;
@@ -96,7 +106,7 @@ contract BaasIncentives is IBaasIncentives, Ownable {
         return _isInitialized;
     }
 
-    function incentives() public view returns (address[]) {
+    function incentives() public view returns (address[] memory) {
         return _incentivesList;
     }
 
@@ -113,10 +123,14 @@ contract BaasIncentives is IBaasIncentives, Ownable {
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////
-    //  PURE
+    //  Pure
     ///////////////////////////////////////////////////////////////////////////////////////////
 
-    function name() public pure returns (string) {
+    /**
+     * @dev shows the name of this contract
+     * @return string name of this contract
+     */
+    function name() public pure returns (string memory) {
         return NAME;
     }
 

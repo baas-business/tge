@@ -1,4 +1,4 @@
-package reserve
+package issue
 
 import (
 	"fmt"
@@ -24,7 +24,7 @@ func process(dAppContext *web3.DAppContext, args *CommandArgs) error {
 	}
 
 	etherValue, err := ethertypes.NewEtherValue().FromFloat64String(fmt.Sprintf("%v", args.Amount))
-	tx, err := contract.Reserve(txOps,
+	tx, err := contract.Issue(txOps,
 		common.HexToAddress(args.Target),
 		etherValue.BigInt(),
 		[32]byte{},

@@ -31,12 +31,6 @@ func General(dAppContext *web3.DAppContext) error {
 		log.Fatal(err)
 	}
 
-	name, err := contract.Name(&bind.CallOpts{})
-	if err != nil {
-		return err
-	}
-	utils.PrintColoredln("Name", name)
-
 	tokenAddress, err := contract.TokenAddress(&bind.CallOpts{})
 	if err != nil {
 		return err
@@ -68,30 +62,30 @@ func ProvidedToken(dAppContext *web3.DAppContext) error {
 		return err
 	}
 
-	tt, err := contract.TotalTokenProvided(&bind.CallOpts{}, 0)
+	tt, err := contract.TokensIssued(&bind.CallOpts{}, 0)
 	if err != nil {
 		return err
 	}
 	utils.PrintColoredln("Total Provided Token", ethertypes.NewEtherValue().SetBigInt(tt).String())
 
-	ttd, err := contract.TotalTokenProvided(&bind.CallOpts{}, 1)
+	ttd, err := contract.TokensIssued(&bind.CallOpts{}, 1)
 	if err != nil {
 		return err
 	}
 	utils.PrintColoredln("Discounted Provided Token", ethertypes.NewEtherValue().SetBigInt(ttd).String())
 
-	ttnd, err := contract.TotalTokenProvided(&bind.CallOpts{}, 2)
+	ttnd, err := contract.TokensIssued(&bind.CallOpts{}, 2)
 	if err != nil {
 		return err
 	}
 	utils.PrintColoredln("Not Discounted Provided Token", ethertypes.NewEtherValue().SetBigInt(ttnd).String())
 
-	iterator, err := contract.FilterTokenDelivered(&bind.FilterOpts{
+	iterator, err := contract.FilterTokensIssued(&bind.FilterOpts{
 		Start: 4000000,
-	}, []common.Address{dAppContext.Key.Address})
+	}, []common.Address{dAppContext.Key.Address}, []uint8{1})
 
 	for iterator.Next() {
-		fmt.Println(iterator.Event.To.String())
+		fmt.Println(iterator.Event.Account.String())
 		fmt.Println(iterator.Event.Amount)
 		fmt.Println(iterator.Event.DiscountType)
 		fmt.Println(".........................................")

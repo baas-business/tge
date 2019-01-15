@@ -1,4 +1,4 @@
-package reserve
+package issue
 
 import (
 	"bytes"
@@ -17,9 +17,7 @@ type CommandArgs struct {
 func GetArgs(c *cli.Context) (*CommandArgs) {
 	return &CommandArgs{
 		Target: c.String("target"),
-		Blocks: c.Int64("blocks"),
 		Amount: c.Float64("amount"),
-		Stages: c.Int64("stages"),
 	}
 }
 
@@ -28,8 +26,6 @@ func (it *CommandArgs) String() string {
 
 	bb.WriteString(utils.ConsoleWriteLabeledValue("Target", it.Target))
 	bb.WriteString(utils.ConsoleWriteLabeledValueI("Amount", it.Amount))
-	bb.WriteString(utils.ConsoleWriteLabeledValueI("Stages", it.Stages))
-	bb.WriteString(utils.ConsoleWriteLabeledValueI("Blocks", it.Blocks))
 
 	return bb.String()
 }
@@ -48,16 +44,6 @@ func Command() *cli.Command {
 			Add(
 				cli.Float64Flag{
 					Name:  "amount",
-					Usage: "token amount to be provided",
-				}).
-			Add(
-				cli.Int64Flag{
-					Name:  "stages",
-					Usage: "token amount to be provided",
-				}).
-			Add(
-				cli.Int64Flag{
-					Name:  "blocks",
 					Usage: "token amount to be provided",
 				}).
 			Get(),

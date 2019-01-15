@@ -16,10 +16,10 @@ import (
 )
 
 // BaasPPABI is the input ABI used to generate the binding from.
-const BaasPPABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"discountType\",\"type\":\"uint8\"}],\"name\":\"TokenDelivered\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"discountType\",\"type\":\"uint8\"}],\"name\":\"provideToken\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"burnRest\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"discountType\",\"type\":\"uint8\"}],\"name\":\"totalTokenProvided\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"discountType\",\"type\":\"uint256\"}],\"name\":\"Cap\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
+const BaasPPABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"discountType\",\"type\":\"uint8\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"TokensIssued\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"burnedAmount\",\"type\":\"uint256\"}],\"name\":\"Finalized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"discountType\",\"type\":\"uint8\"}],\"name\":\"issue\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"finalize\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isFinalized\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"discountType\",\"type\":\"uint8\"}],\"name\":\"tokensIssued\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"discountType\",\"type\":\"uint256\"}],\"name\":\"cap\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
 
 // BaasPPBin is the compiled bytecode used for deploying new contracts.
-const BaasPPBin = `0x608060405234801561001057600080fd5b50604051602080610ee383398101806040528101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050610da3806101406000396000f3006080604052600436106100af576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306fdde03146100b45780635ea8358814610144578063715018a6146101885780638da5cb5b1461019f5780638f32d59b146101f65780638fa01700146102255780639d76ea5814610254578063b69ef8a8146102ab578063ddf4c293146102d6578063f2fde38b14610317578063fcbcac1d1461035a575b600080fd5b3480156100c057600080fd5b506100c96103cc565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101095780820151818401526020810190506100ee565b50505050905090810190601f1680156101365780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561015057600080fd5b50610172600480360381019080803560ff169060200190929190505050610409565b6040518082815260200191505060405180910390f35b34801561019457600080fd5b5061019d610473565b005b3480156101ab57600080fd5b506101b4610545565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561020257600080fd5b5061020b61056e565b604051808215151515815260200191505060405180910390f35b34801561023157600080fd5b5061023a6105c5565b604051808215151515815260200191505060405180910390f35b34801561026057600080fd5b506102696106f3565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156102b757600080fd5b506102c061071d565b6040518082815260200191505060405180910390f35b3480156102e257600080fd5b506103016004803603810190808035906020019092919050505061081c565b6040518082815260200191505060405180910390f35b34801561032357600080fd5b50610358600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506108a1565b005b34801561036657600080fd5b506103b2600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190803560ff1690602001909291905050506108c0565b604051808215151515815260200191505060405180910390f35b60606040805190810160405280601181526020017f5052495641544520504c4143454d454e54000000000000000000000000000000815250905090565b60008060ff168260ff1614156104375761043060035460025461098b90919063ffffffff16565b905061046e565b600160ff168260ff16141561045057600254905061046e565b600260ff168260ff16141561046957600354905061046e565b600090505b919050565b61047b61056e565b151561048657600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b60006105cf61056e565b15156105da57600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16634cca31b63061062161071d565b6040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b1580156106a657600080fd5b505af11580156106ba573d6000803e3d6000fd5b505050506040513d60208110156106d057600080fd5b810190808051906020019092919050505015156106ec57600080fd5b6001905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b1580156107dc57600080fd5b505af11580156107f0573d6000803e3d6000fd5b505050506040513d602081101561080657600080fd5b8101908080519060200190929190505050905090565b60008060ff16821415610859576108526a0422ca8b0a00a4250000006a0c685fa11e01ec6f00000061098b90919063ffffffff16565b905061089c565b600160ff16821415610878576a0422ca8b0a00a425000000905061089c565b600260ff16821415610897576a0c685fa11e01ec6f000000905061089c565b600090505b919050565b6108a961056e565b15156108b457600080fd5b6108bd816109ac565b50565b60006108ca61056e565b15156108d557600080fd5b600160ff168260ff1614806108f05750600260ff168260ff16145b15156108fb57600080fd5b600160ff168260ff161415610919576109148484610aa6565b610924565b6109238484610bfe565b5b8373ffffffffffffffffffffffffffffffffffffffff167fa254c04eefa2b3459dff6e70a8a28dc5876401ccfb247ad27c56f0c32970cf068484604051808381526020018260ff1660ff1681526020019250505060405180910390a2600190509392505050565b60008082840190508381101515156109a257600080fd5b8091505092915050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156109e857600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b610ac66002546a0422ca8b0a00a425000000610d5690919063ffffffff16565b8111151515610ad457600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb83836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b158015610b9957600080fd5b505af1158015610bad573d6000803e3d6000fd5b505050506040513d6020811015610bc357600080fd5b81019080805190602001909291905050501515610bdf57600080fd5b610bf48160025461098b90919063ffffffff16565b6002819055505050565b610c1e6003546a0c685fa11e01ec6f000000610d5690919063ffffffff16565b8111151515610c2c57600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb83836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b158015610cf157600080fd5b505af1158015610d05573d6000803e3d6000fd5b505050506040513d6020811015610d1b57600080fd5b81019080805190602001909291905050501515610d3757600080fd5b610d4c8160035461098b90919063ffffffff16565b6003819055505050565b600080838311151515610d6857600080fd5b828403905080915050929150505600a165627a7a723058201bfe77a4df3fdc83a256231a62f184704c7c391d6b6a450abcccc8ff590a38b40029`
+const BaasPPBin = `0x608060405234801561001057600080fd5b506040516020806112bb8339810180604052602081101561003057600080fd5b8101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505061116d8061014e6000396000f3fe6080604052600436106100af576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806326215f25146100b45780634bb278f3146101345780635c5e1d5214610163578063715018a6146101b55780638d4e4083146101cc5780638da5cb5b146101fb5780638f32d59b146102525780639d76ea5814610281578063b69ef8a8146102d8578063f2fde38b14610303578063ff2ad8e414610354575b600080fd5b3480156100c057600080fd5b5061011a600480360360608110156100d757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190803560ff1690602001909291905050506103a3565b604051808215151515815260200191505060405180910390f35b34801561014057600080fd5b50610149610552565b604051808215151515815260200191505060405180910390f35b34801561016f57600080fd5b5061019f6004803603602081101561018657600080fd5b81019080803560ff1690602001909291905050506107c6565b6040518082815260200191505060405180910390f35b3480156101c157600080fd5b506101ca610830565b005b3480156101d857600080fd5b506101e1610902565b604051808215151515815260200191505060405180910390f35b34801561020757600080fd5b50610210610919565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561025e57600080fd5b50610267610942565b604051808215151515815260200191505060405180910390f35b34801561028d57600080fd5b50610296610999565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156102e457600080fd5b506102ed6109c3565b6040518082815260200191505060405180910390f35b34801561030f57600080fd5b506103526004803603602081101561032657600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610ac0565b005b34801561036057600080fd5b5061038d6004803603602081101561037757600080fd5b8101908080359060200190929190505050610adf565b6040518082815260200191505060405180910390f35b60006103ad610942565b15156103b857600080fd5b600460009054906101000a900460ff1615151561043d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601e8152602001807f636f6e74726163742077617320616c72656164792066696e616c697a6564000081525060200191505060405180910390fd5b600160ff168260ff1614806104585750600260ff168260ff16145b15156104cc576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260188152602001807f62616420646973636f756e74207479706520706173736564000000000000000081525060200191505060405180910390fd5b600160ff168260ff1614156104ea576104e58484610b64565b6104f5565b6104f48484610db4565b5b8160ff168473ffffffffffffffffffffffffffffffffffffffff167f064e268fa97e769a5abed875cfd116cb13d34b361b6088e9213df29cc7ea85e4856040518082815260200191505060405180910390a3600190509392505050565b600061055c610942565b151561056757600080fd5b600460009054906101000a900460ff161515156105ec576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601e8152602001807f636f6e74726163742077617320616c72656164792066696e616c697a6564000081525060200191505060405180910390fd5b60006105f66109c3565b9050600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16634cca31b630836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b1580156106bd57600080fd5b505af11580156106d1573d6000803e3d6000fd5b505050506040513d60208110156106e757600080fd5b8101908080519060200190929190505050151561076c576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260188152602001807f6275726e696e67206f6620746f6b656e73206661696c6564000000000000000081525060200191505060405180910390fd5b6001600460006101000a81548160ff0219169083151502179055507f839cf22e1ba87ce2f5b9bbf46cf0175a09eed52febdfaac8852478e68203c763816040518082815260200191505060405180910390a1600191505090565b60008060ff168260ff1614156107f4576107ed60035460025461100490919063ffffffff16565b905061082b565b600160ff168260ff16141561080d57600254905061082b565b600260ff168260ff16141561082657600354905061082b565b600090505b919050565b610838610942565b151561084357600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000600460009054906101000a900460ff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060206040518083038186803b158015610a8057600080fd5b505afa158015610a94573d6000803e3d6000fd5b505050506040513d6020811015610aaa57600080fd5b8101908080519060200190929190505050905090565b610ac8610942565b1515610ad357600080fd5b610adc81611025565b50565b60008060ff16821415610b1c57610b156a0422ca8b0a00a4250000006a0c685fa11e01ec6f00000061100490919063ffffffff16565b9050610b5f565b600160ff16821415610b3b576a0422ca8b0a00a4250000009050610b5f565b600260ff16821415610b5a576a0c685fa11e01ec6f0000009050610b5f565b600090505b919050565b610b846002546a0422ca8b0a00a42500000061111f90919063ffffffff16565b8111151515610c21576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602b8152602001807f616d6f756e742065786365656473206861726420636170206f6620646973636f81526020017f756e74656420746f6b656e00000000000000000000000000000000000000000081525060400191505060405180910390fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb83836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b158015610ce657600080fd5b505af1158015610cfa573d6000803e3d6000fd5b505050506040513d6020811015610d1057600080fd5b81019080805190602001909291905050501515610d95576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260158152602001807f746f6b656e207472616e73666572206661696c6564000000000000000000000081525060200191505060405180910390fd5b610daa8160025461100490919063ffffffff16565b6002819055505050565b610dd46003546a0c685fa11e01ec6f00000061111f90919063ffffffff16565b8111151515610e71576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602f8152602001807f616d6f756e742065786365656473206861726420636170206f66206e6f74206481526020017f6973636f756e74656420746f6b656e000000000000000000000000000000000081525060400191505060405180910390fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb83836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b158015610f3657600080fd5b505af1158015610f4a573d6000803e3d6000fd5b505050506040513d6020811015610f6057600080fd5b81019080805190602001909291905050501515610fe5576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260158152602001807f746f6b656e207472616e73666572206661696c6564000000000000000000000081525060200191505060405180910390fd5b610ffa8160035461100490919063ffffffff16565b6003819055505050565b600080828401905083811015151561101b57600080fd5b8091505092915050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561106157600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600082821115151561113057600080fd5b60008284039050809150509291505056fea165627a7a723058202ba2c7ad7d96cea7f558ed0304728659a50e032d1d376fa81253a7c22a301b260029`
 
 // DeployBaasPP deploys a new Ethereum contract, binding an instance of BaasPP to it.
 func DeployBaasPP(auth *bind.TransactOpts, backend bind.ContractBackend, token common.Address) (common.Address, *types.Transaction, *BaasPP, error) {
@@ -176,32 +176,6 @@ func (_BaasPP *BaasPPTransactorRaw) Transact(opts *bind.TransactOpts, method str
 	return _BaasPP.Contract.contract.Transact(opts, method, params...)
 }
 
-// Cap is a free data retrieval call binding the contract method 0xddf4c293.
-//
-// Solidity: function Cap(discountType uint256) constant returns(uint256)
-func (_BaasPP *BaasPPCaller) Cap(opts *bind.CallOpts, discountType *big.Int) (*big.Int, error) {
-	var (
-		ret0 = new(*big.Int)
-	)
-	out := ret0
-	err := _BaasPP.contract.Call(opts, out, "Cap", discountType)
-	return *ret0, err
-}
-
-// Cap is a free data retrieval call binding the contract method 0xddf4c293.
-//
-// Solidity: function Cap(discountType uint256) constant returns(uint256)
-func (_BaasPP *BaasPPSession) Cap(discountType *big.Int) (*big.Int, error) {
-	return _BaasPP.Contract.Cap(&_BaasPP.CallOpts, discountType)
-}
-
-// Cap is a free data retrieval call binding the contract method 0xddf4c293.
-//
-// Solidity: function Cap(discountType uint256) constant returns(uint256)
-func (_BaasPP *BaasPPCallerSession) Cap(discountType *big.Int) (*big.Int, error) {
-	return _BaasPP.Contract.Cap(&_BaasPP.CallOpts, discountType)
-}
-
 // Balance is a free data retrieval call binding the contract method 0xb69ef8a8.
 //
 // Solidity: function balance() constant returns(uint256)
@@ -228,6 +202,58 @@ func (_BaasPP *BaasPPCallerSession) Balance() (*big.Int, error) {
 	return _BaasPP.Contract.Balance(&_BaasPP.CallOpts)
 }
 
+// Cap is a free data retrieval call binding the contract method 0xff2ad8e4.
+//
+// Solidity: function cap(discountType uint256) constant returns(uint256)
+func (_BaasPP *BaasPPCaller) Cap(opts *bind.CallOpts, discountType *big.Int) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasPP.contract.Call(opts, out, "cap", discountType)
+	return *ret0, err
+}
+
+// Cap is a free data retrieval call binding the contract method 0xff2ad8e4.
+//
+// Solidity: function cap(discountType uint256) constant returns(uint256)
+func (_BaasPP *BaasPPSession) Cap(discountType *big.Int) (*big.Int, error) {
+	return _BaasPP.Contract.Cap(&_BaasPP.CallOpts, discountType)
+}
+
+// Cap is a free data retrieval call binding the contract method 0xff2ad8e4.
+//
+// Solidity: function cap(discountType uint256) constant returns(uint256)
+func (_BaasPP *BaasPPCallerSession) Cap(discountType *big.Int) (*big.Int, error) {
+	return _BaasPP.Contract.Cap(&_BaasPP.CallOpts, discountType)
+}
+
+// IsFinalized is a free data retrieval call binding the contract method 0x8d4e4083.
+//
+// Solidity: function isFinalized() constant returns(bool)
+func (_BaasPP *BaasPPCaller) IsFinalized(opts *bind.CallOpts) (bool, error) {
+	var (
+		ret0 = new(bool)
+	)
+	out := ret0
+	err := _BaasPP.contract.Call(opts, out, "isFinalized")
+	return *ret0, err
+}
+
+// IsFinalized is a free data retrieval call binding the contract method 0x8d4e4083.
+//
+// Solidity: function isFinalized() constant returns(bool)
+func (_BaasPP *BaasPPSession) IsFinalized() (bool, error) {
+	return _BaasPP.Contract.IsFinalized(&_BaasPP.CallOpts)
+}
+
+// IsFinalized is a free data retrieval call binding the contract method 0x8d4e4083.
+//
+// Solidity: function isFinalized() constant returns(bool)
+func (_BaasPP *BaasPPCallerSession) IsFinalized() (bool, error) {
+	return _BaasPP.Contract.IsFinalized(&_BaasPP.CallOpts)
+}
+
 // IsOwner is a free data retrieval call binding the contract method 0x8f32d59b.
 //
 // Solidity: function isOwner() constant returns(bool)
@@ -252,32 +278,6 @@ func (_BaasPP *BaasPPSession) IsOwner() (bool, error) {
 // Solidity: function isOwner() constant returns(bool)
 func (_BaasPP *BaasPPCallerSession) IsOwner() (bool, error) {
 	return _BaasPP.Contract.IsOwner(&_BaasPP.CallOpts)
-}
-
-// Name is a free data retrieval call binding the contract method 0x06fdde03.
-//
-// Solidity: function name() constant returns(string)
-func (_BaasPP *BaasPPCaller) Name(opts *bind.CallOpts) (string, error) {
-	var (
-		ret0 = new(string)
-	)
-	out := ret0
-	err := _BaasPP.contract.Call(opts, out, "name")
-	return *ret0, err
-}
-
-// Name is a free data retrieval call binding the contract method 0x06fdde03.
-//
-// Solidity: function name() constant returns(string)
-func (_BaasPP *BaasPPSession) Name() (string, error) {
-	return _BaasPP.Contract.Name(&_BaasPP.CallOpts)
-}
-
-// Name is a free data retrieval call binding the contract method 0x06fdde03.
-//
-// Solidity: function name() constant returns(string)
-func (_BaasPP *BaasPPCallerSession) Name() (string, error) {
-	return _BaasPP.Contract.Name(&_BaasPP.CallOpts)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
@@ -332,72 +332,72 @@ func (_BaasPP *BaasPPCallerSession) TokenAddress() (common.Address, error) {
 	return _BaasPP.Contract.TokenAddress(&_BaasPP.CallOpts)
 }
 
-// TotalTokenProvided is a free data retrieval call binding the contract method 0x5ea83588.
+// TokensIssued is a free data retrieval call binding the contract method 0x5c5e1d52.
 //
-// Solidity: function totalTokenProvided(discountType uint8) constant returns(uint256)
-func (_BaasPP *BaasPPCaller) TotalTokenProvided(opts *bind.CallOpts, discountType uint8) (*big.Int, error) {
+// Solidity: function tokensIssued(discountType uint8) constant returns(uint256)
+func (_BaasPP *BaasPPCaller) TokensIssued(opts *bind.CallOpts, discountType uint8) (*big.Int, error) {
 	var (
 		ret0 = new(*big.Int)
 	)
 	out := ret0
-	err := _BaasPP.contract.Call(opts, out, "totalTokenProvided", discountType)
+	err := _BaasPP.contract.Call(opts, out, "tokensIssued", discountType)
 	return *ret0, err
 }
 
-// TotalTokenProvided is a free data retrieval call binding the contract method 0x5ea83588.
+// TokensIssued is a free data retrieval call binding the contract method 0x5c5e1d52.
 //
-// Solidity: function totalTokenProvided(discountType uint8) constant returns(uint256)
-func (_BaasPP *BaasPPSession) TotalTokenProvided(discountType uint8) (*big.Int, error) {
-	return _BaasPP.Contract.TotalTokenProvided(&_BaasPP.CallOpts, discountType)
+// Solidity: function tokensIssued(discountType uint8) constant returns(uint256)
+func (_BaasPP *BaasPPSession) TokensIssued(discountType uint8) (*big.Int, error) {
+	return _BaasPP.Contract.TokensIssued(&_BaasPP.CallOpts, discountType)
 }
 
-// TotalTokenProvided is a free data retrieval call binding the contract method 0x5ea83588.
+// TokensIssued is a free data retrieval call binding the contract method 0x5c5e1d52.
 //
-// Solidity: function totalTokenProvided(discountType uint8) constant returns(uint256)
-func (_BaasPP *BaasPPCallerSession) TotalTokenProvided(discountType uint8) (*big.Int, error) {
-	return _BaasPP.Contract.TotalTokenProvided(&_BaasPP.CallOpts, discountType)
+// Solidity: function tokensIssued(discountType uint8) constant returns(uint256)
+func (_BaasPP *BaasPPCallerSession) TokensIssued(discountType uint8) (*big.Int, error) {
+	return _BaasPP.Contract.TokensIssued(&_BaasPP.CallOpts, discountType)
 }
 
-// BurnRest is a paid mutator transaction binding the contract method 0x8fa01700.
+// Finalize is a paid mutator transaction binding the contract method 0x4bb278f3.
 //
-// Solidity: function burnRest() returns(bool)
-func (_BaasPP *BaasPPTransactor) BurnRest(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _BaasPP.contract.Transact(opts, "burnRest")
+// Solidity: function finalize() returns(bool)
+func (_BaasPP *BaasPPTransactor) Finalize(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _BaasPP.contract.Transact(opts, "finalize")
 }
 
-// BurnRest is a paid mutator transaction binding the contract method 0x8fa01700.
+// Finalize is a paid mutator transaction binding the contract method 0x4bb278f3.
 //
-// Solidity: function burnRest() returns(bool)
-func (_BaasPP *BaasPPSession) BurnRest() (*types.Transaction, error) {
-	return _BaasPP.Contract.BurnRest(&_BaasPP.TransactOpts)
+// Solidity: function finalize() returns(bool)
+func (_BaasPP *BaasPPSession) Finalize() (*types.Transaction, error) {
+	return _BaasPP.Contract.Finalize(&_BaasPP.TransactOpts)
 }
 
-// BurnRest is a paid mutator transaction binding the contract method 0x8fa01700.
+// Finalize is a paid mutator transaction binding the contract method 0x4bb278f3.
 //
-// Solidity: function burnRest() returns(bool)
-func (_BaasPP *BaasPPTransactorSession) BurnRest() (*types.Transaction, error) {
-	return _BaasPP.Contract.BurnRest(&_BaasPP.TransactOpts)
+// Solidity: function finalize() returns(bool)
+func (_BaasPP *BaasPPTransactorSession) Finalize() (*types.Transaction, error) {
+	return _BaasPP.Contract.Finalize(&_BaasPP.TransactOpts)
 }
 
-// ProvideToken is a paid mutator transaction binding the contract method 0xfcbcac1d.
+// Issue is a paid mutator transaction binding the contract method 0x26215f25.
 //
-// Solidity: function provideToken(account address, amount uint256, discountType uint8) returns(bool)
-func (_BaasPP *BaasPPTransactor) ProvideToken(opts *bind.TransactOpts, account common.Address, amount *big.Int, discountType uint8) (*types.Transaction, error) {
-	return _BaasPP.contract.Transact(opts, "provideToken", account, amount, discountType)
+// Solidity: function issue(account address, amount uint256, discountType uint8) returns(bool)
+func (_BaasPP *BaasPPTransactor) Issue(opts *bind.TransactOpts, account common.Address, amount *big.Int, discountType uint8) (*types.Transaction, error) {
+	return _BaasPP.contract.Transact(opts, "issue", account, amount, discountType)
 }
 
-// ProvideToken is a paid mutator transaction binding the contract method 0xfcbcac1d.
+// Issue is a paid mutator transaction binding the contract method 0x26215f25.
 //
-// Solidity: function provideToken(account address, amount uint256, discountType uint8) returns(bool)
-func (_BaasPP *BaasPPSession) ProvideToken(account common.Address, amount *big.Int, discountType uint8) (*types.Transaction, error) {
-	return _BaasPP.Contract.ProvideToken(&_BaasPP.TransactOpts, account, amount, discountType)
+// Solidity: function issue(account address, amount uint256, discountType uint8) returns(bool)
+func (_BaasPP *BaasPPSession) Issue(account common.Address, amount *big.Int, discountType uint8) (*types.Transaction, error) {
+	return _BaasPP.Contract.Issue(&_BaasPP.TransactOpts, account, amount, discountType)
 }
 
-// ProvideToken is a paid mutator transaction binding the contract method 0xfcbcac1d.
+// Issue is a paid mutator transaction binding the contract method 0x26215f25.
 //
-// Solidity: function provideToken(account address, amount uint256, discountType uint8) returns(bool)
-func (_BaasPP *BaasPPTransactorSession) ProvideToken(account common.Address, amount *big.Int, discountType uint8) (*types.Transaction, error) {
-	return _BaasPP.Contract.ProvideToken(&_BaasPP.TransactOpts, account, amount, discountType)
+// Solidity: function issue(account address, amount uint256, discountType uint8) returns(bool)
+func (_BaasPP *BaasPPTransactorSession) Issue(account common.Address, amount *big.Int, discountType uint8) (*types.Transaction, error) {
+	return _BaasPP.Contract.Issue(&_BaasPP.TransactOpts, account, amount, discountType)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
@@ -440,6 +440,128 @@ func (_BaasPP *BaasPPSession) TransferOwnership(newOwner common.Address) (*types
 // Solidity: function transferOwnership(newOwner address) returns()
 func (_BaasPP *BaasPPTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
 	return _BaasPP.Contract.TransferOwnership(&_BaasPP.TransactOpts, newOwner)
+}
+
+// BaasPPFinalizedIterator is returned from FilterFinalized and is used to iterate over the raw logs and unpacked data for Finalized events raised by the BaasPP contract.
+type BaasPPFinalizedIterator struct {
+	Event *BaasPPFinalized // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *BaasPPFinalizedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(BaasPPFinalized)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(BaasPPFinalized)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *BaasPPFinalizedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *BaasPPFinalizedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// BaasPPFinalized represents a Finalized event raised by the BaasPP contract.
+type BaasPPFinalized struct {
+	BurnedAmount *big.Int
+	Raw          types.Log // Blockchain specific contextual infos
+}
+
+// FilterFinalized is a free log retrieval operation binding the contract event 0x839cf22e1ba87ce2f5b9bbf46cf0175a09eed52febdfaac8852478e68203c763.
+//
+// Solidity: e Finalized(burnedAmount uint256)
+func (_BaasPP *BaasPPFilterer) FilterFinalized(opts *bind.FilterOpts) (*BaasPPFinalizedIterator, error) {
+
+	logs, sub, err := _BaasPP.contract.FilterLogs(opts, "Finalized")
+	if err != nil {
+		return nil, err
+	}
+	return &BaasPPFinalizedIterator{contract: _BaasPP.contract, event: "Finalized", logs: logs, sub: sub}, nil
+}
+
+// WatchFinalized is a free log subscription operation binding the contract event 0x839cf22e1ba87ce2f5b9bbf46cf0175a09eed52febdfaac8852478e68203c763.
+//
+// Solidity: e Finalized(burnedAmount uint256)
+func (_BaasPP *BaasPPFilterer) WatchFinalized(opts *bind.WatchOpts, sink chan<- *BaasPPFinalized) (event.Subscription, error) {
+
+	logs, sub, err := _BaasPP.contract.WatchLogs(opts, "Finalized")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(BaasPPFinalized)
+				if err := _BaasPP.contract.UnpackLog(event, "Finalized", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
 }
 
 // BaasPPOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the BaasPP contract.
@@ -583,9 +705,9 @@ func (_BaasPP *BaasPPFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, s
 	}), nil
 }
 
-// BaasPPTokenDeliveredIterator is returned from FilterTokenDelivered and is used to iterate over the raw logs and unpacked data for TokenDelivered events raised by the BaasPP contract.
-type BaasPPTokenDeliveredIterator struct {
-	Event *BaasPPTokenDelivered // Event containing the contract specifics and raw log
+// BaasPPTokensIssuedIterator is returned from FilterTokensIssued and is used to iterate over the raw logs and unpacked data for TokensIssued events raised by the BaasPP contract.
+type BaasPPTokensIssuedIterator struct {
+	Event *BaasPPTokensIssued // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -599,7 +721,7 @@ type BaasPPTokenDeliveredIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BaasPPTokenDeliveredIterator) Next() bool {
+func (it *BaasPPTokensIssuedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -608,7 +730,7 @@ func (it *BaasPPTokenDeliveredIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BaasPPTokenDelivered)
+			it.Event = new(BaasPPTokensIssued)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -623,7 +745,7 @@ func (it *BaasPPTokenDeliveredIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BaasPPTokenDelivered)
+		it.Event = new(BaasPPTokensIssued)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -639,53 +761,61 @@ func (it *BaasPPTokenDeliveredIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BaasPPTokenDeliveredIterator) Error() error {
+func (it *BaasPPTokensIssuedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BaasPPTokenDeliveredIterator) Close() error {
+func (it *BaasPPTokensIssuedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BaasPPTokenDelivered represents a TokenDelivered event raised by the BaasPP contract.
-type BaasPPTokenDelivered struct {
-	To           common.Address
-	Amount       *big.Int
+// BaasPPTokensIssued represents a TokensIssued event raised by the BaasPP contract.
+type BaasPPTokensIssued struct {
+	Account      common.Address
 	DiscountType uint8
+	Amount       *big.Int
 	Raw          types.Log // Blockchain specific contextual infos
 }
 
-// FilterTokenDelivered is a free log retrieval operation binding the contract event 0xa254c04eefa2b3459dff6e70a8a28dc5876401ccfb247ad27c56f0c32970cf06.
+// FilterTokensIssued is a free log retrieval operation binding the contract event 0x064e268fa97e769a5abed875cfd116cb13d34b361b6088e9213df29cc7ea85e4.
 //
-// Solidity: e TokenDelivered(to indexed address, amount uint256, discountType uint8)
-func (_BaasPP *BaasPPFilterer) FilterTokenDelivered(opts *bind.FilterOpts, to []common.Address) (*BaasPPTokenDeliveredIterator, error) {
+// Solidity: e TokensIssued(account indexed address, discountType indexed uint8, amount uint256)
+func (_BaasPP *BaasPPFilterer) FilterTokensIssued(opts *bind.FilterOpts, account []common.Address, discountType []uint8) (*BaasPPTokensIssuedIterator, error) {
 
-	var toRule []interface{}
-	for _, toItem := range to {
-		toRule = append(toRule, toItem)
+	var accountRule []interface{}
+	for _, accountItem := range account {
+		accountRule = append(accountRule, accountItem)
+	}
+	var discountTypeRule []interface{}
+	for _, discountTypeItem := range discountType {
+		discountTypeRule = append(discountTypeRule, discountTypeItem)
 	}
 
-	logs, sub, err := _BaasPP.contract.FilterLogs(opts, "TokenDelivered", toRule)
+	logs, sub, err := _BaasPP.contract.FilterLogs(opts, "TokensIssued", accountRule, discountTypeRule)
 	if err != nil {
 		return nil, err
 	}
-	return &BaasPPTokenDeliveredIterator{contract: _BaasPP.contract, event: "TokenDelivered", logs: logs, sub: sub}, nil
+	return &BaasPPTokensIssuedIterator{contract: _BaasPP.contract, event: "TokensIssued", logs: logs, sub: sub}, nil
 }
 
-// WatchTokenDelivered is a free log subscription operation binding the contract event 0xa254c04eefa2b3459dff6e70a8a28dc5876401ccfb247ad27c56f0c32970cf06.
+// WatchTokensIssued is a free log subscription operation binding the contract event 0x064e268fa97e769a5abed875cfd116cb13d34b361b6088e9213df29cc7ea85e4.
 //
-// Solidity: e TokenDelivered(to indexed address, amount uint256, discountType uint8)
-func (_BaasPP *BaasPPFilterer) WatchTokenDelivered(opts *bind.WatchOpts, sink chan<- *BaasPPTokenDelivered, to []common.Address) (event.Subscription, error) {
+// Solidity: e TokensIssued(account indexed address, discountType indexed uint8, amount uint256)
+func (_BaasPP *BaasPPFilterer) WatchTokensIssued(opts *bind.WatchOpts, sink chan<- *BaasPPTokensIssued, account []common.Address, discountType []uint8) (event.Subscription, error) {
 
-	var toRule []interface{}
-	for _, toItem := range to {
-		toRule = append(toRule, toItem)
+	var accountRule []interface{}
+	for _, accountItem := range account {
+		accountRule = append(accountRule, accountItem)
+	}
+	var discountTypeRule []interface{}
+	for _, discountTypeItem := range discountType {
+		discountTypeRule = append(discountTypeRule, discountTypeItem)
 	}
 
-	logs, sub, err := _BaasPP.contract.WatchLogs(opts, "TokenDelivered", toRule)
+	logs, sub, err := _BaasPP.contract.WatchLogs(opts, "TokensIssued", accountRule, discountTypeRule)
 	if err != nil {
 		return nil, err
 	}
@@ -695,8 +825,8 @@ func (_BaasPP *BaasPPFilterer) WatchTokenDelivered(opts *bind.WatchOpts, sink ch
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BaasPPTokenDelivered)
-				if err := _BaasPP.contract.UnpackLog(event, "TokenDelivered", log); err != nil {
+				event := new(BaasPPTokensIssued)
+				if err := _BaasPP.contract.UnpackLog(event, "TokensIssued", log); err != nil {
 					return err
 				}
 				event.Raw = log

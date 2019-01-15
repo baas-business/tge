@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.5;
 
 
 import "../math/SafeMath.sol";
@@ -19,11 +19,6 @@ contract BaasPP is Ownable {
     using SafeMath for uint256;
 
     /**
-    * @dev name of this contract
-    */
-    string private constant NAME = "BaaS PRIVATE PLACEMENT";
-
-    /**
     * @dev constants to distinguish between discounted and not discounted investments
     */
     uint8 private constant DISCOUNT_TYPE_DISCOUNTED_AND_NOT_DISCOUNTED = 0;
@@ -36,12 +31,10 @@ contract BaasPP is Ownable {
     uint256 private constant CAP_DISCOUNTED_TOKEN = 5 * 10 ** 24;
     uint256 private constant CAP_NOT_DISCOUNTED_TOKEN = 15 * 10 ** 24;
 
-
     /**
     * @dev token contract address of BaaSToken
     */
     IBaasToken private _token;
-
 
     /**
     * @dev tracker of issued token
@@ -54,7 +47,6 @@ contract BaasPP is Ownable {
     */
     bool private _isFinalized;
 
-
     ///////////////////////////////////////////////////////////////////////////////////////////
     //  Events
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -62,7 +54,7 @@ contract BaasPP is Ownable {
     /**
     * @dev emitted when a tokens were issued to private investor
     */
-    event TokenIssued(address indexed account, uint8 indexed discountType, uint256 amount);
+    event TokensIssued(address indexed account, uint8 indexed discountType, uint256 amount);
 
     /**
     * @dev emitted when contract is finalized
@@ -84,7 +76,7 @@ contract BaasPP is Ownable {
     /**
      * @dev issues a specific amount of tokens to account by owner of contract
      * @param account address The address to send tokens to
-     * @param value uint256 The amount of token to be sent
+     * @param amount uint256 The amount of token to be sent
      * @param discountType uint8 Either 1 (for discounted) or 2 (for not discounted)
      */
     function issue(address account, uint256 amount, uint8 discountType)
@@ -98,7 +90,7 @@ contract BaasPP is Ownable {
             _issueNotDiscountedToken(account, amount);
         }
 
-        emit TokenIssued(account, amount, discountType);
+        emit TokensIssued(account, discountType, amount);
 
         return true;
     }
@@ -107,12 +99,11 @@ contract BaasPP is Ownable {
     /**
      * @dev finalization of private placement by contract owner. This burns tokens that were not
      * issued to private investors and stops future issuance.
-     * @param token IBaasToken The address of the token smart contract
      */
     function finalize() external onlyOwner returns (bool) {
         require(!_isFinalized, "contract was already finalized");
         uint256 balance = balance();
-        require(_token.burnTokensFromPot(address(this), balance()), "burning of tokens failed");
+        require(_token.burnTokensFromPot(address(this), balance), "burning of tokens failed");
 
         _isFinalized = true;
 
@@ -128,7 +119,7 @@ contract BaasPP is Ownable {
     /**
      * @dev internal function to issue discounted tokens
      * @param account address The address to send tokens to
-     * @param value uint256 The amount of token to be sent
+     * @param amount uint256 The amount of token to be sent
      */
     function _issueDiscounted(address account, uint256 amount) internal {
         require(amount <= CAP_DISCOUNTED_TOKEN.sub(_issuedDiscountedToken), "amount exceeds hard cap of discounted token");
@@ -139,7 +130,7 @@ contract BaasPP is Ownable {
     /**
      * @dev internal function to issue not discounted tokens
      * @param account address The address to send tokens to
-     * @param value uint256 The amount of token to be sent
+     * @param amount uint256 The amount of token to be sent
      */
     function _issueNotDiscountedToken(address account, uint256 amount) internal {
         require(amount <= CAP_NOT_DISCOUNTED_TOKEN.sub(_issuedNotDiscountedToken), "amount exceeds hard cap of not discounted token");
@@ -155,7 +146,7 @@ contract BaasPP is Ownable {
      * @return bool flag if contract was already finalized.
      */
     function isFinalized() public view returns (bool) {
-        return _token.balanceOf(address(this));
+        return _isFinalized;
     }
 
     /**
@@ -171,7 +162,7 @@ contract BaasPP is Ownable {
      * @return address token address of BaaSToken
      */
     function tokenAddress() public view returns (address) {
-        return _token;
+        return address(_token);
     }
 
     /**
@@ -179,7 +170,7 @@ contract BaasPP is Ownable {
      * @param discountType uint8 either 0, 1 or 2 for total, discounted and not discounted
      * @return uint256 amount of tokens
      */
-    function tokenIssued(uint8 discountType) public view returns (uint256) {
+    function tokensIssued(uint8 discountType) public view returns (uint256) {
         if (discountType == DISCOUNT_TYPE_DISCOUNTED_AND_NOT_DISCOUNTED) {
             return _issuedDiscountedToken.add(_issuedNotDiscountedToken);
         }
@@ -200,17 +191,9 @@ contract BaasPP is Ownable {
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * @dev shows the name of this contract
-     * @returns string name of this contract
-     */
-    function name() public pure returns (string) {
-        return NAME;
-    }
-
-    /**
      * @dev shows cap for discount type
      * @param discountType uint8 either 0, 1 or 2 for total, discounted and not discounted
-     * @return uint256 token cap
+     * @return uint256 cap
      */
     function cap(uint discountType) public pure returns (uint256) {
         if (discountType == DISCOUNT_TYPE_DISCOUNTED_AND_NOT_DISCOUNTED) {

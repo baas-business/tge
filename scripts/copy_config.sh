@@ -51,5 +51,5 @@ copy_contract BaasIncentives
 copy_contract BaasPP
 copy_contract BaasROI
 
-cp ../interactor/build/${version}/dapp.json ${destEtherlytics}/dapp.json
-cp ../interactor/build/${version}/contract_config.json ${destWebappH}/contract_config.json
+cp ../interactor/build/output/${version}/dapp.json ${destEtherlytics}/dapp.json
+cp ../interactor/build/output/${version}/contract_config.json ${destWebappH}/contract_config.json

@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.5;
 
 import "./IBaasToken.sol";
 import "../math/SafeMath.sol";

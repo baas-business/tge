@@ -30,6 +30,19 @@ func TokenInfo(dAppContext *web3.DAppContext) {
 		log.Fatal(err)
 	}
 
+	log.Println("Baas Token Address", tge.TokenAddress(dAppContext).String())
+	_escrowAddress, _ppAddress, _founderAddress, _incentivesAddress, err := contract.Pots(&bind.CallOpts{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Pots: ")
+	fmt.Println("................................................................................................")
+	fmt.Println("Escrow Address: ", _escrowAddress.String())
+	fmt.Println("PP Address: ", _ppAddress.String())
+	fmt.Println("Founder Address: ", _founderAddress.String())
+	fmt.Println("Incentives Address: ", _incentivesAddress.String())
+	fmt.Println("................................................................................................")
+
 	name, err := contract.Name(&bind.CallOpts{})
 	if err != nil {
 		log.Fatal(err)
@@ -60,11 +73,6 @@ func EscrowInfo(dAppContext *web3.DAppContext) {
 		log.Fatal(err)
 	}
 
-	name, err := contract.Name(&bind.CallOpts{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Name: ", name)
 
 	tokenAddress, err := contract.TokenAddress(&bind.CallOpts{})
 
@@ -169,11 +177,6 @@ func PPInfo(dAppContext *web3.DAppContext) {
 		log.Fatal(err)
 	}
 
-	name, err := contract.Name(&bind.CallOpts{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Name: ", name)
 
 	tokenAddress, err := contract.TokenAddress(&bind.CallOpts{})
 	if err != nil {

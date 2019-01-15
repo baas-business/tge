@@ -15,17 +15,17 @@ func process(dappContext *web3.DAppContext, args *CommandArgs) error {
 	txOps := bind.NewKeyedTransactor(dappContext.Key.PrivateKey)
 	txOps.Value = big.NewInt(0)
 
-	contract, err := contracts.NewBaasFounder(tge.FounderAddress(dappContext), dappContext.Client)
+	_, err := contracts.NewBaasFounder(tge.FounderAddress(dappContext), dappContext.Client)
 
 	if err != nil {
 		return err
 	}
 
-	tx, err := contract.Setup(txOps, new(big.Int).SetInt64(args.Vesting))
+	//tx, err := contract.Setup(txOps, new(big.Int).SetInt64(args.Vesting))
+	//
+	//if err != nil {
+	//	return err
+	//}
 
-	if err != nil {
-		return err
-	}
-
-	return web3.ExecuteTransaction("Setup Founder", dappContext.Client, tx)
+	return nil //web3.ExecuteTransaction("Setup Founder", dappContext.Client, tx)
 }

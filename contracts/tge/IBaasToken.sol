@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.5;
 
 
 interface IBaasToken  {
@@ -6,7 +6,7 @@ interface IBaasToken  {
 
     function burnTokensFromPot(address potAddress, uint256 amount) external returns(bool);
 
-    function tokenHolderSnapShot() external returns (address[]);
+    function tokenHolderSnapShot() external returns (address[] memory);
 
     function circulatingSupply() external view returns (uint256);
 

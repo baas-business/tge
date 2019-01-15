@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.5;
 
 
 import "../math/SafeMath.sol";
@@ -23,6 +23,9 @@ contract BaasROI is IBaasROI, Ownable {
 
     string private constant NAME = "RETURN OF INVESTMENT";
 
+    /**
+    * @dev token contract address of BaaSToken
+    */
     IBaasToken private _token;
 
     constructor(IBaasToken token) public {
@@ -84,13 +87,23 @@ contract BaasROI is IBaasROI, Ownable {
     }
 
     // Views
+
+    /**
+     * @dev shows balance of this contract
+     * @return uint256 the amount of token held by this contract.
+     */
     function balance() public view returns (uint256) {
         return _token.balanceOf(address(this));
     }
 
+    /**
+     * @dev shows the token address this contracts references
+     * @return address token address of BaaSToken
+     */
     function tokenAddress() public view returns (address) {
-        return _token;
+        return address(_token);
     }
+
 
     function circulatingSupply() public view returns (uint256) {
         return _token.circulatingSupply();
@@ -148,7 +161,15 @@ contract BaasROI is IBaasROI, Ownable {
         return INTEREST_RATE;
     }
 
-    function name() public pure returns (string) {
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  Pure
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * @dev shows the name of this contract
+     * @return string name of this contract
+     */
+    function name() public pure returns (string memory) {
         return NAME;
     }
 }
