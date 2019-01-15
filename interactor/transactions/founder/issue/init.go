@@ -1,4 +1,4 @@
-package setup
+package issue
 
 import (
 	"bytes"
@@ -8,31 +8,31 @@ import (
 )
 
 type CommandArgs struct {
-	Vesting int64
+	FounderId int64
 }
 
 func GetArgs(c *cli.Context) (*CommandArgs) {
 	return &CommandArgs{
-		Vesting: c.Int64("vesting"),
+		FounderId: c.Int64("founderId"),
 	}
 }
 
 func (it *CommandArgs) String() string {
 	bb := bytes.Buffer{}
 
-	bb.WriteString(utils.ConsoleWriteLabeledValueI("Vesting", it.Vesting))
+	bb.WriteString(utils.ConsoleWriteLabeledValueI("FounderId", it.FounderId))
 
 	return bb.String()
 }
 
 func Command() *cli.Command {
 	return &cli.Command{
-		Usage:     "setup founder smart contract",
-		ShortName: "s",
-		Name:      "setup",
+		Usage:     "issue founder token",
+		ShortName: "i",
+		Name:      "issue",
 		Flags: utils.NewFlags().Add(cli.Int64Flag{
-			Name:  "vesting",
-			Usage: "vesting period for founder",
+			Name:  "founderId",
+			Usage: "founderId - either 0 or 1",
 		}).Get(),
 		Action: func(c *cli.Context) error {
 

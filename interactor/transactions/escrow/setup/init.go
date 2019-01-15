@@ -20,7 +20,7 @@ func GetArgs(c *cli.Context) (*CommandArgs) {
 func (it *CommandArgs) String() string {
 	bb := bytes.Buffer{}
 
-	bb.WriteString(utils.ConsoleWriteLabeledValueI("Vesting", it.Vesting))
+	bb.WriteString(utils.ConsoleWriteLabeledValueI("FounderId", it.Vesting))
 
 	return bb.String()
 }

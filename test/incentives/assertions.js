@@ -5,11 +5,11 @@ var utils = require('../utils')
 
 
 module.exports = {
-    assert: async function (contractPP, expected) {
-        assert.equal(await contractPP.tokenAddress(), expected.tokenAddress, "tokenAddress is wrong");
+    assert: async function (contract, expected) {
+        assert.equal(await contract.tokenAddress(), expected.tokenAddress, "tokenAddress is wrong");
 
-        utils.compareBigNumber(expected.balance, await contractPP.balance(), "balance");
-        utils.compareBigNumber(expected.incentivesLeft, await contractPP.incentivesLeft(), "incentives left");
-        utils.compareBigNumber(expected.incentivesIssued, await contractPP.incentivesIssued(), "incentives issued");
+        utils.compareBigNumber(expected.balance, await contract.balance(), "balance");
+        utils.compareBigNumber(expected.incentivesLeft, await contract.incentivesLeft(), "incentives left");
+        utils.compareBigNumber(expected.incentivesIssued, await contract.incentivesIssued(), "incentives issued");
     }
 };

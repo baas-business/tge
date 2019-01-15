@@ -2,7 +2,6 @@ package pp
 
 import (
 	"fmt"
-	"github.com/baas-business/baas-cli/utils"
 	"github.com/baas-business/tge-sol/interactor/contracts"
 	"github.com/baas-business/tge-sol/interactor/tge"
 	"github.com/ellsol/go-ethertypes"
@@ -47,8 +46,6 @@ func process(dAppContext *web3.DAppContext, isDiscounted bool, target string, am
 
 	log.Println("DiscountType:", discountType)
 
-	utils.PrintColoredln("GasPrice", txOps.GasPrice)
-	utils.PrintColoredln("GasLimit", txOps.GasLimit)
 	tx, err := contract.Issue(txOps, t, val.BigInt(), discountType)
 
 	if err != nil {

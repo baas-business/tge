@@ -4,8 +4,7 @@ set  -e
 
 
 
-total=7
-current=0
+total=6
 
 echo "1/$total Compiling Contracts"
 truffle compile
@@ -22,11 +21,7 @@ go run main.go d
 # setup BaasToken
 echo "4/$total Setting Up Baas Token"
 go run main.go e t s
-echo "5/$total Setting Up Baas Incentive"
-#go run main.go e i s
-echo "6/$total Setting Up Baas Founder"
-#go run main.go e f s -vesting 1000
-echo "7/$total Setting Up Baas Escrow"
+echo "5/$total Setting Up Baas Escrow"
 #go run main.go e e s -vesting 1000
 
 version="$(go run main.go c v)"

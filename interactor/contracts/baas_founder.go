@@ -16,10 +16,10 @@ import (
 )
 
 // BaasFounderABI is the input ABI used to generate the binding from.
-const BaasFounderABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"receiver\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"founderId\",\"type\":\"int256\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"TokensIssued\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"founderId\",\"type\":\"int256\"}],\"name\":\"issue\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"founderId\",\"type\":\"int256\"}],\"name\":\"hasFounderReceivedTokens\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
+const BaasFounderABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"receiver\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"founderId\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"TokensIssued\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"founderId\",\"type\":\"uint256\"}],\"name\":\"issue\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"founderId\",\"type\":\"uint256\"}],\"name\":\"hasFounderReceivedTokens\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"founder1Supply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"founder2Supply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
 
 // BaasFounderBin is the compiled bytecode used for deploying new contracts.
-const BaasFounderBin = `0x608060405234801561001057600080fd5b50604051602080610d598339810180604052602081101561003057600080fd5b8101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050610c0b8061014e6000396000f3fe608060405260043610610099576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306fdde031461009e57806321cde8c71461012e578063715018a6146101a15780638da5cb5b146101b85780638f32d59b1461020f5780639d76ea581461023e578063b69ef8a814610295578063f2fde38b146102c0578063fc4dfce714610311575b600080fd5b3480156100aa57600080fd5b506100b3610364565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100f35780820151818401526020810190506100d8565b50505050905090810190601f1680156101205780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561013a57600080fd5b506101876004803603604081101561015157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506103a1565b604051808215151515815260200191505060405180910390f35b3480156101ad57600080fd5b506101b6610802565b005b3480156101c457600080fd5b506101cd6108d4565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561021b57600080fd5b506102246108fd565b604051808215151515815260200191505060405180910390f35b34801561024a57600080fd5b50610253610954565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156102a157600080fd5b506102aa61097e565b6040518082815260200191505060405180910390f35b3480156102cc57600080fd5b5061030f600480360360208110156102e357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610a7b565b005b34801561031d57600080fd5b5061034a6004803603602081101561033457600080fd5b8101908080359060200190929190505050610a9a565b604051808215151515815260200191505060405180910390f35b60606040805190810160405280600781526020017f464f554e44455200000000000000000000000000000000000000000000000000815250905090565b60006103ab6108fd565b15156103b657600080fd5b6001821315151561042f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260168152602001807f666f756e6465724964206e6f74206578697374656e740000000000000000000081525060200191505060405180910390fd5b600080905060008314156104fb57600060149054906101000a900460ff161515156104e8576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260248152602001807f666f756e646572312068617320616c726561647920726563656976656420746f81526020017f6b656e730000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b6a069e10de76676d0800000090506105b5565b600060159054906101000a900460ff161515156105a6576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260248152602001807f666f756e646572312068617320616c726561647920726563656976656420746f81526020017f6b656e730000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b6a01a784379d99db4200000090505b6105bd61097e565b8111151515610634576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260168152602001807f6e6f7420656e6f75676820746f6b656e73206c6566740000000000000000000081525060200191505060405180910390fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb85836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b1580156106f957600080fd5b505af115801561070d573d6000803e3d6000fd5b505050506040513d602081101561072357600080fd5b810190808051906020019092919050505015156107a8576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260198152602001807f7472616e73666572206f6620746f6b656e73206661696c65640000000000000081525060200191505060405180910390fd5b828473ffffffffffffffffffffffffffffffffffffffff167f545463979f75e44b26e038efbd7b6cb074e9aa8445c341964dfa399d79860cae836040518082815260200191505060405180910390a3600191505092915050565b61080a6108fd565b151561081557600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060206040518083038186803b158015610a3b57600080fd5b505afa158015610a4f573d6000803e3d6000fd5b505050506040513d6020811015610a6557600080fd5b8101908080519060200190929190505050905090565b610a836108fd565b1515610a8e57600080fd5b610a9781610ae5565b50565b600080821415610abb57600060149054906101000a900460ff169050610ae0565b6001821415610adb57600060159054906101000a900460ff169050610ae0565b600090505b919050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614151515610b2157600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a72305820583ce27583a29c57be80a6c16847fa0d109c886c82d7ab5d842d8d5ff2bf290f0029`
+const BaasFounderBin = `0x608060405234801561001057600080fd5b50604051602080610d3d8339810180604052602081101561003057600080fd5b8101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060016000908060018154018082558091505090600182039060005260206000209060209182820401919006909192909190916101000a81548160ff0219169083151502179055505060016000908060018154018082558091505090600182039060005260206000209060209182820401919006909192909190916101000a81548160ff0219169083151502179055505050610b5f806101de6000396000f3fe6080604052600436106100a4576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063278609ae146100a95780633d805aa3146100fc578063715018a614610127578063867904b41461013e5780638da5cb5b146101b15780638f32d59b146102085780639d76ea5814610237578063b69ef8a81461028e578063f2fde38b146102b9578063ff2847961461030a575b600080fd5b3480156100b557600080fd5b506100e2600480360360208110156100cc57600080fd5b8101908080359060200190929190505050610335565b604051808215151515815260200191505060405180910390f35b34801561010857600080fd5b5061011161036d565b6040518082815260200191505060405180910390f35b34801561013357600080fd5b5061013c610380565b005b34801561014a57600080fd5b506101976004803603604081101561016157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610452565b604051808215151515815260200191505060405180910390f35b3480156101bd57600080fd5b506101c6610860565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561021457600080fd5b5061021d610889565b604051808215151515815260200191505060405180910390f35b34801561024357600080fd5b5061024c6108e0565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561029a57600080fd5b506102a361090a565b6040518082815260200191505060405180910390f35b3480156102c557600080fd5b50610308600480360360208110156102dc57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610a07565b005b34801561031657600080fd5b5061031f610a26565b6040518082815260200191505060405180910390f35b600060018281548110151561034657fe5b90600052602060002090602091828204019190069054906101000a900460ff169050919050565b60006a01a784379d99db42000000905090565b610388610889565b151561039357600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b600061045c610889565b151561046757600080fd5b600182111515156104e0576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260168152602001807f666f756e6465724964206e6f74206578697374656e740000000000000000000081525060200191505060405180910390fd5b6001828154811015156104ef57fe5b90600052602060002090602091828204019190069054906101000a900460ff161515156105aa576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260238152602001807f666f756e6465722068617320616c726561647920726563656976656420746f6b81526020017f656e73000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b600080905060008314156105cb576a069e10de76676d0800000090506105da565b6a01a784379d99db4200000090505b6105e261090a565b8111151515610659576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260168152602001807f6e6f7420656e6f75676820746f6b656e73206c6566740000000000000000000081525060200191505060405180910390fd5b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb85836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15801561071e57600080fd5b505af1158015610732573d6000803e3d6000fd5b505050506040513d602081101561074857600080fd5b810190808051906020019092919050505015156107cd576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260198152602001807f7472616e73666572206f6620746f6b656e73206661696c65640000000000000081525060200191505060405180910390fd5b600180848154811015156107dd57fe5b90600052602060002090602091828204019190066101000a81548160ff021916908315150217905550828473ffffffffffffffffffffffffffffffffffffffff167fc91a3666a5b4764b69624fd864f5f18d75169482bacba07da1dbf4be975f83e2836040518082815260200191505060405180910390a3600191505092915050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060206040518083038186803b1580156109c757600080fd5b505afa1580156109db573d6000803e3d6000fd5b505050506040513d60208110156109f157600080fd5b8101908080519060200190929190505050905090565b610a0f610889565b1515610a1a57600080fd5b610a2381610a39565b50565b60006a069e10de76676d08000000905090565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614151515610a7557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a72305820e7e3a01825d05782e3ed83696a5aacdf5e683d985572e4bd04d182ceffa51f0a0029`
 
 // DeployBaasFounder deploys a new Ethereum contract, binding an instance of BaasFounder to it.
 func DeployBaasFounder(auth *bind.TransactOpts, backend bind.ContractBackend, token common.Address) (common.Address, *types.Transaction, *BaasFounder, error) {
@@ -202,9 +202,61 @@ func (_BaasFounder *BaasFounderCallerSession) Balance() (*big.Int, error) {
 	return _BaasFounder.Contract.Balance(&_BaasFounder.CallOpts)
 }
 
-// HasFounderReceivedTokens is a free data retrieval call binding the contract method 0xfc4dfce7.
+// Founder1Supply is a free data retrieval call binding the contract method 0xff284796.
 //
-// Solidity: function hasFounderReceivedTokens(founderId int256) constant returns(bool)
+// Solidity: function founder1Supply() constant returns(uint256)
+func (_BaasFounder *BaasFounderCaller) Founder1Supply(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasFounder.contract.Call(opts, out, "founder1Supply")
+	return *ret0, err
+}
+
+// Founder1Supply is a free data retrieval call binding the contract method 0xff284796.
+//
+// Solidity: function founder1Supply() constant returns(uint256)
+func (_BaasFounder *BaasFounderSession) Founder1Supply() (*big.Int, error) {
+	return _BaasFounder.Contract.Founder1Supply(&_BaasFounder.CallOpts)
+}
+
+// Founder1Supply is a free data retrieval call binding the contract method 0xff284796.
+//
+// Solidity: function founder1Supply() constant returns(uint256)
+func (_BaasFounder *BaasFounderCallerSession) Founder1Supply() (*big.Int, error) {
+	return _BaasFounder.Contract.Founder1Supply(&_BaasFounder.CallOpts)
+}
+
+// Founder2Supply is a free data retrieval call binding the contract method 0x3d805aa3.
+//
+// Solidity: function founder2Supply() constant returns(uint256)
+func (_BaasFounder *BaasFounderCaller) Founder2Supply(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BaasFounder.contract.Call(opts, out, "founder2Supply")
+	return *ret0, err
+}
+
+// Founder2Supply is a free data retrieval call binding the contract method 0x3d805aa3.
+//
+// Solidity: function founder2Supply() constant returns(uint256)
+func (_BaasFounder *BaasFounderSession) Founder2Supply() (*big.Int, error) {
+	return _BaasFounder.Contract.Founder2Supply(&_BaasFounder.CallOpts)
+}
+
+// Founder2Supply is a free data retrieval call binding the contract method 0x3d805aa3.
+//
+// Solidity: function founder2Supply() constant returns(uint256)
+func (_BaasFounder *BaasFounderCallerSession) Founder2Supply() (*big.Int, error) {
+	return _BaasFounder.Contract.Founder2Supply(&_BaasFounder.CallOpts)
+}
+
+// HasFounderReceivedTokens is a free data retrieval call binding the contract method 0x278609ae.
+//
+// Solidity: function hasFounderReceivedTokens(founderId uint256) constant returns(bool)
 func (_BaasFounder *BaasFounderCaller) HasFounderReceivedTokens(opts *bind.CallOpts, founderId *big.Int) (bool, error) {
 	var (
 		ret0 = new(bool)
@@ -214,16 +266,16 @@ func (_BaasFounder *BaasFounderCaller) HasFounderReceivedTokens(opts *bind.CallO
 	return *ret0, err
 }
 
-// HasFounderReceivedTokens is a free data retrieval call binding the contract method 0xfc4dfce7.
+// HasFounderReceivedTokens is a free data retrieval call binding the contract method 0x278609ae.
 //
-// Solidity: function hasFounderReceivedTokens(founderId int256) constant returns(bool)
+// Solidity: function hasFounderReceivedTokens(founderId uint256) constant returns(bool)
 func (_BaasFounder *BaasFounderSession) HasFounderReceivedTokens(founderId *big.Int) (bool, error) {
 	return _BaasFounder.Contract.HasFounderReceivedTokens(&_BaasFounder.CallOpts, founderId)
 }
 
-// HasFounderReceivedTokens is a free data retrieval call binding the contract method 0xfc4dfce7.
+// HasFounderReceivedTokens is a free data retrieval call binding the contract method 0x278609ae.
 //
-// Solidity: function hasFounderReceivedTokens(founderId int256) constant returns(bool)
+// Solidity: function hasFounderReceivedTokens(founderId uint256) constant returns(bool)
 func (_BaasFounder *BaasFounderCallerSession) HasFounderReceivedTokens(founderId *big.Int) (bool, error) {
 	return _BaasFounder.Contract.HasFounderReceivedTokens(&_BaasFounder.CallOpts, founderId)
 }
@@ -252,32 +304,6 @@ func (_BaasFounder *BaasFounderSession) IsOwner() (bool, error) {
 // Solidity: function isOwner() constant returns(bool)
 func (_BaasFounder *BaasFounderCallerSession) IsOwner() (bool, error) {
 	return _BaasFounder.Contract.IsOwner(&_BaasFounder.CallOpts)
-}
-
-// Name is a free data retrieval call binding the contract method 0x06fdde03.
-//
-// Solidity: function name() constant returns(string)
-func (_BaasFounder *BaasFounderCaller) Name(opts *bind.CallOpts) (string, error) {
-	var (
-		ret0 = new(string)
-	)
-	out := ret0
-	err := _BaasFounder.contract.Call(opts, out, "name")
-	return *ret0, err
-}
-
-// Name is a free data retrieval call binding the contract method 0x06fdde03.
-//
-// Solidity: function name() constant returns(string)
-func (_BaasFounder *BaasFounderSession) Name() (string, error) {
-	return _BaasFounder.Contract.Name(&_BaasFounder.CallOpts)
-}
-
-// Name is a free data retrieval call binding the contract method 0x06fdde03.
-//
-// Solidity: function name() constant returns(string)
-func (_BaasFounder *BaasFounderCallerSession) Name() (string, error) {
-	return _BaasFounder.Contract.Name(&_BaasFounder.CallOpts)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
@@ -332,23 +358,23 @@ func (_BaasFounder *BaasFounderCallerSession) TokenAddress() (common.Address, er
 	return _BaasFounder.Contract.TokenAddress(&_BaasFounder.CallOpts)
 }
 
-// Issue is a paid mutator transaction binding the contract method 0x21cde8c7.
+// Issue is a paid mutator transaction binding the contract method 0x867904b4.
 //
-// Solidity: function issue(receiver address, founderId int256) returns(bool)
+// Solidity: function issue(receiver address, founderId uint256) returns(bool)
 func (_BaasFounder *BaasFounderTransactor) Issue(opts *bind.TransactOpts, receiver common.Address, founderId *big.Int) (*types.Transaction, error) {
 	return _BaasFounder.contract.Transact(opts, "issue", receiver, founderId)
 }
 
-// Issue is a paid mutator transaction binding the contract method 0x21cde8c7.
+// Issue is a paid mutator transaction binding the contract method 0x867904b4.
 //
-// Solidity: function issue(receiver address, founderId int256) returns(bool)
+// Solidity: function issue(receiver address, founderId uint256) returns(bool)
 func (_BaasFounder *BaasFounderSession) Issue(receiver common.Address, founderId *big.Int) (*types.Transaction, error) {
 	return _BaasFounder.Contract.Issue(&_BaasFounder.TransactOpts, receiver, founderId)
 }
 
-// Issue is a paid mutator transaction binding the contract method 0x21cde8c7.
+// Issue is a paid mutator transaction binding the contract method 0x867904b4.
 //
-// Solidity: function issue(receiver address, founderId int256) returns(bool)
+// Solidity: function issue(receiver address, founderId uint256) returns(bool)
 func (_BaasFounder *BaasFounderTransactorSession) Issue(receiver common.Address, founderId *big.Int) (*types.Transaction, error) {
 	return _BaasFounder.Contract.Issue(&_BaasFounder.TransactOpts, receiver, founderId)
 }
@@ -611,9 +637,9 @@ type BaasFounderTokensIssued struct {
 	Raw       types.Log // Blockchain specific contextual infos
 }
 
-// FilterTokensIssued is a free log retrieval operation binding the contract event 0x545463979f75e44b26e038efbd7b6cb074e9aa8445c341964dfa399d79860cae.
+// FilterTokensIssued is a free log retrieval operation binding the contract event 0xc91a3666a5b4764b69624fd864f5f18d75169482bacba07da1dbf4be975f83e2.
 //
-// Solidity: e TokensIssued(receiver indexed address, founderId indexed int256, amount uint256)
+// Solidity: e TokensIssued(receiver indexed address, founderId indexed uint256, amount uint256)
 func (_BaasFounder *BaasFounderFilterer) FilterTokensIssued(opts *bind.FilterOpts, receiver []common.Address, founderId []*big.Int) (*BaasFounderTokensIssuedIterator, error) {
 
 	var receiverRule []interface{}
@@ -632,9 +658,9 @@ func (_BaasFounder *BaasFounderFilterer) FilterTokensIssued(opts *bind.FilterOpt
 	return &BaasFounderTokensIssuedIterator{contract: _BaasFounder.contract, event: "TokensIssued", logs: logs, sub: sub}, nil
 }
 
-// WatchTokensIssued is a free log subscription operation binding the contract event 0x545463979f75e44b26e038efbd7b6cb074e9aa8445c341964dfa399d79860cae.
+// WatchTokensIssued is a free log subscription operation binding the contract event 0xc91a3666a5b4764b69624fd864f5f18d75169482bacba07da1dbf4be975f83e2.
 //
-// Solidity: e TokensIssued(receiver indexed address, founderId indexed int256, amount uint256)
+// Solidity: e TokensIssued(receiver indexed address, founderId indexed uint256, amount uint256)
 func (_BaasFounder *BaasFounderFilterer) WatchTokensIssued(opts *bind.WatchOpts, sink chan<- *BaasFounderTokensIssued, receiver []common.Address, founderId []*big.Int) (event.Subscription, error) {
 
 	var receiverRule []interface{}

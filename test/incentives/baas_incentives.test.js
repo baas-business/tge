@@ -8,7 +8,7 @@ var utils = require('../utils');
 let baasToken;
 let baasInc;
 
-contract('BaasPP', function (accounts) {
+contract('BaasIncentives', function (accounts) {
 
     beforeEach(async function () {
         baasToken = await BaasToken.deployed();

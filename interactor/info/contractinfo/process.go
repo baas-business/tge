@@ -7,6 +7,7 @@ import (
 	"github.com/ellsol/solidity-tools/utils/web3"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"log"
+	"math/big"
 )
 
 
@@ -105,11 +106,6 @@ func FounderInfo(dAppContext *web3.DAppContext) {
 		log.Fatal(err)
 	}
 
-	name, err := contract.Name(&bind.CallOpts{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Name: ", name)
 
 	tokenAddress, err := contract.TokenAddress(&bind.CallOpts{})
 
@@ -126,11 +122,23 @@ func FounderInfo(dAppContext *web3.DAppContext) {
 	fmt.Println("Owner: ", owner.String())
 
 	balance, err := contract.Balance(&bind.CallOpts{})
-
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("Balance: ", balance.String())
+
+
+	founder1Received, err := contract.HasFounderReceivedTokens(&bind.CallOpts{}, new(big.Int).SetInt64(0))
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Founder 1 recieved: ", founder1Received)
+
+	founder2Received, err := contract.HasFounderReceivedTokens(&bind.CallOpts{}, new(big.Int).SetInt64(1))
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Founder 2 recieved: ", founder2Received)
 }
 
 func IncentiveInfo(dAppContext *web3.DAppContext) {

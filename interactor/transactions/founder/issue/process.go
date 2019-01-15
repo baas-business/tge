@@ -1,4 +1,4 @@
-package setup
+package issue
 
 import (
 	"fmt"
@@ -6,6 +6,7 @@ import (
 	"github.com/baas-business/tge-sol/interactor/tge"
 	"github.com/ellsol/solidity-tools/utils/web3"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/ethereum/go-ethereum/common"
 	"math/big"
 )
 
@@ -15,17 +16,17 @@ func process(dappContext *web3.DAppContext, args *CommandArgs) error {
 	txOps := bind.NewKeyedTransactor(dappContext.Key.PrivateKey)
 	txOps.Value = big.NewInt(0)
 
-	_, err := contracts.NewBaasFounder(tge.FounderAddress(dappContext), dappContext.Client)
+	contract, err := contracts.NewBaasFounder(tge.FounderAddress(dappContext), dappContext.Client)
 
 	if err != nil {
 		return err
 	}
 
-	//tx, err := contract.Setup(txOps, new(big.Int).SetInt64(args.Vesting))
-	//
-	//if err != nil {
-	//	return err
-	//}
+	tx, err := contract.Issue(txOps, common.HexToAddress("0xb11700D501A9b5D3960749E0B7314A21743Dab5d"), new(big.Int).SetInt64(args.FounderId))
 
-	return nil //web3.ExecuteTransaction("Setup Founder", dappContext.Client, tx)
+	if err != nil {
+		return err
+	}
+
+	return web3.ExecuteTransaction("Setup Founder", dappContext.Client, tx)
 }

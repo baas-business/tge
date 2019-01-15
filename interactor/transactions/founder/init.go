@@ -1,7 +1,7 @@
 package founder
 
 import (
-	"github.com/baas-business/tge-sol/interactor/transactions/founder/setup"
+	"github.com/baas-business/tge-sol/interactor/transactions/founder/issue"
 	"github.com/urfave/cli"
 )
 
@@ -11,7 +11,7 @@ func Command() *cli.Command {
 		ShortName: "f",
 		Name:      "founder",
 		Subcommands: []cli.Command{
-			*setup.Command(),
+			*issue.Command(),
 		},
 	}
 }

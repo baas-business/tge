@@ -13,11 +13,6 @@ contract BaasFounder is Ownable {
     using SafeMath for uint256;
 
     /**
-    * @dev name of this contract
-    */
-    string private constant NAME = "FOUNDER";
-
-    /**
     * @dev initial founder supply. 8m token for founder 1 and 2m token for founder 2.
     */
     uint256 constant FOUNDER1_SUPPLY = 8 * 10 ** 24;                // 8m Founder1 Token
@@ -26,8 +21,8 @@ contract BaasFounder is Ownable {
     /**
     * @dev tracks if founder 1/2 have received their tokens
     */
-    bool private _founder1HasReceived;
-    bool private _founder2HasReceived;
+    bool[] private _founderHasReceivedTokens;
+
 
     /**
     * @dev token contract address of BaaSToken
@@ -41,7 +36,7 @@ contract BaasFounder is Ownable {
     /**
     * @dev emitted when a tokens were issued to private investor
     */
-    event TokensIssued(address indexed receiver, int indexed founderId, uint256 amount);
+    event TokensIssued(address indexed receiver, uint indexed founderId, uint256 amount);
 
     /**
      * @dev constructor
@@ -49,6 +44,8 @@ contract BaasFounder is Ownable {
      */
     constructor(IBaasToken token) public {
         _token = token;
+        _founderHasReceivedTokens.push(false);
+        _founderHasReceivedTokens.push(false);
     }
 
     /**
@@ -56,22 +53,23 @@ contract BaasFounder is Ownable {
      * @param receiver address wallet address of founder
      * @param founderId int the id of the founder
      */
-    function issue(address receiver, int founderId)
+    function issue(address receiver, uint founderId)
     external onlyOwner returns (bool) {
         require(founderId <= 1, "founderId not existent");
+        require(!_founderHasReceivedTokens[founderId], "founder has already received tokens");
 
         uint256 amount = 0;
 
         if (founderId == 0) {
-            require(!_founder1HasReceived, "founder1 has already received tokens");
             amount = FOUNDER1_SUPPLY;
         } else {
-            require(!_founder2HasReceived, "founder1 has already received tokens");
             amount = FOUNDER2_SUPPLY;
         }
 
         require(amount <= balance(), "not enough tokens left");
         require(_token.transfer(receiver, amount), "transfer of tokens failed");
+
+        _founderHasReceivedTokens[founderId] = true;
 
         emit TokensIssued(receiver, founderId, amount);
 
@@ -81,7 +79,6 @@ contract BaasFounder is Ownable {
     ///////////////////////////////////////////////////////////////////////////////////////////
     //  Views
     ///////////////////////////////////////////////////////////////////////////////////////////
-
 
     /**
      * @dev shows balance of this contract
@@ -104,16 +101,8 @@ contract BaasFounder is Ownable {
      * @param  founderId int the id of the founder. Either 0 or 1.
      * @return bool flag indicating if founder received tokens
      */
-    function hasFounderReceivedTokens(int founderId) public view returns (bool){
-        if (founderId == 0) {
-            return _founder1HasReceived;
-        }
-
-        if (founderId == 1) {
-            return _founder2HasReceived;
-        }
-
-        return false;
+    function hasFounderReceivedTokens(uint founderId) public view returns (bool){
+        return _founderHasReceivedTokens[founderId];
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -121,10 +110,18 @@ contract BaasFounder is Ownable {
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * @dev shows the name of this contract
-     * @return string name of this contract
+     * @dev shows the founder supply of founder 1
+     * @return uint256 founder supply
      */
-    function name() public pure returns (string memory) {
-        return NAME;
+    function founder1Supply() public pure returns (uint256) {
+        return FOUNDER1_SUPPLY;
+    }
+
+    /**
+     * @dev shows the founder supply of founder 2
+     * @return uint256 founder supply
+     */
+    function founder2Supply() public pure returns (uint256) {
+        return FOUNDER2_SUPPLY;
     }
 }
