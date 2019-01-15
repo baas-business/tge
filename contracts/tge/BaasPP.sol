@@ -52,7 +52,7 @@ contract BaasPP is Ownable {
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-    * @dev emitted when a tokens were issued to private investor
+    * @dev emitted when tokens were issued to private investor
     */
     event TokensIssued(address indexed account, uint8 indexed discountType, uint256 amount);
 

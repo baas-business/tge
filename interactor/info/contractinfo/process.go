@@ -142,11 +142,6 @@ func IncentiveInfo(dAppContext *web3.DAppContext) {
 		log.Fatal(err)
 	}
 
-	name, err := contract.Name(&bind.CallOpts{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Name: ", name)
 
 	tokenAddress, err := contract.TokenAddress(&bind.CallOpts{})
 

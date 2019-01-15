@@ -1,9 +1,6 @@
 var BaasToken = artifacts.require("./BaasToken.sol");
 var BaasPP = artifacts.require("./BaasPP.sol");
-var state = require('./assert');
-const contractDeployer = "0x260502fd8202ad46e1e0cb555e4efa778e568e7c";
-
-
+var assertions = require('./assertions');
 var BigNumber = require('bignumber.js');
 var BN = web3.utils.BN;
 var utils = require('../utils');
@@ -19,14 +16,14 @@ contract('BaasPP', function (accounts) {
     });
 
     describe('Setup', function () {
-        it("should correct constant values", async () => {
+        it("should have correct constant values", async () => {
             utils.compareBigNumber(new BigNumber("20e24"), await baasPP.cap(0), "total cap");
             utils.compareBigNumber(new BigNumber("5e24"), await baasPP.cap(1), "discounted cap");
             utils.compareBigNumber(new BigNumber("15e24"), await baasPP.cap(2), "not discounted cap");
         });
 
         it("should initialize correctly", async () => {
-            await state.assert(baasPP, {
+            await assertions.assert(baasPP, {
                 isFinalized: false,
                 tokenAddress: baasToken.address,
                 balance: new BigNumber("0"),
@@ -39,7 +36,7 @@ contract('BaasPP', function (accounts) {
         it("should have enough tokens after BaasToken was initialized", async () => {
             let token = await baasToken.setup(accounts[0], baasPP.address, accounts[1], accounts[2]);
 
-            await state.assert(baasPP, {
+            await assertions.assert(baasPP, {
                 isFinalized: false,
                 tokenAddress: baasToken.address,
                 balance: new BigNumber('20e24'),
@@ -66,14 +63,14 @@ contract('BaasPP', function (accounts) {
             utils.compareEvent(logs[0], {
                 event: "TokensIssued",
                 arg:[
-                    "0xF59f27a9c0a5f926983C6a69AEbA809fb6b25f3e",
+                    accounts[9],
                     1,
                     amount
                 ],
                 argLength: 3
             });
 
-            await state.assert(baasPP, {
+            await assertions.assert(baasPP, {
                 isFinalized: false,
                 tokenAddress: baasToken.address,
                 balance: new BigNumber('19e24'),
@@ -101,7 +98,7 @@ contract('BaasPP', function (accounts) {
             utils.compareEvent(logs[0], {
                 event: "TokensIssued",
                 arg:[
-                    "0xF59f27a9c0a5f926983C6a69AEbA809fb6b25f3e",
+                    accounts[9],
                     2,
                     amount
                 ],
@@ -109,7 +106,7 @@ contract('BaasPP', function (accounts) {
             });
 
             // State
-            await state.assert(baasPP, {
+            await assertions.assert(baasPP, {
                 isFinalized: false,
                 tokenAddress: baasToken.address,
                 balance: new BigNumber('18e24'),
@@ -149,7 +146,7 @@ contract('BaasPP', function (accounts) {
             });
 
             // State
-            await state.assert(baasPP, {
+            await assertions.assert(baasPP, {
                 isFinalized: true,
                 tokenAddress: baasToken.address,
                 balance: new BigNumber('0'),

@@ -5,41 +5,45 @@ import "../math/SafeMath.sol";
 import "../ownership/Ownable.sol";
 import "./IBaasToken.sol";
 
-interface IBaasIncentives {
-    event IncentiveIssued(address indexed account, bytes32 indexed id, uint256 amount);
-    event Payout(address indexed account, bytes32 indexed id, uint256 amount);
-    event Revoked(address indexed account, bytes32 indexed id, uint256 tokenNotDelivered);
 
-}
-/*
-    Can claim first stage immediately?
-*/
-contract BaasIncentives is IBaasIncentives, Ownable {
+/**
+ * @title BaasIncentives
+ * @dev BaasIncentives is an 'ownable' contract that manages the tokens for incentivized participants.
+ * A total of 10m tokens is deposited in this contract. Baas manually delivers tokens.
+ */
+contract BaasIncentives is Ownable {
+    /**
+    * @dev library for safe math operations
+    */
     using SafeMath for uint256;
-    using SafeMath for uint;
 
-    string private constant NAME = "INCENTIVES";
+    /**
+    * @dev initial supply for incentives
+    */
     uint256 private constant INITIAL_SUPPLY = 10 * 10 ** 24;
 
-    struct Incentive {
-        address account;
-        uint256 amount;
-        bytes32 id;
-        bool isValue;
-    }
 
-    mapping(address => Incentive) _incentives;
-    address[] private _incentivesList;
-
+    /**
+    * @dev tracks the issued and left over token amounts
+    */
     uint256 private _incentivesLeft;
-    uint256 private _incentivesProvided;
+    uint256 private _incentivesIssued;
 
-    bool private _isInitialized = false;
 
     /**
     * @dev token contract address of BaaSToken
     */
     IBaasToken private _token;
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  Events
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+    * @dev emitted when tokens were issued to private investor
+    */
+    event TokensIssued(address indexed account, uint256 amount);
 
     /**
      * @dev constructor
@@ -48,27 +52,23 @@ contract BaasIncentives is IBaasIncentives, Ownable {
     constructor(IBaasToken token) public {
         _token = token;
         _incentivesLeft = INITIAL_SUPPLY;
-        _incentivesProvided = 0;
+        _incentivesIssued = 0;
     }
 
-
-    function issue(address account, uint256 amount, bytes32 id) external onlyOwner returns (bool) {
-        require(_isInitialized, "contract must be initialized");
+    /**
+     * @dev issues a specific amount of tokens to account by owner of contract
+     * @param account address The address to send tokens to
+     * @param amount uint256 The amount of token to be sent
+     */
+    function issue(address account, uint256 amount) external onlyOwner returns (bool) {
         require(amount < _incentivesLeft, "not enough token left");
-        require(!_incentives[account].isValue, "address should not been incentivized yet");
-
-        // send token
-        require(_token.transfer(address(this), amount), "token transfer failed");
-
-        // update incentive storage
-        _incentives[account] = Incentive(account, amount, id, true);
-        _incentivesList.push(account);
+        require(_token.transfer(account, amount), "token transfer failed");
 
         // update balance
         _incentivesLeft = _incentivesLeft.sub(amount);
-        _incentivesProvided = _incentivesProvided.add(amount);
+        _incentivesIssued = _incentivesIssued.add(amount);
 
-        emit IncentiveIssued(account, id, amount);
+        emit TokensIssued(account, amount);
 
         return true;
     }
@@ -93,48 +93,31 @@ contract BaasIncentives is IBaasIncentives, Ownable {
         return address(_token);
     }
 
-
+    /**
+     * @dev shows incentives left in this contract
+     * @return uint256 the amount of token left for incentives
+     */
     function incentivesLeft() public view returns (uint256) {
         return _incentivesLeft;
     }
 
-    function incentivesProvided() public view returns (uint256){
-        return _incentivesProvided;
+    /**
+     * @dev shows incentives issued in this contract
+     * @return uint256 the amount of token already issued
+     */
+    function incentivesIssued() public view returns (uint256){
+        return _incentivesIssued;
     }
-
-    function isInitialized() public view returns (bool) {
-        return _isInitialized;
-    }
-
-    function incentives() public view returns (address[] memory) {
-        return _incentivesList;
-    }
-
-    function getIncentive(address account)
-    public view returns (
-        uint256 amount,
-        bytes32 id,
-        bool isValue
-    ) {
-        Incentive memory i = _incentives[account];
-
-        return (i.amount, i.id, i.isValue);
-    }
-
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     //  Pure
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * @dev shows the name of this contract
-     * @return string name of this contract
+     * @dev shows the initial supply of this contract
+     * @return uint256 intitial supply
      */
-    function name() public pure returns (string memory) {
-        return NAME;
-    }
-
-    function InitialSupply() public pure returns (uint256) {
+    function initialSupply() public pure returns (uint256) {
         return INITIAL_SUPPLY;
     }
 }

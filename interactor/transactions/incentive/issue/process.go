@@ -27,7 +27,6 @@ func process(dAppContext *web3.DAppContext, args *CommandArgs) error {
 	tx, err := contract.Issue(txOps,
 		common.HexToAddress(args.Target),
 		etherValue.BigInt(),
-		[32]byte{},
 	)
 
 	if err != nil {
