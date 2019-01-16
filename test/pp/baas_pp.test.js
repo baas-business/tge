@@ -56,7 +56,7 @@ contract('BaasPP', function (accounts) {
 
         it("should issue discounted tokens correctly", async () => {
             const amount = new BN("1 000 000 000 000 000 000 000 000");
-            let result = await baasPP.issue(accounts[9], amount, 1, {from: accounts[0]})
+            let result = await baasPP.issue(accounts[9], amount, 1, {from: accounts[0]});
             let logs = result.receipt.logs;
             assert.equal(1, logs.length, "provision should emit 2 logs");
 

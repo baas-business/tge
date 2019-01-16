@@ -207,11 +207,10 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
         // get balances of pots
         uint256 escrowBalance = balanceOf(_escrowAddress);
         uint256 ppBalance = balanceOf(_ppAddress);
-        //uint256 founderBalance = balanceOf(_founderAddress);
+        uint256 founderBalance = balanceOf(_founderAddress);
         uint256 incentivesBalance = balanceOf(_incentivesAddress);
 
-        return escrowBalance.add(incentivesBalance).add(ppBalance);
-        //.add(founderBalance);
+        return escrowBalance.add(incentivesBalance).add(ppBalance).add(founderBalance);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////

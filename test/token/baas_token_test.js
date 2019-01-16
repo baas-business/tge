@@ -1,8 +1,7 @@
 var BaasToken = artifacts.require("./BaasToken.sol");
-var utils = require('./utils.js');
+var utils = require('../utils.js');
 var BigNumber = require('bignumber.js');
 
-const contractDeployer = "0x260502fd8202ad46e1e0cb555e4efa778e568e7c";
 
 contract('BaasToken', function (accounts) {
     it("should initialize with 0 total supply and isInitialized false", async () => {

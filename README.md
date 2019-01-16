@@ -14,7 +14,7 @@
 
     truffle test
     
-    ./deploy_to_{dev/ropsten}.sh  v{major}.{minor}.{patch}
+    ./deploy_to_{dev/ropsten/ganache}.sh  
     
     
     

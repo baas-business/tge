@@ -44,6 +44,4 @@ param | type | meaning
 ---
 * Should the conversion rate being constantly updated or on day of payout being transmitted as a parameter? 
 
-**Difficulties:**
----
-* The Gas Price can be very high dependent on how many token holder exist. 
+ 

@@ -29,6 +29,6 @@ module.exports = {
             length++;
         }
 
-        assert.equal(expected.argLength, length, "wrong argument length for " + actual.event)
+        assert.equal(expected.arg.length, length, "wrong argument length for " + actual.event)
     }
 };
