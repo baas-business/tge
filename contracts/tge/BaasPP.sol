@@ -95,7 +95,6 @@ contract BaasPP is Ownable {
         return true;
     }
 
-
     /**
      * @dev finalization of private placement by contract owner. This burns tokens that were not
      * issued to private investors and stops future issuance.
