@@ -38,8 +38,4 @@ interface IBaasToken  {
         address indexed spender,
         uint256 value
     );
-
-    event Paused(bool paused);
-
-    event SetupCompleted();
 }

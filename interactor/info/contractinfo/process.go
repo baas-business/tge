@@ -44,11 +44,6 @@ func TokenInfo(dAppContext *web3.DAppContext) {
 	fmt.Println("Incentives Address: ", _incentivesAddress.String())
 	fmt.Println("................................................................................................")
 
-	name, err := contract.Name(&bind.CallOpts{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Name: ", name)
 
 	totalSupply, err := contract.TotalSupply(&bind.CallOpts{})
 

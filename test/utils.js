@@ -14,17 +14,17 @@ module.exports = {
         assert.equal(expected.event, actual.event);
         let length = 0;
 
-        if(actual.args['0']) {
+        if(typeof actual.args['0'] !== "undefined") {
             assert.equal(expected.arg[0].toString(), actual.args['0'].toString(), "arg 1 is wrong for " + actual.event);
             length++;
         }
 
-        if(actual.args['1']) {
+        if(typeof actual.args['1'] !== "undefined") {
             assert.equal(expected.arg[1].toString(), actual.args['1'].toString(), "arg 2 is wrong for " + actual.event);
             length++;
         }
 
-        if(actual.args['2']) {
+        if(typeof actual.args['2'] !== "undefined") {
             assert.equal(expected.arg[2].toString(), actual.args['2'].toString(), "arg 3 is wrong for " + actual.event);
             length++;
         }

@@ -16,10 +16,10 @@ import (
 )
 
 // BaasROIABI is the input ABI used to generate the binding from.
-const BaasROIABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"omittedReceiver\",\"type\":\"address\"}],\"name\":\"PayoutOmitted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"receiver\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"tokensReceived\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"tokensPossessed\",\"type\":\"uint256\"}],\"name\":\"PaidOut\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"tokensProvided\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"tokensPossessed\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"tokenHolders\",\"type\":\"uint256\"}],\"name\":\"PaidOutAll\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"payoutAll\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"withdraw\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"circulatingSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"eligibleToken\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"hasEnoughTokensForPayout\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"token\",\"type\":\"uint256\"},{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"roi\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"wallet\",\"type\":\"address\"},{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"roiOf\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"currentPayoutObligation\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"maxTokensToBeRewarded\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"optimalPayoutDistribution\",\"outputs\":[{\"name\":\"maxTokenToBeRewarded\",\"type\":\"uint256\"},{\"name\":\"minPayoutBalance\",\"type\":\"uint256\"},{\"name\":\"error\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"interestRate\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
+const BaasROIABI = "[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"omittedReceiver\",\"type\":\"address\"}],\"name\":\"PayoutOmitted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"receiver\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"tokensReceived\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"tokensPossessed\",\"type\":\"uint256\"}],\"name\":\"PaidOut\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"tokensProvided\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"tokensPossessed\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"tokenHolders\",\"type\":\"uint256\"}],\"name\":\"PaidOutAll\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"receiver\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Withdrawn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"payoutAll\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"withdrawFromContract\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"circulatingSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"eligibleToken\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"contractHasEnoughTokensForPayout\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"currentPayoutObligation\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"optimalPayoutDistribution\",\"outputs\":[{\"name\":\"contractCanPayMax\",\"type\":\"uint256\"},{\"name\":\"contractShouldHaveMin\",\"type\":\"uint256\"},{\"name\":\"error\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"interestRate\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"token\",\"type\":\"uint256\"},{\"name\":\"tokenEuroConversionRate\",\"type\":\"uint256\"}],\"name\":\"roi\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
 
 // BaasROIBin is the compiled bytecode used for deploying new contracts.
-const BaasROIBin = `0x608060405234801561001057600080fd5b506040516020806117468339810180604052602081101561003057600080fd5b8101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506115f88061014e6000396000f3fe6080604052600436106100f1576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806301b32f0a146100f65780631473ada31461014f5780631da2649b146101ac57806351cff8d9146102225780635f86d7901461028b578063715018a6146102da5780637c3a00fd146102f15780638d10ca261461031c5780638da5cb5b1461036f5780638f32d59b146103c65780639358928b146103f55780639d76ea5814610420578063b69ef8a814610477578063bb731467146104a2578063be4d0aa2146104cd578063daf384191461051c578063f2fde38b1461056f575b600080fd5b34801561010257600080fd5b506101396004803603604081101561011957600080fd5b8101908080359060200190929190803590602001909291905050506105c0565b6040518082815260200191505060405180910390f35b34801561015b57600080fd5b506101886004803603602081101561017257600080fd5b8101908080359060200190929190505050610602565b60405180848152602001838152602001828152602001935050505060405180910390f35b3480156101b857600080fd5b50610205600480360360408110156101cf57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506106ba565b604051808381526020018281526020019250505060405180910390f35b34801561022e57600080fd5b506102716004803603602081101561024557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506107ce565b604051808215151515815260200191505060405180910390f35b34801561029757600080fd5b506102c4600480360360208110156102ae57600080fd5b8101908080359060200190929190505050610913565b6040518082815260200191505060405180910390f35b3480156102e657600080fd5b506102ef610960565b005b3480156102fd57600080fd5b50610306610a32565b6040518082815260200191505060405180910390f35b34801561032857600080fd5b506103556004803603602081101561033f57600080fd5b8101908080359060200190929190505050610a3b565b604051808215151515815260200191505060405180910390f35b34801561037b57600080fd5b50610384610a6b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156103d257600080fd5b506103db610a94565b604051808215151515815260200191505060405180910390f35b34801561040157600080fd5b5061040a610aeb565b6040518082815260200191505060405180910390f35b34801561042c57600080fd5b50610435610bb1565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561048357600080fd5b5061048c610bdb565b6040518082815260200191505060405180910390f35b3480156104ae57600080fd5b506104b7610cd8565b6040518082815260200191505060405180910390f35b3480156104d957600080fd5b50610506600480360360208110156104f057600080fd5b8101908080359060200190929190505050610db7565b6040518082815260200191505060405180910390f35b34801561052857600080fd5b506105556004803603602081101561053f57600080fd5b8101908080359060200190929190505050610dd1565b604051808215151515815260200191505060405180910390f35b34801561057b57600080fd5b506105be6004803603602081101561059257600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050611268565b005b6000808214156105d357600090506105fc565b6105f9826105eb60098661128790919063ffffffff16565b6112c590919063ffffffff16565b90505b92915050565b60008060008061061c8560096112ef90919063ffffffff16565b905061064b8161063d600961062f610aeb565b61128790919063ffffffff16565b6112c590919063ffffffff16565b92506106798161066b8761065d610aeb565b61128790919063ffffffff16565b6112c590919063ffffffff16565b93506106a7846106998561068b610aeb565b61131090919063ffffffff16565b61131090919063ffffffff16565b9150838383935093509350509193909250565b6000806000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231866040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060206040518083038186803b15801561077a57600080fd5b505afa15801561078e573d6000803e3d6000fd5b505050506040513d60208110156107a457600080fd5b810190808051906020019092919050505090506107c181856105c0565b8192509250509250929050565b60006107d8610a94565b15156107e357600080fd5b60006107ed610bdb565b90506000811115156107fe57600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb84836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b1580156108c357600080fd5b505af11580156108d7573d6000803e3d6000fd5b505050506040513d60208110156108ed57600080fd5b8101908080519060200190929190505050151561090957600080fd5b6001915050919050565b60008061092a6009846112ef90919063ffffffff16565b90506109588161094a8561093c610aeb565b61128790919063ffffffff16565b6112c590919063ffffffff16565b915050919050565b610968610a94565b151561097357600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60006009905090565b600080600080610a4a85610602565b809350819450829550505050610a5e610bdb565b8211159350505050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16639358928b6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b158015610b7157600080fd5b505afa158015610b85573d6000803e3d6000fd5b505050506040513d6020811015610b9b57600080fd5b8101908080519060200190929190505050905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060206040518083038186803b158015610c9857600080fd5b505afa158015610cac573d6000803e3d6000fd5b505050506040513d6020811015610cc257600080fd5b8101908080519060200190929190505050905090565b6000610db2610ce5610bdb565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16639358928b6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b158015610d6957600080fd5b505afa158015610d7d573d6000803e3d6000fd5b505050506040513d6020811015610d9357600080fd5b810190808051906020019092919050505061131090919063ffffffff16565b905090565b6000610dca610dc4610cd8565b836105c0565b9050919050565b6000610ddb610a94565b1515610de657600080fd5b610def82610a3b565b1515610dfa57600080fd5b6000610e04610bdb565b9050600080600080600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a654cfab6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160806040518083038186803b158015610e9057600080fd5b505afa158015610ea4573d6000803e3d6000fd5b505050506040513d6080811015610eba57600080fd5b8101908080519060200190929190805190602001909291908051906020019092919080519060200190929190505050809450819550829650839750505050506060600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16637af70c1f6040518163ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401600060405180830381600087803b158015610f8157600080fd5b505af1158015610f95573d6000803e3d6000fd5b505050506040513d6000823e3d601f19601f820116820180604052506020811015610fbf57600080fd5b810190808051640100000000811115610fd757600080fd5b82810190506020810184811115610fed57600080fd5b815185602082028301116401000000008211171561100a57600080fd5b505092919050505090506000815190506000809050600080905060008090505b83811015611212576000858281518110151561104257fe5b9060200190602002015190508973ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614806110b357508673ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16145b806110e957508773ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16145b8061111f57508873ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16145b8061115557503073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16145b156111c2577f1ce49881e4d47088c220804148559e4103d5df83e4fc9e98101ff01eb74ecb7281604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1611204565b60006111e587848151811015156111d557fe5b906020019060200201518f611332565b90506111fa81866112ef90919063ffffffff16565b9450600184019350505b50808060010191505061102a565b507fda72e69b624518c6d2f93807ec73b6a8a638ae29f7f0a8fa353946027d72fba9828a8360405180848152602001838152602001828152602001935050505060405180910390a1505050505050505050919050565b611270610a94565b151561127b57600080fd5b611284816114d2565b50565b60008083141561129a57600090506112bf565b600082840290508284828115156112ad57fe5b041415156112ba57600080fd5b809150505b92915050565b600080821115156112d557600080fd5b600082848115156112e257fe5b0490508091505092915050565b600080828401905083811015151561130657600080fd5b8091505092915050565b600082821115151561132157600080fd5b600082840390508091505092915050565b600080600061134185856106ba565b8092508193505050600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb86846040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15801561140e57600080fd5b505af1158015611422573d6000803e3d6000fd5b505050506040513d602081101561143857600080fd5b8101908080519060200190929190505050151561145457600080fd5b7f7ca7469714f3e1d8732b3a67b0599fba3be82b826137fcfa805c19afc2b20aeb858383604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001838152602001828152602001935050505060405180910390a1819250505092915050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561150e57600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a72305820ee369cdd517bdf99ec8b5d7d61d95eac61df8b75488aecbef74ca3dc9afd447c0029`
+const BaasROIBin = `0x608060405234801561001057600080fd5b506040516020806117d18339810180604052602081101561003057600080fd5b8101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506116838061014e6000396000f3fe6080604052600436106100db576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806301b32f0a146100e05780631473ada31461013957806352e26a1514610196578063715018a6146101e95780637c3a00fd146102005780638da5cb5b1461022b5780638f32d59b146102825780639358928b146102b15780639d76ea58146102dc578063b69ef8a814610333578063bb7314671461035e578063be4d0aa214610389578063daf38419146103d8578063f2fde38b1461042b578063f3ff49611461047c575b600080fd5b3480156100ec57600080fd5b506101236004803603604081101561010357600080fd5b8101908080359060200190929190803590602001909291905050506104e5565b6040518082815260200191505060405180910390f35b34801561014557600080fd5b506101726004803603602081101561015c57600080fd5b8101908080359060200190929190505050610527565b60405180848152602001838152602001828152602001935050505060405180910390f35b3480156101a257600080fd5b506101cf600480360360208110156101b957600080fd5b81019080803590602001909291905050506105df565b604051808215151515815260200191505060405180910390f35b3480156101f557600080fd5b506101fe61060f565b005b34801561020c57600080fd5b506102156106e1565b6040518082815260200191505060405180910390f35b34801561023757600080fd5b506102406106ea565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561028e57600080fd5b50610297610713565b604051808215151515815260200191505060405180910390f35b3480156102bd57600080fd5b506102c661076a565b6040518082815260200191505060405180910390f35b3480156102e857600080fd5b506102f1610830565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561033f57600080fd5b5061034861085a565b6040518082815260200191505060405180910390f35b34801561036a57600080fd5b50610373610957565b6040518082815260200191505060405180910390f35b34801561039557600080fd5b506103c2600480360360208110156103ac57600080fd5b8101908080359060200190929190505050610a36565b6040518082815260200191505060405180910390f35b3480156103e457600080fd5b50610411600480360360208110156103fb57600080fd5b8101908080359060200190929190505050610a50565b604051808215151515815260200191505060405180910390f35b34801561043757600080fd5b5061047a6004803603602081101561044e57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610f50565b005b34801561048857600080fd5b506104cb6004803603602081101561049f57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610f6f565b604051808215151515815260200191505060405180910390f35b6000808214156104f85760009050610521565b61051e826105106009866111d490919063ffffffff16565b61121290919063ffffffff16565b90505b92915050565b60008060008061054185600961123c90919063ffffffff16565b905061057081610562600961055461076a565b6111d490919063ffffffff16565b61121290919063ffffffff16565b925061059e816105908761058261076a565b6111d490919063ffffffff16565b61121290919063ffffffff16565b93506105cc846105be856105b061076a565b61125d90919063ffffffff16565b61125d90919063ffffffff16565b9150838383935093509350509193909250565b6000806000806105ee85610527565b80935081945082955050505061060261085a565b8211159350505050919050565b610617610713565b151561062257600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60006009905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16639358928b6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156107f057600080fd5b505afa158015610804573d6000803e3d6000fd5b505050506040513d602081101561081a57600080fd5b8101908080519060200190929190505050905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060206040518083038186803b15801561091757600080fd5b505afa15801561092b573d6000803e3d6000fd5b505050506040513d602081101561094157600080fd5b8101908080519060200190929190505050905090565b6000610a3161096461085a565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16639358928b6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156109e857600080fd5b505afa1580156109fc573d6000803e3d6000fd5b505050506040513d6020811015610a1257600080fd5b810190808051906020019092919050505061125d90919063ffffffff16565b905090565b6000610a49610a43610957565b836104e5565b9050919050565b6000610a5a610713565b1515610a6557600080fd5b610a6e826105df565b1515610ae2576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601c8152602001807f636f6e7472616374732062616c616e636520697320746f6f206c6f770000000081525060200191505060405180910390fd5b6000610aec61085a565b9050600080600080600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a654cfab6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160806040518083038186803b158015610b7857600080fd5b505afa158015610b8c573d6000803e3d6000fd5b505050506040513d6080811015610ba257600080fd5b8101908080519060200190929190805190602001909291908051906020019092919080519060200190929190505050809450819550829650839750505050506060600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16637af70c1f6040518163ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401600060405180830381600087803b158015610c6957600080fd5b505af1158015610c7d573d6000803e3d6000fd5b505050506040513d6000823e3d601f19601f820116820180604052506020811015610ca757600080fd5b810190808051640100000000811115610cbf57600080fd5b82810190506020810184811115610cd557600080fd5b8151856020820283011164010000000082111715610cf257600080fd5b505092919050505090506000815190506000809050600080905060008090505b83811015610efa5760008582815181101515610d2a57fe5b9060200190602002015190508973ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161480610d9b57508673ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16145b80610dd157508773ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16145b80610e0757508873ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16145b80610e3d57503073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16145b15610eaa577f1ce49881e4d47088c220804148559e4103d5df83e4fc9e98101ff01eb74ecb7281604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1610eec565b6000610ecd8784815181101515610ebd57fe5b906020019060200201518f61127f565b9050610ee2818661123c90919063ffffffff16565b9450600184019350505b508080600101915050610d12565b507fda72e69b624518c6d2f93807ec73b6a8a638ae29f7f0a8fa353946027d72fba9828a8360405180848152602001838152602001828152602001935050505060405180910390a1505050505050505050919050565b610f58610713565b1515610f6357600080fd5b610f6c8161155d565b50565b6000610f79610713565b1515610f8457600080fd5b6000610f8e61085a565b9050600081111515611008576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601a8152602001807f6e6f20746f6b656e73206c65667420696e20636f6e747261637400000000000081525060200191505060405180910390fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb84836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b1580156110cd57600080fd5b505af11580156110e1573d6000803e3d6000fd5b505050506040513d60208110156110f757600080fd5b8101908080519060200190929190505050151561117c576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260158152602001807f746f6b656e207472616e73666572206661696c6564000000000000000000000081525060200191505060405180910390fd5b8273ffffffffffffffffffffffffffffffffffffffff167f7084f5476618d8e60b11ef0d7d3f06914655adb8793e28ff7f018d4c76d505d5826040518082815260200191505060405180910390a26001915050919050565b6000808314156111e7576000905061120c565b600082840290508284828115156111fa57fe5b0414151561120757600080fd5b809150505b92915050565b6000808211151561122257600080fd5b6000828481151561122f57fe5b0490508091505092915050565b600080828401905083811015151561125357600080fd5b8091505092915050565b600082821115151561126e57600080fd5b600082840390508091505092915050565b600080600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231856040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060206040518083038186803b15801561133d57600080fd5b505afa158015611351573d6000803e3d6000fd5b505050506040513d602081101561136757600080fd5b81019080805190602001909291905050509050600061138682856104e5565b9050600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb86836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15801561144d57600080fd5b505af1158015611461573d6000803e3d6000fd5b505050506040513d602081101561147757600080fd5b810190808051906020019092919050505015156114fc576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260198152602001807f7472616e73666572206f6620746f6b656e73206661696c65640000000000000081525060200191505060405180910390fd5b8473ffffffffffffffffffffffffffffffffffffffff167f7ca7469714f3e1d8732b3a67b0599fba3be82b826137fcfa805c19afc2b20aeb8284604051808381526020018281526020019250505060405180910390a2809250505092915050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561159957600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a72305820443c34c44310441060dc947bb5de1822f1242202039cc7a033c3f20b1715ae6b0029`
 
 // DeployBaasROI deploys a new Ethereum contract, binding an instance of BaasROI to it.
 func DeployBaasROI(auth *bind.TransactOpts, backend bind.ContractBackend, token common.Address) (common.Address, *types.Transaction, *BaasROI, error) {
@@ -228,6 +228,32 @@ func (_BaasROI *BaasROICallerSession) CirculatingSupply() (*big.Int, error) {
 	return _BaasROI.Contract.CirculatingSupply(&_BaasROI.CallOpts)
 }
 
+// ContractHasEnoughTokensForPayout is a free data retrieval call binding the contract method 0x52e26a15.
+//
+// Solidity: function contractHasEnoughTokensForPayout(tokenEuroConversionRate uint256) constant returns(bool)
+func (_BaasROI *BaasROICaller) ContractHasEnoughTokensForPayout(opts *bind.CallOpts, tokenEuroConversionRate *big.Int) (bool, error) {
+	var (
+		ret0 = new(bool)
+	)
+	out := ret0
+	err := _BaasROI.contract.Call(opts, out, "contractHasEnoughTokensForPayout", tokenEuroConversionRate)
+	return *ret0, err
+}
+
+// ContractHasEnoughTokensForPayout is a free data retrieval call binding the contract method 0x52e26a15.
+//
+// Solidity: function contractHasEnoughTokensForPayout(tokenEuroConversionRate uint256) constant returns(bool)
+func (_BaasROI *BaasROISession) ContractHasEnoughTokensForPayout(tokenEuroConversionRate *big.Int) (bool, error) {
+	return _BaasROI.Contract.ContractHasEnoughTokensForPayout(&_BaasROI.CallOpts, tokenEuroConversionRate)
+}
+
+// ContractHasEnoughTokensForPayout is a free data retrieval call binding the contract method 0x52e26a15.
+//
+// Solidity: function contractHasEnoughTokensForPayout(tokenEuroConversionRate uint256) constant returns(bool)
+func (_BaasROI *BaasROICallerSession) ContractHasEnoughTokensForPayout(tokenEuroConversionRate *big.Int) (bool, error) {
+	return _BaasROI.Contract.ContractHasEnoughTokensForPayout(&_BaasROI.CallOpts, tokenEuroConversionRate)
+}
+
 // CurrentPayoutObligation is a free data retrieval call binding the contract method 0xbe4d0aa2.
 //
 // Solidity: function currentPayoutObligation(tokenEuroConversionRate uint256) constant returns(uint256)
@@ -278,32 +304,6 @@ func (_BaasROI *BaasROISession) EligibleToken() (*big.Int, error) {
 // Solidity: function eligibleToken() constant returns(uint256)
 func (_BaasROI *BaasROICallerSession) EligibleToken() (*big.Int, error) {
 	return _BaasROI.Contract.EligibleToken(&_BaasROI.CallOpts)
-}
-
-// HasEnoughTokensForPayout is a free data retrieval call binding the contract method 0x8d10ca26.
-//
-// Solidity: function hasEnoughTokensForPayout(tokenEuroConversionRate uint256) constant returns(bool)
-func (_BaasROI *BaasROICaller) HasEnoughTokensForPayout(opts *bind.CallOpts, tokenEuroConversionRate *big.Int) (bool, error) {
-	var (
-		ret0 = new(bool)
-	)
-	out := ret0
-	err := _BaasROI.contract.Call(opts, out, "hasEnoughTokensForPayout", tokenEuroConversionRate)
-	return *ret0, err
-}
-
-// HasEnoughTokensForPayout is a free data retrieval call binding the contract method 0x8d10ca26.
-//
-// Solidity: function hasEnoughTokensForPayout(tokenEuroConversionRate uint256) constant returns(bool)
-func (_BaasROI *BaasROISession) HasEnoughTokensForPayout(tokenEuroConversionRate *big.Int) (bool, error) {
-	return _BaasROI.Contract.HasEnoughTokensForPayout(&_BaasROI.CallOpts, tokenEuroConversionRate)
-}
-
-// HasEnoughTokensForPayout is a free data retrieval call binding the contract method 0x8d10ca26.
-//
-// Solidity: function hasEnoughTokensForPayout(tokenEuroConversionRate uint256) constant returns(bool)
-func (_BaasROI *BaasROICallerSession) HasEnoughTokensForPayout(tokenEuroConversionRate *big.Int) (bool, error) {
-	return _BaasROI.Contract.HasEnoughTokensForPayout(&_BaasROI.CallOpts, tokenEuroConversionRate)
 }
 
 // InterestRate is a free data retrieval call binding the contract method 0x7c3a00fd.
@@ -358,44 +358,18 @@ func (_BaasROI *BaasROICallerSession) IsOwner() (bool, error) {
 	return _BaasROI.Contract.IsOwner(&_BaasROI.CallOpts)
 }
 
-// MaxTokensToBeRewarded is a free data retrieval call binding the contract method 0x5f86d790.
-//
-// Solidity: function maxTokensToBeRewarded(tokenEuroConversionRate uint256) constant returns(uint256)
-func (_BaasROI *BaasROICaller) MaxTokensToBeRewarded(opts *bind.CallOpts, tokenEuroConversionRate *big.Int) (*big.Int, error) {
-	var (
-		ret0 = new(*big.Int)
-	)
-	out := ret0
-	err := _BaasROI.contract.Call(opts, out, "maxTokensToBeRewarded", tokenEuroConversionRate)
-	return *ret0, err
-}
-
-// MaxTokensToBeRewarded is a free data retrieval call binding the contract method 0x5f86d790.
-//
-// Solidity: function maxTokensToBeRewarded(tokenEuroConversionRate uint256) constant returns(uint256)
-func (_BaasROI *BaasROISession) MaxTokensToBeRewarded(tokenEuroConversionRate *big.Int) (*big.Int, error) {
-	return _BaasROI.Contract.MaxTokensToBeRewarded(&_BaasROI.CallOpts, tokenEuroConversionRate)
-}
-
-// MaxTokensToBeRewarded is a free data retrieval call binding the contract method 0x5f86d790.
-//
-// Solidity: function maxTokensToBeRewarded(tokenEuroConversionRate uint256) constant returns(uint256)
-func (_BaasROI *BaasROICallerSession) MaxTokensToBeRewarded(tokenEuroConversionRate *big.Int) (*big.Int, error) {
-	return _BaasROI.Contract.MaxTokensToBeRewarded(&_BaasROI.CallOpts, tokenEuroConversionRate)
-}
-
 // OptimalPayoutDistribution is a free data retrieval call binding the contract method 0x1473ada3.
 //
-// Solidity: function optimalPayoutDistribution(tokenEuroConversionRate uint256) constant returns(maxTokenToBeRewarded uint256, minPayoutBalance uint256, error uint256)
+// Solidity: function optimalPayoutDistribution(tokenEuroConversionRate uint256) constant returns(contractCanPayMax uint256, contractShouldHaveMin uint256, error uint256)
 func (_BaasROI *BaasROICaller) OptimalPayoutDistribution(opts *bind.CallOpts, tokenEuroConversionRate *big.Int) (struct {
-	MaxTokenToBeRewarded *big.Int
-	MinPayoutBalance     *big.Int
-	Error                *big.Int
+	ContractCanPayMax     *big.Int
+	ContractShouldHaveMin *big.Int
+	Error                 *big.Int
 }, error) {
 	ret := new(struct {
-		MaxTokenToBeRewarded *big.Int
-		MinPayoutBalance     *big.Int
-		Error                *big.Int
+		ContractCanPayMax     *big.Int
+		ContractShouldHaveMin *big.Int
+		Error                 *big.Int
 	})
 	out := ret
 	err := _BaasROI.contract.Call(opts, out, "optimalPayoutDistribution", tokenEuroConversionRate)
@@ -404,22 +378,22 @@ func (_BaasROI *BaasROICaller) OptimalPayoutDistribution(opts *bind.CallOpts, to
 
 // OptimalPayoutDistribution is a free data retrieval call binding the contract method 0x1473ada3.
 //
-// Solidity: function optimalPayoutDistribution(tokenEuroConversionRate uint256) constant returns(maxTokenToBeRewarded uint256, minPayoutBalance uint256, error uint256)
+// Solidity: function optimalPayoutDistribution(tokenEuroConversionRate uint256) constant returns(contractCanPayMax uint256, contractShouldHaveMin uint256, error uint256)
 func (_BaasROI *BaasROISession) OptimalPayoutDistribution(tokenEuroConversionRate *big.Int) (struct {
-	MaxTokenToBeRewarded *big.Int
-	MinPayoutBalance     *big.Int
-	Error                *big.Int
+	ContractCanPayMax     *big.Int
+	ContractShouldHaveMin *big.Int
+	Error                 *big.Int
 }, error) {
 	return _BaasROI.Contract.OptimalPayoutDistribution(&_BaasROI.CallOpts, tokenEuroConversionRate)
 }
 
 // OptimalPayoutDistribution is a free data retrieval call binding the contract method 0x1473ada3.
 //
-// Solidity: function optimalPayoutDistribution(tokenEuroConversionRate uint256) constant returns(maxTokenToBeRewarded uint256, minPayoutBalance uint256, error uint256)
+// Solidity: function optimalPayoutDistribution(tokenEuroConversionRate uint256) constant returns(contractCanPayMax uint256, contractShouldHaveMin uint256, error uint256)
 func (_BaasROI *BaasROICallerSession) OptimalPayoutDistribution(tokenEuroConversionRate *big.Int) (struct {
-	MaxTokenToBeRewarded *big.Int
-	MinPayoutBalance     *big.Int
-	Error                *big.Int
+	ContractCanPayMax     *big.Int
+	ContractShouldHaveMin *big.Int
+	Error                 *big.Int
 }, error) {
 	return _BaasROI.Contract.OptimalPayoutDistribution(&_BaasROI.CallOpts, tokenEuroConversionRate)
 }
@@ -474,36 +448,6 @@ func (_BaasROI *BaasROISession) Roi(token *big.Int, tokenEuroConversionRate *big
 // Solidity: function roi(token uint256, tokenEuroConversionRate uint256) constant returns(uint256)
 func (_BaasROI *BaasROICallerSession) Roi(token *big.Int, tokenEuroConversionRate *big.Int) (*big.Int, error) {
 	return _BaasROI.Contract.Roi(&_BaasROI.CallOpts, token, tokenEuroConversionRate)
-}
-
-// RoiOf is a free data retrieval call binding the contract method 0x1da2649b.
-//
-// Solidity: function roiOf(wallet address, tokenEuroConversionRate uint256) constant returns(uint256, uint256)
-func (_BaasROI *BaasROICaller) RoiOf(opts *bind.CallOpts, wallet common.Address, tokenEuroConversionRate *big.Int) (*big.Int, *big.Int, error) {
-	var (
-		ret0 = new(*big.Int)
-		ret1 = new(*big.Int)
-	)
-	out := &[]interface{}{
-		ret0,
-		ret1,
-	}
-	err := _BaasROI.contract.Call(opts, out, "roiOf", wallet, tokenEuroConversionRate)
-	return *ret0, *ret1, err
-}
-
-// RoiOf is a free data retrieval call binding the contract method 0x1da2649b.
-//
-// Solidity: function roiOf(wallet address, tokenEuroConversionRate uint256) constant returns(uint256, uint256)
-func (_BaasROI *BaasROISession) RoiOf(wallet common.Address, tokenEuroConversionRate *big.Int) (*big.Int, *big.Int, error) {
-	return _BaasROI.Contract.RoiOf(&_BaasROI.CallOpts, wallet, tokenEuroConversionRate)
-}
-
-// RoiOf is a free data retrieval call binding the contract method 0x1da2649b.
-//
-// Solidity: function roiOf(wallet address, tokenEuroConversionRate uint256) constant returns(uint256, uint256)
-func (_BaasROI *BaasROICallerSession) RoiOf(wallet common.Address, tokenEuroConversionRate *big.Int) (*big.Int, *big.Int, error) {
-	return _BaasROI.Contract.RoiOf(&_BaasROI.CallOpts, wallet, tokenEuroConversionRate)
 }
 
 // TokenAddress is a free data retrieval call binding the contract method 0x9d76ea58.
@@ -595,25 +539,25 @@ func (_BaasROI *BaasROITransactorSession) TransferOwnership(newOwner common.Addr
 	return _BaasROI.Contract.TransferOwnership(&_BaasROI.TransactOpts, newOwner)
 }
 
-// Withdraw is a paid mutator transaction binding the contract method 0x51cff8d9.
+// WithdrawFromContract is a paid mutator transaction binding the contract method 0xf3ff4961.
 //
-// Solidity: function withdraw(receiver address) returns(bool)
-func (_BaasROI *BaasROITransactor) Withdraw(opts *bind.TransactOpts, receiver common.Address) (*types.Transaction, error) {
-	return _BaasROI.contract.Transact(opts, "withdraw", receiver)
+// Solidity: function withdrawFromContract(receiver address) returns(bool)
+func (_BaasROI *BaasROITransactor) WithdrawFromContract(opts *bind.TransactOpts, receiver common.Address) (*types.Transaction, error) {
+	return _BaasROI.contract.Transact(opts, "withdrawFromContract", receiver)
 }
 
-// Withdraw is a paid mutator transaction binding the contract method 0x51cff8d9.
+// WithdrawFromContract is a paid mutator transaction binding the contract method 0xf3ff4961.
 //
-// Solidity: function withdraw(receiver address) returns(bool)
-func (_BaasROI *BaasROISession) Withdraw(receiver common.Address) (*types.Transaction, error) {
-	return _BaasROI.Contract.Withdraw(&_BaasROI.TransactOpts, receiver)
+// Solidity: function withdrawFromContract(receiver address) returns(bool)
+func (_BaasROI *BaasROISession) WithdrawFromContract(receiver common.Address) (*types.Transaction, error) {
+	return _BaasROI.Contract.WithdrawFromContract(&_BaasROI.TransactOpts, receiver)
 }
 
-// Withdraw is a paid mutator transaction binding the contract method 0x51cff8d9.
+// WithdrawFromContract is a paid mutator transaction binding the contract method 0xf3ff4961.
 //
-// Solidity: function withdraw(receiver address) returns(bool)
-func (_BaasROI *BaasROITransactorSession) Withdraw(receiver common.Address) (*types.Transaction, error) {
-	return _BaasROI.Contract.Withdraw(&_BaasROI.TransactOpts, receiver)
+// Solidity: function withdrawFromContract(receiver address) returns(bool)
+func (_BaasROI *BaasROITransactorSession) WithdrawFromContract(receiver common.Address) (*types.Transaction, error) {
+	return _BaasROI.Contract.WithdrawFromContract(&_BaasROI.TransactOpts, receiver)
 }
 
 // BaasROIOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the BaasROI contract.
@@ -834,10 +778,15 @@ type BaasROIPaidOut struct {
 
 // FilterPaidOut is a free log retrieval operation binding the contract event 0x7ca7469714f3e1d8732b3a67b0599fba3be82b826137fcfa805c19afc2b20aeb.
 //
-// Solidity: e PaidOut(receiver address, tokensReceived uint256, tokensPossessed uint256)
-func (_BaasROI *BaasROIFilterer) FilterPaidOut(opts *bind.FilterOpts) (*BaasROIPaidOutIterator, error) {
+// Solidity: e PaidOut(receiver indexed address, tokensReceived uint256, tokensPossessed uint256)
+func (_BaasROI *BaasROIFilterer) FilterPaidOut(opts *bind.FilterOpts, receiver []common.Address) (*BaasROIPaidOutIterator, error) {
 
-	logs, sub, err := _BaasROI.contract.FilterLogs(opts, "PaidOut")
+	var receiverRule []interface{}
+	for _, receiverItem := range receiver {
+		receiverRule = append(receiverRule, receiverItem)
+	}
+
+	logs, sub, err := _BaasROI.contract.FilterLogs(opts, "PaidOut", receiverRule)
 	if err != nil {
 		return nil, err
 	}
@@ -846,10 +795,15 @@ func (_BaasROI *BaasROIFilterer) FilterPaidOut(opts *bind.FilterOpts) (*BaasROIP
 
 // WatchPaidOut is a free log subscription operation binding the contract event 0x7ca7469714f3e1d8732b3a67b0599fba3be82b826137fcfa805c19afc2b20aeb.
 //
-// Solidity: e PaidOut(receiver address, tokensReceived uint256, tokensPossessed uint256)
-func (_BaasROI *BaasROIFilterer) WatchPaidOut(opts *bind.WatchOpts, sink chan<- *BaasROIPaidOut) (event.Subscription, error) {
+// Solidity: e PaidOut(receiver indexed address, tokensReceived uint256, tokensPossessed uint256)
+func (_BaasROI *BaasROIFilterer) WatchPaidOut(opts *bind.WatchOpts, sink chan<- *BaasROIPaidOut, receiver []common.Address) (event.Subscription, error) {
 
-	logs, sub, err := _BaasROI.contract.WatchLogs(opts, "PaidOut")
+	var receiverRule []interface{}
+	for _, receiverItem := range receiver {
+		receiverRule = append(receiverRule, receiverItem)
+	}
+
+	logs, sub, err := _BaasROI.contract.WatchLogs(opts, "PaidOut", receiverRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1107,6 +1061,139 @@ func (_BaasROI *BaasROIFilterer) WatchPayoutOmitted(opts *bind.WatchOpts, sink c
 				// New log arrived, parse the event and forward to the user
 				event := new(BaasROIPayoutOmitted)
 				if err := _BaasROI.contract.UnpackLog(event, "PayoutOmitted", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// BaasROIWithdrawnIterator is returned from FilterWithdrawn and is used to iterate over the raw logs and unpacked data for Withdrawn events raised by the BaasROI contract.
+type BaasROIWithdrawnIterator struct {
+	Event *BaasROIWithdrawn // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *BaasROIWithdrawnIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(BaasROIWithdrawn)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(BaasROIWithdrawn)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *BaasROIWithdrawnIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *BaasROIWithdrawnIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// BaasROIWithdrawn represents a Withdrawn event raised by the BaasROI contract.
+type BaasROIWithdrawn struct {
+	Receiver common.Address
+	Amount   *big.Int
+	Raw      types.Log // Blockchain specific contextual infos
+}
+
+// FilterWithdrawn is a free log retrieval operation binding the contract event 0x7084f5476618d8e60b11ef0d7d3f06914655adb8793e28ff7f018d4c76d505d5.
+//
+// Solidity: e Withdrawn(receiver indexed address, amount uint256)
+func (_BaasROI *BaasROIFilterer) FilterWithdrawn(opts *bind.FilterOpts, receiver []common.Address) (*BaasROIWithdrawnIterator, error) {
+
+	var receiverRule []interface{}
+	for _, receiverItem := range receiver {
+		receiverRule = append(receiverRule, receiverItem)
+	}
+
+	logs, sub, err := _BaasROI.contract.FilterLogs(opts, "Withdrawn", receiverRule)
+	if err != nil {
+		return nil, err
+	}
+	return &BaasROIWithdrawnIterator{contract: _BaasROI.contract, event: "Withdrawn", logs: logs, sub: sub}, nil
+}
+
+// WatchWithdrawn is a free log subscription operation binding the contract event 0x7084f5476618d8e60b11ef0d7d3f06914655adb8793e28ff7f018d4c76d505d5.
+//
+// Solidity: e Withdrawn(receiver indexed address, amount uint256)
+func (_BaasROI *BaasROIFilterer) WatchWithdrawn(opts *bind.WatchOpts, sink chan<- *BaasROIWithdrawn, receiver []common.Address) (event.Subscription, error) {
+
+	var receiverRule []interface{}
+	for _, receiverItem := range receiver {
+		receiverRule = append(receiverRule, receiverItem)
+	}
+
+	logs, sub, err := _BaasROI.contract.WatchLogs(opts, "Withdrawn", receiverRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(BaasROIWithdrawn)
+				if err := _BaasROI.contract.UnpackLog(event, "Withdrawn", log); err != nil {
 					return err
 				}
 				event.Raw = log
