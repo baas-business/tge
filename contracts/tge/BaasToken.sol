@@ -33,6 +33,11 @@ contract BaasToken is IBaasToken, ERC20, Ownable {
     address _founderAddress = address(0);
     address _incentivesAddress = address(0);
 
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  External/Public Functions
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
     // setup(...) sets the address of deployed contracts that govern
     // the incentive, private placement, founder and escrow pots
     //

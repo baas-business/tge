@@ -8,9 +8,6 @@ import "./IBaasToken.sol";
 interface IBaasROI {
     function payoutAll(uint256 tokenEuroConversionRate) external returns (bool);
 
-    event PayoutOmitted(address omittedReceiver);
-    event PaidOut(address receiver, uint256 tokensReceived, uint256 tokensPossessed);
-    event PaidOutAll(uint256 tokensProvided, uint256 tokensPossessed, uint tokenHolders);
 }
 
 /*
@@ -19,18 +16,32 @@ interface IBaasROI {
 contract BaasROI is IBaasROI, Ownable {
     using SafeMath for uint256;
 
+    /**
+    * @dev the interest rate paid for each token in percent
+    */
     uint256 constant private INTEREST_RATE = 9;
-
-    string private constant NAME = "RETURN OF INVESTMENT";
 
     /**
     * @dev token contract address of BaaSToken
     */
     IBaasToken private _token;
 
+    /**
+     * @dev constructor
+     * @param token IBaasToken The address of the token smart contract
+     */
     constructor(IBaasToken token) public {
         _token = token;
     }
+
+
+    event PayoutOmitted(address omittedReceiver);
+    event PaidOut(address receiver, uint256 tokensReceived, uint256 tokensPossessed);
+    event PaidOutAll(uint256 tokensProvided, uint256 tokensPossessed, uint tokenHolders);
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  External/Public Functions
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     function payoutAll(uint256 tokenEuroConversionRate) external onlyOwner returns (bool) {
         require(hasEnoughTokensForPayout(tokenEuroConversionRate));
@@ -156,20 +167,16 @@ contract BaasROI is IBaasROI, Ownable {
     }
 
 
-    // Pure
-    function interestRate() public pure returns (uint256) {
-        return INTEREST_RATE;
-    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     //  Pure
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * @dev shows the name of this contract
-     * @return string name of this contract
+     * @dev shows the interest rate of BaaSToken
+     * @return uint256 The interest rate
      */
-    function name() public pure returns (string memory) {
-        return NAME;
+    function interestRate() public pure returns (uint256) {
+        return INTEREST_RATE;
     }
 }

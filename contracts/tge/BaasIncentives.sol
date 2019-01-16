@@ -55,6 +55,10 @@ contract BaasIncentives is Ownable {
         _incentivesIssued = 0;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  External/Public Functions
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * @dev issues a specific amount of tokens to account by owner of contract
      * @param account address The address to send tokens to

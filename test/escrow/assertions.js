@@ -8,7 +8,7 @@ module.exports = {
 
 
         for (var i = 0; i < ids.length; i++) {
-            cr.push(await contract.capitalRaise(new BN(ids[0])));
+            cr.push(await contract.capitalRaise(new BN(ids[i])));
         }
 
         assert.equal(expected.length, cr.length, "number of capital raises");

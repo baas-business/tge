@@ -92,6 +92,10 @@ contract BaasEscrow is Ownable {
         _token = token;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //  External/Public Functions
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * @dev frees token to be issued in a capital raise
      * @param amount uint256 The amount of token to be raised
@@ -152,6 +156,8 @@ contract BaasEscrow is Ownable {
 
         require(_token.burnTokensFromPot(address(this), tokensToBeBurned), "burning of tokens failed");
 
+        _burnedTokenTotal = _burnedTokenTotal.add(tokensToBeBurned);
+        _capitalRaises[_currentCapitalRaiseId].isFinalized = true;
         _currentCapitalRaiseId = 0;
 
         emit Finalized(currentCapitalRaiseId, tokensToBeBurned);
